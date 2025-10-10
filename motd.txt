@@ -3,41 +3,56 @@
     <title>INCOMSYSTEM [DEV ZONE]</title>
     <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Courier New', monospace; }
-        .header { color: #58a6ff; text-shadow: 0 0 10px #58a6ff; }
-        .highlight { color: #f78166; }
-        .green { color: #3fb950; }
-        .yellow { color: #e3b341; }
+        body { 
+            background-color: #000000; 
+            color: #ffffff; 
+            font-family: 'Courier New', monospace;
+            margin: 10px;
+        }
+        .header { 
+            color: #00ffff; 
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .highlight { color: #ff6600; }
+        .green { color: #00ff00; }
+        .yellow { color: #ffff00; }
+        .blue { color: #0088ff; }
+        hr { 
+            border: 1px solid #333333; 
+            width: 80%; 
+        }
     </style>
 </head>
 <body>
     <center>
         <br>
-        <h1 class="header">> INCOMSYSTEM_DEV_ZONE</h1>
-        <h2>// Обеденный код-ревью через хэдшоты</h2>
-        <br><hr width="50%"><br>
+        <div class="header">INCOMSYSTEM DEV ZONE</div>
+        <div>// Обеденный код-ревью через хэдшоты</div>
+        <br><hr><br>
 
-        <p><span class="highlight">while (lunchTime) {</span></p>
-        <p><span class="green">   playCS();</span></p>
-        <p><span class="green">   headshot();</span></p>
-        <p><span class="green">   eatPizza();</span></p>
-        <p><span class="highlight">}</span></p>
+        <div class="highlight">while (lunchTime) {</div>
+        <div class="green">   playCS();</div>
+        <div class="green">   headshot();</div>
+        <div class="green">   eatPizza();</div>
+        <div class="highlight">}</div>
 
-        <br><hr width="50%"><br>
+        <br><hr><br>
 
-        <h3>СИСТЕМНЫЕ ТРЕБОВАНИЯ:</h3>
-        <p>• Любовь к пицце (обязательно)</p>
-        <p>• Умение дебажить код и противников</p>
-        <p>• 100% точность (headshot_rate)</p>
-
-        <br>
-
-        <h3>ИНФОРМАЦИЯ О СЕССИИ:</h3>
-        <p>> Время: <span class="yellow">12:00 - 12:30</span></p>
-        <p>> Статус: <span class="green">// Код компилируется...</span></p>
+        <div class="blue">СИСТЕМНЫЕ ТРЕБОВАНИЯ:</div>
+        <div>• Любовь к пицце (обязательно)</div>
+        <div>• Умение дебажить код и противников</div>
+        <div>• 100% точность (headshot_rate)</div>
 
         <br>
-        <p><span class="highlight">Warning:</span> Читеры будут занесены в <span style="color: #ff0000;">blacklist.txt</span></p>
+
+        <div class="blue">ИНФОРМАЦИЯ О СЕССИИ:</div>
+        <div>> Время: <span class="yellow">12:00 - 12:30</span></div>
+        <div>> Статус: <span class="green">// Код компилируется...</span></div>
+
+        <br>
+        <div class="highlight">Warning:</div> 
+        <div>Читеры будут занесены в <span style="color: #ff0000;">blacklist.txt</span></div>
     </center>
 </body>
 </html>

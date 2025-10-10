@@ -11,3 +11,66 @@ L 10/10/2025 - 17:10:09: -------- Mapchange to de_dust --------
 L 10/10/2025 - 17:13:08: [AMXX] Could not free plugin memory, failure 487.
 L 10/10/2025 - 17:13:15: -------- Mapchange to de_dust2 --------
 L 10/10/2025 - 17:13:16: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:10:49: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 19:10:57: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:33:21: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 19:33:22: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:36:15: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 19:36:15: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:42:24: -------- Mapchange to cs_italy --------
+L 10/10/2025 - 19:42:25: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:50:02: -------- Mapchange to cs_italy --------
+L 10/10/2025 - 19:50:02: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:54:06: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 19:54:07: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:54:11: -------- Mapchange to cs_italy --------
+L 10/10/2025 - 19:54:19: -------- Mapchange to cs_estate --------
+L 10/10/2025 - 19:54:31: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 19:59:13: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 19:59:14: -------- Mapchange to de_dust --------
+L 10/10/2025 - 19:59:18: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 19:59:44: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 20:02:12: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 20:02:13: -------- Mapchange to de_dust --------
+L 10/10/2025 - 20:02:16: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 20:02:25: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 20:05:07: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 20:05:07: -------- Mapchange to de_dust --------
+L 10/10/2025 - 20:05:11: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 20:05:18: -------- Mapchange to de_inferno --------
+L 10/10/2025 - 20:22:58: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 20:23:07: -------- Mapchange to de_dust --------
+L 10/10/2025 - 20:23:18: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 20:47:56: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 20:47:56: -------- Mapchange to de_dust --------
+L 10/10/2025 - 20:48:04: -------- Mapchange to de_inferno --------
+L 10/10/2025 - 21:06:04: [mapchooser.amxx] Vote: Voting for the nextmap started
+L 10/10/2025 - 21:06:19: [mapchooser.amxx] Vote: Voting for the nextmap finished. The nextmap will be de_dust
+L 10/10/2025 - 21:08:14: -------- Mapchange to de_dust --------
+L 10/10/2025 - 21:09:34: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 21:09:34: -------- Mapchange to de_dust --------
+L 10/10/2025 - 21:09:48: -------- Mapchange to de_inferno --------
+L 10/10/2025 - 21:15:03: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 21:15:04: -------- Mapchange to de_dust --------
+L 10/10/2025 - 21:15:18: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 21:16:57: -------- Mapchange to cs_estate --------
+L 10/10/2025 - 21:26:52: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 21:26:52: -------- Mapchange to de_dust --------
+L 10/10/2025 - 21:27:01: -------- Mapchange to cs_italy --------
+L 10/10/2025 - 21:30:47: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 21:30:48: -------- Mapchange to de_dust --------
+L 10/10/2025 - 21:30:55: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 21:48:55: [mapchooser.amxx] Vote: Voting for the nextmap started
+L 10/10/2025 - 21:49:10: [mapchooser.amxx] Vote: Voting for the nextmap finished. The nextmap will be de_dust
+L 10/10/2025 - 21:51:04: -------- Mapchange to de_dust --------
+L 10/10/2025 - 22:07:03: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 22:07:03: -------- Mapchange to de_dust --------
+L 10/10/2025 - 22:08:05: -------- Mapchange to cs_italy --------
+L 10/10/2025 - 22:13:31: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 22:13:31: -------- Mapchange to de_dust --------
+L 10/10/2025 - 22:44:53: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 22:45:46: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 22:47:05: -------- Mapchange to cs_assault --------
+L 10/10/2025 - 22:47:05: -------- Mapchange to de_dust --------
+L 10/10/2025 - 22:47:19: -------- Mapchange to de_dust2 --------
+L 10/10/2025 - 22:54:41: -------- Mapchange to cs_italy --------

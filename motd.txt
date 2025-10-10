@@ -1,42 +1,43 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
-<html>
+﻿<html>
 <head>
-<title>Counter-Strike MOTD</title>
-<style type="text/css">
-pre 	{
-		font-family:Verdana,Tahoma;
-		color:#FFB000;
-    	}
-body	{
-		background:#000000;
-		margin-left:8px;
-		margin-top:0px;
-		}
-a	{
-    	text-decoration:    underline;
-	}
-a:link  {
-    color:  #FFFFFF;
-    }
-a:visited   {
-    color:  #FFFFFF;
-    }
-a:active    {
-    color:  #FFFFFF;
-    }
-a:hover {
-    color:  #FFFFFF;
-    text-decoration:    underline;
-    }
-</style>
+    <title>INCOMSYSTEM [DEV ZONE]</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Courier New', monospace; }
+        .header { color: #58a6ff; text-shadow: 0 0 10px #58a6ff; }
+        .highlight { color: #f78166; }
+        .green { color: #3fb950; }
+        .yellow { color: #e3b341; }
+    </style>
 </head>
-<body scroll="no">
-<pre>
-<img src="..\cstrike\zBot\data\logo.png" alt="" border="0" align="right" />
-Добро пожаловать в Counter-Strike 1.6
-На сервере установлены боты zBot 1.5,
-которых можно скачать с сайта @
-<a href="https://cs16planet.ru/">CS16planet.ru</a>
-</pre>
+<body>
+    <center>
+        <br>
+        <h1 class="header">> INCOMSYSTEM_DEV_ZONE</h1>
+        <h2>// Обеденный код-ревью через хэдшоты</h2>
+        <br><hr width="50%"><br>
+
+        <p><span class="highlight">while (lunchTime) {</span></p>
+        <p><span class="green">   playCS();</span></p>
+        <p><span class="green">   headshot();</span></p>
+        <p><span class="green">   eatPizza();</span></p>
+        <p><span class="highlight">}</span></p>
+
+        <br><hr width="50%"><br>
+
+        <h3>СИСТЕМНЫЕ ТРЕБОВАНИЯ:</h3>
+        <p>• Любовь к пицце (обязательно)</p>
+        <p>• Умение дебажить код и противников</p>
+        <p>• 100% точность (headshot_rate)</p>
+
+        <br>
+
+        <h3>ИНФОРМАЦИЯ О СЕССИИ:</h3>
+        <p>> Время: <span class="yellow">12:00 - 12:30</span></p>
+        <p>> Статус: <span class="green">// Код компилируется...</span></p>
+
+        <br>
+        <p><span class="highlight">Warning:</span> Читеры будут занесены в <span style="color: #ff0000;">blacklist.txt</span></p>
+    </center>
 </body>
 </html>

@@ -80,3 +80,7 @@ L 10/10/2025 - 23:26:12: -------- Mapchange to cs_assault --------
 L 10/10/2025 - 23:26:13: -------- Mapchange to de_dust --------
 L 10/10/2025 - 23:28:42: -------- Mapchange to cs_assault --------
 L 10/10/2025 - 23:28:43: -------- Mapchange to de_dust --------
+L 10/10/2025 - 23:46:43: [mapchooser.amxx] Vote: Voting for the nextmap started
+L 10/10/2025 - 23:46:58: [mapchooser.amxx] Vote: Voting for the nextmap finished. The nextmap will be cs_office
+L 10/10/2025 - 23:48:52: -------- Mapchange to cs_office --------
+L 10/10/2025 - 23:48:53: -------- Mapchange to cs_estate --------

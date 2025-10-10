@@ -1,0 +1,13 @@
+Mansion - Hostage Rescue
+
+Counter-Terrorists: Rescue the hostages. 
+Take out the Terrorists without jeopardizing 
+the hostages.
+
+Terrorists: Prevent Counter-Terrorist
+force from rescuing the hostages.
+
+Other Notes: There are 3 hostages in 
+the mission. 
+
+(Press FIRE to continue)

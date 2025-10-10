@@ -1,0 +1,16 @@
+{rail1c  detail/dt_metal1	8.0	8.0
+c3a1_w5b  detail/dt_conc	10.0	10.0
+silo2_cor  detail/dt_metal1	10.0	10.0
+crate13  detail/dt_wood1	7.0	7.0
+c3a1_w3a  detail/dt_smooth1	10.0	10.0
+metal_bord08  detail/dt_metal1	3.0	8.0
+{grate1  detail/dt_metal2					8.0 8.0
+stripes2  detail/dt_metal1					8.0 8.0
+metal_bord01  detail/dt_metal2					8.0 8.0
+~light5a  detail/dt_smooth1	8.0	8.0
++0lab1_w7  detail/dt_smooth1					10.0 10.0
+{ladder3a  detail/dt_metal2	8.0	8.0
+
+
+
+

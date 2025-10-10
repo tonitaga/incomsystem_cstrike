@@ -1,17 +1,16 @@
-DE_DUST2 - Минирование/разминирование
+Dust II - Bomb/Defuse
 *** GameHelper.com exclusive ***
-Автор: DaveJ (dv@btinternet.com)
-Текстуры: MacMan (MacManInfi@aol.com)
+by DaveJ (http://www.johnsto.co.uk/)
+textures by MacMan (MacManInfi@aol.com)
 
-Спецназ: Предотвратить теракт.
-Террористы хотят взорвать химические 
-хранилища. Члены команды должны 
-разминировать любые бомбы,
-установленные террористами.
+Counter-Terrorists: Prevent Terrorists
+from bombing chemical weapon crates.
+Team members must defuse any bombs 
+that threaten targeted areas.
 
-Террористы: Террорист несущий
-C4 должен уничтожить хоть одно
-химическое хранилище.
+Terrorists: The Terrorist carrying the
+C4 must destroy one of the chemical 
+weapon stashes. 
 
-Примечание: в миссии имеются 2 точки,
-которые необходимо взорвать.
+Other Notes: There are 2 chemical 
+weapon stashes in the mission.

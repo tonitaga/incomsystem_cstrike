@@ -1,16 +1,13 @@
-CS_ITALY - Спасение заложников
-Автор:
+Italy - Hostage Rescue
+Mapping by:
 glenC AKA [HOTSHEEP]Bastard (glenc@hotsheep.com)
-Текстуры и графика:
+Textures/Graphics by:
 DigiChaos (digichaos@hotsheep.com)
 
-Спецназ: Пройдите вокруг итальянского 
-города и спасите заложников
-от иностранных террористов.
+Counter-Terrorists: Navigate your way
+around the Italian city and get those
+Hostages from the foreign Terrorists.
 
-Террористы: Остановите операцию спецназа
-по спасению заложников или устраните весь
-спецназ.
-
-Примечание: в миссии имеюстя 4 заложника
-в здании.
+Terrorists: Prevent the Counter-Terrorists
+from rescuing the Hostages or eliminate
+the Counter-Terrorists.

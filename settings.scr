@@ -32,7 +32,7 @@
 
 
 // Half-Life Server Configuration Layout Script (stores last settings chosen, too)
-// File generated:  Fri Oct 10 04:30:58 PM
+// File generated:  Mon Sep 18 03:09:46 PM
 //
 //
 // Cvar	-	Setting
@@ -94,7 +94,7 @@ DESCRIPTION SERVER_OPTIONS
 	{
 		"#Cstrike_FreezeTime"
 		{ NUMBER 0.000000 60.000000 }
-		{ "0.000000" }
+		{ "6.000000" }
 	}
 
 	"mp_buytime"
@@ -141,14 +141,14 @@ DESCRIPTION SERVER_OPTIONS
 	{
 		"#Valve_Friendly_Fire"
 		{ BOOL }
-		{ "1" }
+		{ "0" }
 	}
 
 	"mp_tkpunish"
 	{
 		"#Cstrike_TK_Punish"
 		{ BOOL }
-		{ "0" }
+		{ "1" }
 	}
 
 	"mp_autokick"
@@ -169,7 +169,7 @@ DESCRIPTION SERVER_OPTIONS
 	{
 		"#Cstrike_Allow_Flashlight"
 		{ BOOL }
-		{ "1" }
+		{ "0" }
 	}
 
 }

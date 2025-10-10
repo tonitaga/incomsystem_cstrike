@@ -1,0 +1,26 @@
+~light5a	detail/dt_smooth1				10.0	3.0
+chair		detail/dt_fabric1		12.0	12.0
+floor		detail/dt_smooth1				16.0	16.0
+floor_tileblue	detail/dt_smooth1				8.0	8.0
+glassblue1	detail/dt_smooth1				10.0	10.0
+locker		detail/dt_ssteel1	4.0	8.0
+lockerside	 detail/dt_ssteel1	4.0	8.0
+nocrap		detail/dt_smooth1				8.0	8.0
+poolrules	detail/dt_smooth1				16.0	16.0
+SandCrtLrgSd	detail/dt_wood1	8.0	8.0
+shower		detail/dt_metal1	8.0	8.0
+stallred	detail/dt_smooth1				8.0	8.0
+steel		detail/dt_metal1	6.0	8.0
+tile3		detail/dt_smooth1	6.0	14.0
+tile		detail/dt_smooth1	8.0	8.0
+tilefloor_red	detail/dt_smooth1	8.0	8.0
+tilemini_blue	detail/dt_smooth1	16.0	16.0
+tilemini_red	detail/dt_smooth1	16.0	16.0
+wal_walltile	detail/dt_smooth1	6.0	16.0
+wall_tileBlue	detail/dt_smooth1	6.0	16.0
+wall_tileRed	detail/dt_smooth1	6.0	16.0
+walmart_blue	detail/dt_smooth1	6.0	6.0
+white		detail/dt_smooth1	8.0	8.0
+window		detail/dt_smooth1				5.0	10.0
+
+

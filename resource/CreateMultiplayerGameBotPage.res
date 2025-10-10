@@ -320,7 +320,7 @@
 	{
 		"ControlName"		"Label"
 		"fieldName"		"Label1"
-		"xpos"		"24"
+		"xpos"		"15"
 		"ypos"		"186"
 		"wide"		"100"
 		"tall"		"24"

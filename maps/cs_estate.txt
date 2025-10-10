@@ -1,12 +1,9 @@
-CS_ESTATE - Спасение заложников
-Автор: Zaphod Beeblebrox 
+Zaphod's Estate - Hostage Rescue
+by Zaphod Beeblebrox 
 zaphod@mapcore.com
 
-Спецназ: Спасите трех заложников,
-удерживаемых террористами в особняке.
+Counter-Terrorists: Rescue the three
+hostages being held captive in the mansion.
 
-Террористы: Предотвратите операцию 
-спецназа по спасению заложников.
-
-Примечание: в миссии имеются 3 заложника
-в здании.
+Terrorists: Prevent the Counter-Terrorists
+from rescuing the hostages.

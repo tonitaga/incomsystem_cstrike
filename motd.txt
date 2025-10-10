@@ -1,42 +1,31 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+﻿<!DOCTYPE HTML>
 <html>
 <head>
-<title>Counter-Strike MOTD</title>
+<meta charset="UTF-8">
+<title>Cstrike MOTD</title>
 <style type="text/css">
-pre 	{
-		font-family:Verdana,Tahoma;
-		color:#FFB000;
-    	}
-body	{
-		background:#000000;
-		margin-left:8px;
-		margin-top:0px;
-		}
-a	{
-    	text-decoration:    underline;
-	}
-a:link  {
-    color:  #FFFFFF;
-    }
-a:visited   {
-    color:  #FFFFFF;
-    }
-a:active    {
-    color:  #FFFFFF;
-    }
-a:hover {
-    color:  #FFFFFF;
-    text-decoration:    underline;
-    }
+       body {
+            background: #000;
+            margin: 8px;
+            color: #FFB000;
+            font: normal 16px/20px Verdana, Tahoma, sans-serif;
+        }
+
+        a {
+            color: #FFF;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #EEE;
+            text-decoration: none;
+        }
 </style>
 </head>
-<body scroll="no">
-<pre>
-<img src="..\cstrike\zBot\data\logo.png" alt="" border="0" align="right" />
-Добро пожаловать в Counter-Strike 1.6
-На сервере установлены боты zBot 1.5,
-которых можно скачать с сайта @
-<a href="https://cs16planet.ru/">CS16planet.ru</a>
-</pre>
+<body>
+Hi! You are playing Counter-Strike v1.6<br>
+Welcome to our website:<br>
+www.cs-love.net<br>
+<a href="https://www.cs-love.net">Visit to CS-Love.net</a>
 </body>
 </html>

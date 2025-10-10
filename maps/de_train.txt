@@ -1,13 +1,12 @@
-DE_TRAIN - Минирование/Разминирование
-Автор: Chris Mair (chris@barking-dog.com)
+Trainyard - Bomb/Defuse
 
-Спецназ: Предотвратите взрыв
-двух поездов, которые перевозят ядерный груз.
-Члены команды должны разминировать любые
-бомбы, которые угрожают поездам.
+Counter-Terrorists: Prevent Terrorists
+from bombing the nuclear payloads on two
+trains. Team members must defuse any 
+bombs that threaten the payloads.
 
-Террористы: Террорист, несущий
-C4, должен уничтожить один из грузов. 
+Terrorists: The Terrorist carrying the
+C4 must destroy one of the payloads. 
 
-Примечание: в миссии имеются 2 точки,
-которые необходимо взорвать.
+Other Notes: There are 2 payloads on the
+trains in the mission.

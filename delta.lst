@@ -45,7 +45,7 @@ clientdata_t none
 	DEFINE_DELTA( waterlevel, DT_INTEGER, 2, 1.0 ),
 
 	DEFINE_DELTA( iuser1, DT_INTEGER, 3, 1.0 ),
-	DEFINE_DELTA( iuser2, DT_INTEGER, 5, 1.0 ),
+	DEFINE_DELTA( iuser2, DT_INTEGER, 6, 1.0 ),
 	DEFINE_DELTA( iuser3, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( iuser4, DT_INTEGER, 2, 1.0 ),
 
@@ -245,7 +245,7 @@ weapon_data_t none
 
 event_t none
 {
-	DEFINE_DELTA( entindex, DT_INTEGER, 10, 1.0 ),
+	DEFINE_DELTA( entindex, DT_INTEGER, 11, 1.0 ),
 	DEFINE_DELTA( bparam1, DT_INTEGER, 1, 1.0 ),
 	DEFINE_DELTA( bparam2, DT_INTEGER, 1, 1.0 ),
 	DEFINE_DELTA( origin[0], DT_SIGNED | DT_FLOAT, 26, 8192.0 ),

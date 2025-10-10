@@ -1,0 +1,8 @@
+plasterwall049a detail/dt_stone1	10.0	10.0
+stonewall050a detail/dt_stone1	10.0	10.0
+stonewall006a detail/dt_stone2	10.0	10.0
+cuiflre detail/dt_smooth1	10.0	10.0
+brickwall01 detail/dt_brick	10.0	10.0
+cxlighta detail/dt_smooth1	8.0	8.0
+gr_lumieres detail/dt_smooth1	8.0	8.0
+

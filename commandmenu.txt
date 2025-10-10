@@ -1,362 +1,230 @@
-//==========================================//
-// Русификатор Counter-Strike 1.6           //
-// Версия: 2.3.4                            //
-// Авторские права © Mr. LOL's, 2008-2015.  //
-// Все права защищены.                      //
-//==========================================//
+// Command Menu definition
+// 
+// Basic Format:
+//		"<Bound Key>" "<Button Text>" "<Command sent to server>"
+//
+// 
+//
+//
+// Buttons can also open up submenus, as follows:
+// {
+// 	"Some More Options",
+//	{
+//		...
+//	}
+// }
+//
+//
+// Buttons preceded with "CUSTOM" are handled in special ways. They can only be moved
+// around or deleted.
+//
+//
+// Limitations:
+//		Maximum of 40 menus.
+//		Maximum of 100 buttons per menu.
 
-"1" "Текущая игра"
+//--------------------------------------------------------
+// Everything below here is editable
+
+"1" "#Cstrike_HELP"
 {
-	"1" "Команды AMX"
-	{
-		"1" "Статистика раунда"		"say_team /me"
-		"2" "Отчет состояния"		"say_team /report"
-	 	"3" "Инф. о убийце"			"say_team /hp"
-	 	"3" "Сбросить счет"			"say /rs"
-	}
-	"2" "Прочие команды AMX"
-	{
-		"1" "Меню AMX"	"amx_menu"
-		"2" "Статистика"
-		{
-			"1" "Стати-ка карты"			"say_team /statsme"
-			"2" "Стати-ка на сервере"		"say_team /rankstats"
-	 		"3" "ТОП 15 игроков"			"say_team /top15"
-	 		"4" "Рейтинг на сервере"		"say_team /rank"
-	 		"5" "Стати-ка других игроков"	"say_team /stats"
-	 		"6" "Стати-ка команд"			"say_team /score"
-		}
-		"3" "Время сервера"			"say thetime"
-		"4" "Текущая карта"			"say currentmap"
-		"5" "Следующая карта"		"say nextmap"
-		"6" "Осталось времени"		"say timeleft"
-		"7" "Статус Friendly Fire"	"say ff"
-	}
-	"3" "Осталось времени"		"timeleft"
-	"4" "Сменить команду"		"chooseteam"
-	CUSTOM "5" "Описание карты"	"!MAPBRIEFING"
-	"6" "Бросить оружие"		"drop"
-	"7" "Запись демо"
-	{
-		"1" "Начать с именем..."	"messagemode record"
-		"2" "Остановить"			"stop"
-	}
+	CUSTOM		"1" "#Cstrike_Map_Desc"	"!MAPBRIEFING"
+	"2" "#Cstrike_Time_Left" 		"timeleft"
+	"3" "#Cstrike_Adjust_Crosshair" 	"adjust_crosshair"
+	"4" "#Cstrike_Use_Left_Hand" 		"cl_righthand 0"
+	"5" "#Cstrike_Use_Right_Hand" 		"cl_righthand 1"
 }
-"2" "Настройки"
+
+
+"2" "#Cstrike_CHANGE_TEAM"	"chooseteam"
+
+// Here are the rest of the buttons and submenus
+// You can change these safely if you want.
+"3" "#Cstrike_TEAM_MESSAGE"
 {
-	"1" "Интерфейс"
+	// Map Specific
+
+	MAP cs_siege "1" "#Cstrike_Map_Siege"
 	{
-		"1" "Радар"
-		{
-			"1" "Прозрачность"
-			{
-				"1" "Включить"		"cl_radartype 0"
-				"2" "Отключить"		"cl_radartype 1"
-			}
-			"2" "Включить"		"drawradar"
-			"3" "Отключить"		"hideradar"
-		}
-		"2" "Имя игроков"
-		{
-			"1" "По центру" 	"hud_centerid 1"
-			"2" "Слева" 		"hud_centerid 0"
-		}
-		"3" "Меню в игре"
-		{
-			"1" "С графикой"	"setinfo _vgui_menus 1"
-			"2" "Только текст"	"setinfo _vgui_menus 0"
-		}
-		"4" "Подсказки"
-		{
-			"1" "Включить"		"setinfo _ah 1"
-			"2" "Отключить"		"setinfo _ah 0"
-		}
-		"5" "Инф. о карте"
-		{
-			"1" "Включить"		"setinfo dm 1"
-			"2" "Отключить"		"setinfo dm 0"
-		}
+		"1" "#Cstrike_take_underground"		"say_team Take the underground!"
+		"2" "#Cstrike_enemy_garage" 		"say_team Enemy in parking garage!"
+		"3" "#Cstrike_rush_hostage_room"   	"say_team Rush the hostage room!"
+		"4" "#Cstrike_snipers_watch_out" 	"say_team Snipers! Watch out!"
+		"5" "#Cstrike_take_upper_route"  	"say_team Take the upper route!"
 	}
-	"2" "Оружие"
+
+	MAP de_train "1" "#Cstrike_train"
 	{
-		"1" "Прицел"
-		{
-			"1" "Размер"
-			{
-				"1" "Авторазмер" 	"cl_crosshair_size auto"
-				"2" "Маленький" 	"cl_crosshair_size small"
-				"3" "Средний" 		"cl_crosshair_size medium"
-				"4" "Большой" 		"cl_crosshair_size large"
-			}
-			"2" "Динамичность"
-			{
-				"1" "Включить"	"cl_dynamiccrosshair 1"
-				"2" "Отключить"	"cl_dynamiccrosshair 0"
-			}
-			"3" "Прозрачность"
-			{
-				"1" "Включить" 		"cl_crosshair_translucent 1"
-				"2" "Отключить" 	"cl_crosshair_translucent 0"
-			}
-			"4" "Изменить цвет" 	"adjust_crosshair"
-		}
-		"2" "Рука"
-		{
-			"1" "Слева"		"cl_righthand 0"
-			"2" "Справа" 	"cl_righthand 1"
-		}
-		"3" "Быстрое перекл."
-		{
-			"1" "Включить" 		"hud_fastswitch 1"
-			"2" "Отключить" 	"hud_fastswitch 0"
-		}
-		"4" "Автосмена"
-		{
-			"1" "Включить" 		"_cl_autowepswitch 1"
-			"2" "Отключить" 	"_cl_autowepswitch 0"
-		}
+		"1" "#Cstrike_rush_trainyard" 		"say_team Rush the trainyard bomb site!"
+		"2" "#Cstrike_rush_enclosed"		"say_team Rush the enclosed bomb site!"
+		"3" "#Cstrike_flank_them"   		"say_team Flank them!"
+		"4" "#Cstrike_bomb_site_secure"  	"say_team Bomb site secure!"
+		"5" "#Cstrike_lend_me_blaster"  	"say_team Lend me your blaster!"
 	}
-	"3" "Графика"
+
+	MAP de_vertigo "1" "#Cstrike_vertigo"
 	{
-		"1" "Погода"
-		{
-			"1" "Включить"		"cl_weather 1"
-			"2" "Отключить"		"cl_weather 0"
-		}
-		"2" "Кадр/сек (FPS)"
-		{
-			"1" "Показывать FPS"
-			{
-				"1" "Да" 	"cl_showfps 1"
-				"2" "Нет" 	"cl_showfps 0"
-			}
-			"2" "Макс. fps_max 101"	"fps_max 101"
-		}	
-		"3" "Качество текстур"
-		{
-			"1" "Высокое" 		"gl_texturemode GL_LINEAR_MIPMAP_LINEAR"
-			"2" "Нормальное" 	"gl_texturemode GL_LINEAR_MIPMAP_NEAREST"
-			"3" "Низкое" 		"gl_texturemode GL_NEAREST_MIPMAP_LINEAR"
-			"4" "Очень низкое" 	"gl_texturemode GL_NEAREST_MIPMAP_NEAREST"
-		}
-		"4" "Детализированные"
-		{
-			"1" "Текстуры"
-			{
-				"1" "Включить"		"r_detailtextures 1"
-				"2" "Отключить"		"r_detailtextures 0"
-			}
-			"2" "Модели"
-			{
-				"1" "Включить" 		"cl_himodels 1"
-				"2" "Отключить" 	"cl_himodels 0"
-			}
-		}
-		"5" "Модели игроков"
-		{
-			"1" "Все"					"cl_minmodels 0"
-			"2" "Только Leet и GIGN" 	"cl_minmodels 1"
-		}
+		"1" "#Cstrike_rush_upper_level" 	"say_team Rush the upper level!"
+		"2" "#Cstrike_rush_lower_level" 	"say_team Rush the lower level!"
+		"3" "#Cstrike_flank_them"   		"say_team Flank them!"
+		"4" "#Cstrike_snipers_watch_out"	"say_team Snipers! Watch out!"
+		"5" "#Cstrike_bomb_site_secure"  	"say_team Bomb site secure"
 	}
-	"4" "Соединение"
+
+	MAP de_prodigy "1" "#Cstrike_prodigy"
 	{
-		"1" "Скорость Интернета"
-		{
-			"1" "Модем 56 кбит/с"	"rate 5000"
-			"2" "DSL"				"rate 7500"
-			"3" "Cable/T1"			"rate 9999"
-			"4" "Макс. (LAN)"		"rate 25000"
-		}
-		"2" "Частота обновления"
-		{
-			"1" "Входящая"
-			{
-				"1" "20"			"cl_updaterate 20"
-				"2" "40"			"cl_updaterate 40"
-				"3" "60 (Стандарт)"	"cl_updaterate 60"
-				"4" "80"			"cl_updaterate 80"
-				"5" "101 (LAN)"		"cl_updaterate 101"
-			}
-			"2" "Исходящая"
-			{
-				"1" "30"			"cl_cmdrate 30"
-				"2" "60 (Стандарт)"	"cl_cmdrate 60"
-				"3" "70"			"cl_cmdrate 70"
-				"4" "90"			"cl_cmdrate 90"
-				"5" "102 (LAN)"		"cl_cmdrate 102"
-			}
-		}
-		"3" "Мониторинг"
-		{
-			"1" "Включить" 			"net_graph 3"
-			"2" "Тип"
-			{
-				"1" "Только текст" 	"net_graph 3"
-				"2" "С графиком" 	"net_graph 1"
-				"3" "С пакетами" 	"net_graph 2"
-			}
-			"3" "Размер"
-			{
-				"1" "300" 		"net_graphwidth 300"
-				"2" "200"		"net_graphwidth 200"
-				"3" "По-умолчанию (150)" 	"net_graphwidth 150"
-				"4" "Задать свой..." 		"messagemode net_graphwidth"
-			}
-			"4" "Позиция"
-			{
-				"1" "Слева" 	"net_graphpos 3"
-				"2" "По центру" "net_graphpos 2"
-				"3" "Справа" 	"net_graphpos 1"
-			}
-			"5" "Отключить" 	"net_graph 0"		
-		}
+		"1" "#Cstrike_rush_to_pipes" 		"say_team Rush to the pipes bomb site!"
+		"2" "#Cstrike_rush_to_lab" 		"say_team Rush to the lab!"
+		"3" "#Cstrike_take_the hallway"   	"say_team Take the hallway!"
+		"4" "#Cstrike_flank_them"		"say_team Flank them!"
+		"5" "#Cstrike_take_the_apc"  		"say_team Take the APC route!"
 	}
-	"5" "Прописать ник..."		"messagemode name"
+
+	MAP de_aztec "1" "#Cstrike_aztec"
+	{
+		"1" "#Cstrike_take_bridge"		"say_team Take the bridge!"
+		"2" "#Cstrike_enemy_at_bomb_site" 	"say_team Narby, enemy at bomb site!"
+		"3" "#Cstrike_rush_to_bomb_site"   	"say_team Rush to the bomb site!"
+		"4" "#Cstrike_bomb_site_secure"		"say_team Bomb site secure!"
+		"5" "#Cstrike_take_water_route"  	"say_team Take the water route!"
+	}
+
+	MAP de_inferno "1" "#Cstrike_inferno"
+	{
+		"1" "#Cstrike_take_bridge"		"say_team Take the bridge!"
+		"2" "#Cstrike_enemy_at_bomb_site"	"say_team Enemy at bomb site!"
+		"3" "#Cstrike_rush_to_bomb_site"	"say_team Rush to the bomb site!"
+		"4" "#Cstrike_bomb_site_secure"		"say_team Bomb site secure!"
+		"5" "#Cstrike_take_water_route"		"say_team Take the water route!"
+	}
+
+	MAP cs_office "1" "#Cstrike_office"
+	{
+		"1" "#Cstrike_take_back_route"		"say_team Take the back route!"
+		"2" "#Cstrike_rush_to_hostages"		"say_team Rush to the hostages!"
+		"3" "#Cstrike_do_it_for_manilov"	"say_team Do it for Manilov!"
+		"4" "#Cstrike_take_front_route"		"say_team Take the front route!"
+		"5" "#Cstrike_flank_them"		"say_team Flank them!"
+	}
+
+	MAP cs_backalley "1" "#Cstrike_backalley"
+	{
+		"1" "#Cstrike_flank_them"		"say_team Flank them!"
+		"2" "#Cstrike_enemy_overhead" 		"say_team Enemy overhead!"
+		"3" "#Cstrike_rush_to_hostages"		"say_team Rush to the hostages!"
+		"4" "#Cstrike_go_you_blaster"		"say_team Go you blaster!"
+		"5" "#Cstrike_taking_heavy_fire"	"say_team Taking heavy blaster fire!"
+	}
+
+	MAP cs_747 "1" "#Cstrike_747"
+	{
+		"1" "#Cstrike_rush_the_plane'"		"say_team Rush the plane!"
+		"2" "#Cstrike_meet_in_terminal"		"say_team Meet in the terminal"
+		"3" "#Cstrike_enemy_outside_plane"	"say_team Enemy outside plane!"
+		"4" "#Cstrike_enemy_in_cargo"  		"say_team Enemy in cargo hold!"
+		"5" "#Cstrike_flank_them"		"say_team Flank them!"
+	}
+
+	MAP as_oilrig "1" "#Cstrike_oilrig"
+	{
+		"1" "#Cstrike_rush_to_chopper" 		"say_team Rush to the chopper!"
+		"2" "#Cstrike_to_the_elevator" 		"say_team To the elevator!"
+		"3" "#Cstrike_vip_spotted"   		"say_team VIP spotted!"
+		"4" "#Cstrike_sniper_spotted"  		"say_team Sniper spotted! Look out!"
+		"5" "#Cstrike_protect_the_vip"  	"say_team Protect the VIP!"
+	}
+
+	MAP cs_assault "1" "#Cstrike_assault"
+	{
+		"1" "#Cstrike_rush_the_building" 	"say_team Rush the building!"
+		"2" "#Cstrike_take_the_vents" 		"say_team Take the vents!"
+		"3" "#Cstrike_enemy_in_vents"   	"say_team Enemy in vents!"
+		"4" "#Cstrike_rush_hostage_room"	"say_team Rush the hostage room!"
+		"5" "#Cstrike_team_regroup"  		"say_team Team! Regroup!"
+	}
+
+	MAP de_nuke "1" "#Cstrike_nuke"
+	{
+		"1" "#Cstrike_go_to_main_hall" 		"say_team Go to the main hall"
+		"2" "#Cstrike_go_to_basement" 		"say_team Go to basement"
+		"3" "#Cstrike_flank_yard"   		"say_team Flank Yard"
+		"4" "#Cstrike_flank_comm_room"  	"say_team Flank comm-room"
+		"5" "#Cstrike_at_entrance_hall"  	"say_team At the entrance hall"
+	}
+
+	MAP de_cbble "1" "#Cstrike_cbble"
+	{
+		"1" "#Cstrike_heading_central_hall" 	"say_team Heading to central hallway!"
+		"2" "#Cstrike_heading_underpass" 	"say_team Heading to underpass!"
+		"3" "#Cstrike_sniper_in_tower"   	"say_team Enemy in sniper tower!"
+		"4" "#Cstrike_bomb_target_secure"  	"say_team Bomb target areas secure"
+		"5" "#Cstrike_guard_start_area"  	"say_team Guard start area"
+	}
+
+	MAP de_dust "1" "#Cstrike_dust"
+	{
+		"1" "#Cstrike_heading_to_hallway" 	"say_team Heading to hallway!"
+		"2" "#Cstrike_heading_underpass" 	"say_team Heading to underpass!"
+		"3" "#Cstrike_bomb_a_secure"   		"say_team Bomb area A secure"
+		"4" "#Cstrike_bomb_b_secure"  		"say_team Bomb area B secure"
+		"5" "#Cstrike_sniper_at_underpass"  	"say_team Snipers at underpass"
+	}
+
+	MAP de_dust2 "1" "#Cstrike_dust2"
+	{
+		"1" "#Cstrike_heading_to_hallway" 	"say_team Heading to hallway!"
+		"2" "#Cstrike_heading_underpass" 	"say_team Heading to underpass!"
+		"3" "#Cstrike_bomb_a_secure"   		"say_team Bomb area A secure"
+		"4" "#Cstrike_bomb_b_secure"  		"say_team Bomb area B secure"
+		"5" "#Cstrike_heading_to_tunnel"  	"say_team Heading to tunnel!"
+	}
+
+	MAP cs_italy "1" "#Cstrike_italy"
+	{
+		"1" "#Cstrike_meet_at_market" 		"say_team Meet at the market!"
+		"2" "#Cstrike_rush_the_house" 		"say_team Rush through the house!"
+		"3" "#Cstrike_head_to_wine_cellar"   	"say_team Head for the wine cellar!"
+		"4" "#Cstrike_rush_long_passage"  	"say_team Rush the long passage!"
+		"5" "#Cstrike_hostages_rescued"  	"say_team Hostages being rescued!"
+	}
+
+	MAP cs_estate "1" "#Cstrike_estate"
+	{
+		"1" "#Cstrike_go_to_sewer" 		"say_team Go to the sewer!"
+		"2" "#Cstrike_enemy_on_first_story" 	"say_team Enemy on first story!"
+		"3" "#Cstrike_enemy_on_sec_story"   	"say_team Enemy on second story!"
+		"4" "#Cstrike_enemy_in_back"  		"say_team Enemy in back of house!"
+		"5" "#Cstrike_enemy_in_front"  		"say_team Enemy in front of house!"
+	}
+	
+	MAP as_tundra "1" "#Cstrike_tundra"
+	{
+		"1" "#Cstrike_use_sec_route" 		"say_team Use the secondary route!"
+		"2" "#Cstrike_use_primary_route" 	"say_team Use the primary route!"
+		"3" "#Cstrike_snipers_watch_out"	"say_team Snipers! Look out!"
+		"4" "#Cstrike_rush_to_apc"  		"say_team Rush to the APC!"
+		"5" "#Cstrike_rush_to_chopper"  	"say_team Rush to the chopper!"
+	}	
+
+	MAP cs_militia "1" "#Cstrike_militia"
+	{
+		"1" "#Cstrike_meet_at_garage" 		"say_team Meet at garage vent!"
+		"2" "#Cstrike_meet_front_house" 	"say_team Meet at front of house!"
+		"3" "#Cstrike_meet_backyard"   		"say_team Meet in backyard!"
+		"4" "#Cstrike_enemy_topside"  		"say_team Enemy is topside!"
+		"5" "#Cstrike_enemy_sewers"  		"say_team Enemy is in sewers!"
+	}
+
+
+     "2" "#Cstrike_Acknowledged"	"say_team Acknowledged"
+     "3" "#Cstrike_Negative"		"say_team Negative"
+     "4" "#Cstrike_Go"			"say_team Go Go Go!"
+     "5" "#Cstrike_On_My_Way"		"say_team On my way"
+     "6" "#Cstrike_Need_Backup"		"say_team Need backup!"
 }
-"3" "Боты"
-{
-	"1" "Убить всех" 				"bot_kill"
-	"2" "Настройка"
-	{
-		"1" "Контроль оружия"
-		{
-			"1" "Пистолеты"
-			{
-				"1" "Да"			"bot_allow_pistols 1"
-				"2" "Нет"			"bot_allow_pistols 0"
-			}
-			"2" "Дробовики"
-			{
-				"1" "Да"			"bot_allow_shotguns 1"
-				"2" "Нет"			"bot_allow_shotguns 0"
-			}
-			"3" "Пистолеты-пулеметы"
-			{
-				"1" "Да"			"bot_sub_machine_guns 1"
-				"2" "Нет"			"bot_sub_machine_guns 0"
-			}
-			"4" "Винтовки"
-			{
-				"1" "Да"			"bot_allow_rifles 1"
-				"2" "Нет"			"bot_allow_rifles 0"
-			}
-			"5" "Снайперские винтовки"
-			{
-				"1" "Да"			"bot_allow_snipers 1"
-				"2" "Нет"			"bot_allow_snipers 0"
-			}
-			"6" "Пулемет"
-			{
-				"1" "Да"			"bot_allow_machine_guns 1"
-				"2" "Нет"			"bot_allow_machine_guns 0"
-			}
-			"7" "Гранаты"
-			{
-				"1" "Да"			"bot_allow_grenades 1"
-				"2" "Нет"			"bot_allow_grenades 0"
-			}
-			"8" "Щит"
-			{
-				"1" "Да"			"bot_allow_shield 1"
-				"2" "Нет"			"bot_allow_shield 0"
-			}
-		}
-		"2" "Сложность"
-		{
-			"1" "Легкая" 	"bot_difficulty 0"
-			"2" "Средняя"	"bot_difficulty 1"
-			"3" "Тяжелая"	"bot_difficulty 2"
-			"4" "Очень тяжелая"	"bot_difficulty 3"
-		}
-		"3" "Переговоры"
-		{
-			"1" "Стандарт" 		"bot_chatter normal"
-			"2" "Минимально" 	"bot_chatter minimal" 
-			"3" "Только радиокоманды" 	"bot_chatter radio"
-			"4" "Отключить"			"bot_chatter off"	
-		}
-		"4" "Приоритет целей"
-		{
-			"1" "Приказ игрока" 	"bot_defer_to_human 1"
-			"2" "Миссия карты" 		"bot_defer_to_human 0"	
-		}
-		"5" "Послушные боты"
-		{
-			"1" "Да" 				"bot_allow_rogues 0"	
-			"2" "Нет" 				"bot_allow_rogues 1"
-		}
-		"6" "Освобожд. слота"
-		{
-			"1" "Включить" 			"bot_auto_vacate 1"
-			"2" "Отключить" 		"bot_auto_vacate 0"	
-		}
-		"7" "Вступление в игру"
-		{
-			"1" "Сразу" 		"bot_join_after_player 0"
-			"2" "После игрока" 	"bot_join_after_player 1"	
-		}
-		"8" "Только хождение"
-		{
-			"1" "Включить" 			"bot_walk 1"
-			"2" "Отключить" 		"bot_walk 0"	
-		}
-	}
-	"3" "Добавление"
-	{
-		"1" "Количество ботов"
-		{
-			"1" "Число"
-			{
-				"1" "1"		"bot_quota 1"
-				"2" "3"		"bot_quota 3"
-				"3" "7"		"bot_quota 7"
-				"4" "9"		"bot_quota 9"
-				"5" "11"	"bot_quota 11"
-				"6" "13"	"bot_quota 13"
-				"7" "15"	"bot_quota 15"
-				"8" "17"	"bot_quota 17"
-				"9" "19"	"bot_quota 19"
-				"10" "32"	"bot_quota 32"
-			}
-			"2" "За любую команду" 		"bot_join_team any"
-			"3" "За террористов ¹" 		"bot_join_team t"
-			"4" "За контр-террор ¹" 		"bot_join_team ct"
-			"5" "¹ -Отключить автобаланс" 	"mp_autoteambalance 0;mp_limitteams 0;sv_restartround 1"
-		}
-		"2" "За любую команду"		"bot_add"
-		"3" "За террориста"			"bot_add_t"
-		"4" "За контр-террор"		"bot_add_ct"
-	}
-	"4" "Удалить всех" 			"bot_kick"
-	"5" "Режим оружия"
-	{
-		"1" "Только ножи"		"bot_knives_only"
-		"2" "Только пистолеты"	"bot_pistols_only"
-		"3" "Только снайперки"	"bot_snipers_only"
-		"4" "Все оружие"		"bot_all_weapons"
-	}
-	"6" "Остановить"
-	{
-		"1" "Да" 			"bot_stop 1"
-		"2" "Нет"		 	"bot_stop 0"
-	}
-}
-"4" "Настройки сервера"
-{
-	"1" "Рестарт раунда"		"sv_restartround 1"
-	"2" "Отключить автобаланс" 	"mp_autoteambalance 0;mp_limitteams 0"
-	"3" "Чит-команды"
-	{
-		"1" "Включить"	"sv_cheats 1;restart"
-		"2" "Отключить"	"sv_cheats 0;restart"
-	}
-	"4" "+ 16000$ (Чит)"	"impulse 101"
-	"5" "Рестарт сервера"	"restart"
-}
-"5" "Выход"
-{
-	"1" "Переподключиться"	"reconnect"
-	"2" "Перезагр. игру"	"_restart"
-	"3" "Выход из игры" 	"quit"
-}
-"6" "Закрыть" 		"slot10"
+
+"4" "#Cstrike_DROP_CURRENT_ITEM" 	"drop"
+
+
+
+

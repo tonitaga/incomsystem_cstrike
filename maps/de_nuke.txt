@@ -1,14 +1,14 @@
-Nuke - Bomb/Defuse
-by Jo Bieg (MEEEEDIC@gmx.net)
+DE_NUKE - Минирование/разминирование
+Автор:
+Jo Bieg (MEEEEDIC@gmx.net)
 
-Counter-Terrorists: Prevent Terrorists
-from bombing the nuclear missile. The 
-mission can be targeted from above and
-below. Team members must defuse any 
-bombs that threaten targeted areas.
+Спецназ: Предотвратите взрыв
+ядерной ракеты террористами.
+Члены команды должны разминировать любую
+бомбу, которую установили террористы.
 
-Terrorists: The Terrorist carrying the
-C4 must destroy the nuclear missile.
+Террористы: Террорист, несущий
+C4, должен уничтожить ядерную ракету.
 
-Other Notes: There are 2 bomb targets
-in the mission.
+Примечания: в миссии имеются 2 цели,
+которые необходимо взорвать.

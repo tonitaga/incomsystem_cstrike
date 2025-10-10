@@ -1,14 +1,17 @@
-Inferno - Defusion
-by Chris Auty (Barney) (narby@counter-strike.net)
-Texture builds by Valve software
+DE_INFERNO - Минирование/разминирование
+Автор: Chris Auty (Barney) 
+(fragged101@yahoo.com)
+Текстуры: Valve software
 
-Terrorist are attempting to blow up two critical
-gas pipeline through part of a small village.
+Примечание: Террористы попытаются
+взорвать два главных газопровода,
+частично идущих через маленькую деревню.
 
-Counter-Terrorists: Prevent the terrorists
-from destroying the pipelines.
+Спецназ: Попытайтесь предотвратить
+взрыв газовых труб.
 
-Terrorists: Destroy the two gas pipelines.
+Террористы: Уничтожьте два главных 
+газопровода.
 
-Other Notes: There are 2 bomb sites in this 
-mission.
+Примечания: в миссии имеются 2 цели,
+которые необходимо взорвать.

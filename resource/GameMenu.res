@@ -11,48 +11,30 @@
 		"label" "#GameUI_GameMenu_Disconnect"
 		"command" "Disconnect"
 		"OnlyInGame" "1"
+		"notsingle" "1"
 	}
-	"3"
+	"4"
 	{
 		"label" "#GameUI_GameMenu_PlayerList"
 		"command" "OpenPlayerListDialog"
 		"OnlyInGame" "1"
+		"notsingle" "1"
 	}
-	"4"
+	"8"
 	{
 		"label" ""
 		"command" ""
 		"OnlyInGame" "1"
 	}
-	"5"
-	{
-		"label" "#GameUI_GameMenu_Random"
-		"command" "engine connect random"
-	}
-	"6"
-	{
-		"label" "#GameUI_GameMenu_Matchmaking"
-		"command" "OpenMatchmakingMenu"
-	}
-	"7"
-	{
-		"label" ""
-		"command" ""
-	}
-	"8"
+	"9"
 	{
 		"label" "#GameUI_GameMenu_NewGame"
 		"command" "OpenCreateMultiplayerGameDialog"
 	}
-	"9"
+	"10"
 	{
 		"label" "#GameUI_GameMenu_FindServers"
 		"command" "OpenServerBrowser"
-	}
-	"10"
-	{
-		"label" "#GameUI_GameMenu_TurboNet"
-		"command" "engine openfriendsmenu"
 	}
 	"11"
 	{

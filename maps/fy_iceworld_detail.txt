@@ -1,3 +1,0 @@
-c_stone1	detail/dt_brick	10.0	10.0
-snow		detail/dt_snow	10.0	10.0
-lv_marble	detail/dt_stone2	8.0	8.0

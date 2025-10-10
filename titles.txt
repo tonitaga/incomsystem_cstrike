@@ -1,98 +1,98 @@
-﻿Team_Select
+Team_Select
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 
-5. Auto-select
+5. Случайный выбор
 }
 
 Team_Select_Spect
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 
-5. Auto-select
-6. Spectator
+5. Случайный выбор
+6. Наблюдатель
 }
 
 IG_Team_Select
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 
-5. Auto-select
+5. Случайный выбор
 
-0. Exit
+0. Выход
 }
 
 IG_Team_Select_Spect
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 
-5. Auto-select
-6. Spectator
+5. Случайный выбор
+6. Наблюдатель
 
-0. Exit
+0. Выход
 }
 
 IG_VIP_Team_Select
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 3. VIP
 
-5. Auto-select
+5. Случайный выбор
 
-0. Exit
+0. Выход
 }
 
 IG_VIP_Team_Select_Spect
 {
-\ySelect a team\w
+\yВыберите команду:\w
 
-1. Terrorist Force
-2. Counter-Terrorist Force
+1. Террористы
+2. Контр-Террористы
 3. VIP
 
-5. Auto-select
-6. Spectator
+5. Случайный выбор
+6. Наблюдатель
 
-0. Exit
+0. Выход
 }
 
 Terrorist_Select
 {
-\ySelect your appearance\w
+\yВыберите класс:\w
 
-1. Phoenix Connexion
-2. Elite Crew
-3. Arctic Avengers
-4. Guerilla Warfare
+1. Подразделение Феникс
+2. Элитное подразделение
+3. Арктические мстители
+4. Партизаны
 
-5. Auto-select
+5. Случайный выбор
 }
 
 CT_Select
 {
-\ySelect your appearance\w
+\yВыберите класс:\w
 
-1. Seal Team 6
-2. GSG-9
-3. SAS
-4. GIGN
+1. Морские котики США
+2. Германский спецназ
+3. Великобританский спецназ
+4. Французский спецназ
 
-5. Auto-select
+5. Случайный выбор
 }
 
 		Menu_Buy,
@@ -105,307 +105,307 @@ CT_Select
 
 Buy
 {
-\yBuy Item\w
+\yКупить:\w
 
-1. Handgun
-2. Shotgun
-3. Sub-Machine Gun
-4. Rifle
-5. Machine Gun
+1. Пистолет
+2. Дробовик
+3. Пистолет-Пулемет
+4. Винтовка
+5. Пулемет
 
-6. Primary weapon ammo
-7. Secondary weapon ammo
+6. Патроны к основному оружию
+7. Патроны к пистолету
 
-8. Equipment
+8. Снаряжение
 
-0. Exit
+0. Выход
 }
 
 CT_BuyItem
 {
-\yBuy Equipment\R$   Cost
+\yКупить снаряжение:\R$   Цена
 
-\w1. Kevlar Vest\y\R650
-\w2. Kevlar Vest & Helmet\y\R1000
-\w3. Flashbang\y\R200	
-\w4. HE Grenade\y\R300
-\w5. Smoke Grenade\y\R300
-\w6. NightVision Goggles\y\R1250
-\d7. Defuse Kit\y\R200
-\w8. Tactical Shield\y\R2200
+\w1. Бронежилет\y\R650
+\w2. Бронежилет и шлем \y\R1000
+\w3. Световая граната\y\R200	
+\w4. Взрывная граната\y\R300
+\w5. Дымовая граната\y\R300
+\w6. Прибор ночного видения\y\R1250
+\d7. Набор сапера\y\R200
+\w8. Щит\y\R2200
 
-\w0. Exit
+\w0. Выход
 }
 
 T_BuyItem
 {
-\yBuy Equipment\R$   Cost
+\yКупить снаряжение:\R$   Цена
 
-\w1. Kevlar Vest\y\R650
-\w2. Kevlar Vest & Helmet\y\R1000
-\w3. Flashbang\y\R200	
-\w4. HE Grenade\y\R300
-\w5. Smoke Grenade\y\R300
-\w6. NightVision Goggles\y\R1250
+\w1. Бронежилет\y\R650
+\w2. Бронежилет и шлем\y\R1000
+\w3. Световая граната\y\R200	
+\w4. Взрывная граната\y\R300
+\w5. Дымовая граната\y\R300
+\w6. Прибор ночного видения\y\R1250
 
-\w0. Exit
+\w0. Выход
 }
 
 DCT_BuyItem
 {
-\yBuy Equipment\R$   Cost
+\yКупить снаряжение:\R$   Цена
 
-\w1. Kevlar Vest\y\R650
-\w2. Kevlar Vest & Helmet\y\R1000
-\w3. Flashbang\y\R200	
-\w4. HE Grenade\y\R300
-\w5. Smoke Grenade\y\R300
-\w6. NightVision Goggles\y\R1250
-\w7. Defuse Kit\y\R200
-\w8. Tactical Shield\y\R2200
+\w1. Бронежилет\y\R650
+\w2. Бронежилет и шлем\y\R1000
+\w3. Световая граната\y\R200	
+\w4. Взрывная граната\y\R300
+\w5. Дымовая граната\y\R300
+\w6. Прибор ночного видения\y\R1250
+\w7. Набор сапера\y\R200
+\w8. Щит\y\R2200
 
-\w0. Exit
+\w0. Выход
 }
 
 DT_BuyItem
 {
-\yBuy Equipment\R$   Cost
+\yКупить снаряжение:\R$   Цена
 
-\w1. Kevlar Vest\y\R650
-\w2. Kevlar Vest & Helmet\y\R1000
-\w3. Flashbang\y\R200	
-\w4. HE Grenade\y\R300
-\w5. Smoke Grenade\y\R300
-\w6. NightVision Goggles\y\R1250
+\w1. Бронежилет\y\R650
+\w2. Бронежилет и шлем\y\R1000
+\w3. Световая граната\y\R200	
+\w4. Взрывная граната\y\R300
+\w5. Дымовая граната\y\R300
+\w6. Прибор ночного видения\y\R1250
 
-\w0. Exit
+\w0. Выход
 }
 
 CT_BuyPistol
 {
-\yBuy Handgun\R$   Cost
-(Secondary weapon)
+\yКупить пистолет:\R$   Цена
+(Вторичное оружие)
 
-\w1. 9X19mm Sidearm\y\R400
-\w2. K&M .45 Tactical\y\R500
-\w3. 228 Compact\y\R600
-\w4. Night Hawk .50C\y\R650
-\w5. ES Five-Seven\y\R750
+\w1. Glock 18\y\R400
+\w2. USP\y\R500
+\w3. P228 Compact\y\R600
+\w4. Desert Eagle\y\R650
+\w5. Five-Seven\y\R750
 
-\w0. Exit
+\w0. Выход
 }
 
 T_BuyPistol
 {
-\yBuy Handgun\R$   Cost
-(Secondary weapon)
+\yКупить пистолет:\R$   Цена
+(Вторичное оружие)
 
-\w1. 9X19mm Sidearm\y\R400
-\w2. K&M .45 Tactical\y\R500
-\w3. 228 Compact\y\R600
-\w4. Night Hawk .50C\y\R650
-\w5. .40 Dual Elites\y\R800
+\w1. Glock 18\y\R400
+\w2. USP\y\R500
+\w3. P228 Compact\y\R600
+\w4. Desert Eagle\y\R650
+\w5. Dual-Beretta\y\R800
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_BuyShotgun
 {
-\yBuy Shotgun\R$   Cost
-(Primary weapon)
+\yКупить дробовик:\R$   Цена
+(Основное оружие)
 
-\d1. Leone 12 Gauge Super\y\R1700
-\d2. Leone YG1265 Auto Shotgun\y\R3000
+\d1. Leone Super M3\y\R1700
+\d2. Leone XM1014\y\R3000
 
-\w0. Exit
+\w0. Выход
 }
 
 BuyShotgun
 {
-\yBuy Shotgun\R$   Cost
-(Primary weapon)
+\yКупить дробовик:\R$   Цена
+(Основное оружие)
 
-\w1. Leone 12 Gauge Super\y\R1700
-\w2. Leone YG1265 Auto Shotgun\y\R3000
+\w1. Leone Super M3\y\R1700
+\w2. Leone XM1014\y\R3000
 
-\w0. Exit
+\w0. Выход
 }
 
 CT_BuySubMachineGun
 {
-\yBuy Sub-Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить Пистолет-Пулемет:\R$   Цена
+(Основное оружие)
 
-\w1. Schmidt Machine Pistol\y\R1250
-\w2. K&M Sub-Machine Gun\y\R1500
-\w3. K&M UMP45\y\R1700
-\w4. ES C90\y\R2350
+\w1. TMP\y\R1250
+\w2. MP5 Navy\y\R1500
+\w3. UMP45\y\R1700
+\w4. P90\y\R2350
 
-\w0. Exit
+\w0. Выход
 }
 
 T_BuySubMachineGun
 {
-\yBuy Sub-Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить Пистолет-Пулемет:\R$   Цена
+(Основное оружие)
 
-\w1. Ingram MAC-10\y\R1400
-\w2. K&M Sub-Machine Gun\y\R1500
-\w3. K&M UMP45\y\R1700
-\w4. ES C90\y\R2350
+\w1. MAC-10\y\R1400
+\w2. MP5 Navy\y\R1500
+\w3. UMP45\y\R1700
+\w4. P90\y\R2350
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_CT_BuySubMachineGun
 {
-\yBuy Sub-Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить Пистолет-Пулемет:\R$   Цена
+(Основное оружие)
 
-\w1. Schmidt Machine Pistol\y\R1250
-\w2. K&M Sub-Machine Gun\y\R1500
-\w3. K&M UMP45\y\R1700
-\w4. ES C90\y\R2350
+\w1. TMP\y\R1250
+\w2. MP5 Navy\y\R1500
+\w3. UMP45\y\R1700
+\w4. P90\y\R2350
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_T_BuySubMachineGun
 {
-\yBuy Sub-Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить пистолет-пулемет:\R$   Цена
+(Основное оружие)
 
-\w1. Ingram MAC-10\y\R1400
-\d2. K&M Sub-Machine Gun\y\R1500
-\w3. K&M UMP45\y\R1700
-\d4. ES C90\y\R2350
+\w1. MAC-10\y\R1400
+\d2. MP5 Navy\y\R1500
+\w3. UMP45\y\R1700
+\d4. P90\y\R2350
 
-\w0. Exit
+\w0. Выход
 }
 
 T_BuyRifle
 {
-\yBuy Rifle\R$   Cost
-(Primary weapon)
+\yКупить винтовку:\R$   Цена
+(Основное оружие)
 
-\w1. IDF Defender\y\R2000
-\w2. CV-47\y\R2500
-\w3. Schmidt Scout\y\R2750
-\w4. Krieg 552 Commando\y\R3500
-\w5. Magnum Sniper Rifle\y\R4750
-\w6. D3/AU-1 Semi-Auto Sniper Rifle\y\R5000
+\w1. Galil\y\R2000
+\w2. AK-47\y\R2500
+\w3. Scout\y\R2750
+\w4. Krieg 552\y\R3500
+\w5. AWP\y\R4750
+\w6. D3/AU-1\y\R5000
 
-\w0. Exit
+\w0. Выход
 }
 
 CT_BuyRifle
 {
-\yBuy Rifle\R$   Cost
-(Primary weapon)
+\yКупить винтовку:\R$   Цена
+(Основное оружие)
 
-\w1. Clarion 5.56\y\R2250
-\w2. Schmidt Scout\y\R2750
-\w3. Maverick M4A1 Carbine\y\R3100
-\w4. Bullpup\y\R3500
+\w1. Famas\y\R2250
+\w2. Scout\y\R2750
+\w3. M4A1 Carbine\y\R3100
+\w4. AUG\y\R3500
 \w5. Krieg 550 Commando\y\R4200
-\w6. Magnum Sniper Rifle\y\R4750
+\w6. AWP\y\R4750
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_T_BuyRifle
 {
-\yBuy Rifle\R$   Cost
-(Primary weapon)
+\yКупить винтовку:\R$   Цена
+(Основное оружие)
 
-\w1. IDF Defender\y\R2000
-\w2. CV-47\y\R2500
-\d3. Schmidt Scout\y\R2750
-\d4. Krieg 552 Commando\y\R3500
-\w5. Magnum Sniper Rifle\y\R4750
-\d6. D3/AU-1 Semi-Auto Sniper Rifle\y\R5000
+\w1. Galil\y\R2000
+\w2. AK-47\y\R2500
+\d3. Scout\y\R2750
+\d4. Krieg 552\y\R3500
+\w5. AWP\y\R4750
+\d6. D3/AU-1\y\R5000
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_CT_BuyRifle
 {
-\yBuy Rifle\R$   Cost
-(Primary weapon)
+\yКупить винтовку:\R$   Цена
+(Основное оружие)
 
-\w1. Clarion 5.56\y\R2250
-\d2. Schmidt Scout\y\R2750
-\w3. Maverick M4A1 Carbine\y\R3100
-\w4. Bullpup\y\R3500
-\w5. Krieg 550 Commando\y\R4200
-\d6. Magnum Sniper Rifle\y\R4750
+\w1. Famas\y\R2250
+\d2. Scout\y\R2750
+\w3. M4A1 Carbine\y\R3100
+\w4. AUG\y\R3500
+\w5. Krieg 550 Cammando\y\R4200
+\d6. AWP\y\R4750
 
-\w0. Exit
+\w0. Выход
 }
 
 AS_T_BuyMachineGun
 {
-\yBuy Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить пулемет:\R$   Цена
+(Основное оружие)
 
-\d1. ES M249 Para\y\R5750
+\d1. M249\y\R5750
 
-\w0. Exit
+\w0. Выход
 }
 
 BuyMachineGun
 {
-\yBuy Machine Gun\R$   Cost
-(Primary weapon)
+\yКупить пулемет:\R$   Цена
+(Основное оружие)
 
-\w1. ES M249 Para\y\R5750
+\w1. M249\y\R5750
 
-\w0. Exit
+\w0. Выход
 }
 
 RadioA
 {
-\yRadio Commands\w
+\yСтандартные радиосообщения:\w
 
-1. "Cover Me"
-2. "You Take the Point"
-3. "Hold This Position"
-4. "Regroup Team"
-5. "Follow Me"
-6. "Taking Fire, Need Assistance"
+1. "Прикройте меня"
+2. "Возмите эту точку на себя"
+3. "Удерживайте эту позицию"
+4. "Перегруппируйтесь"
+5. "Идите за мной"
+6. "Атакуют... Нужна поддержка!"
 
-0. Exit
+0. Выход
 }
 
 RadioB
 {
-\yGroup Radio Commands\w
+\yКомандные радиосообщения:\w
 
-1. "Go"
-2. "Fall Back"
-3. "Stick Together Team"
-4. "Get in Position"
-5. "Storm the Front"
-6. "Report In"
+1. "Пошли, пошли"
+2. "Отступаем"
+3. "Команда, держимся группой"
+4. "Займите позицию"
+5. "Атакуем фронт"
+6. "Доложите обстановку"
 
-0. Exit
+0. Выход
 }
 
 RadioC
 {
-\yRadio Responses/Reports\w
+\yДокладывающие радиосообщения:\w
 
-1. "Affirmative/Roger"
-2. "Enemy Spotted"
-3. "Need Backup"
-4. "Sector Clear"
-5. "I'm in Position"
-6. "Reporting In"	
-7. "She's gonna Blow!"
-8. "Negative"
-9. "Enemy Down"
+1. "Понял"
+2. "Вижу противника"
+3. "Нужна поддержка"
+4. "Сектор чист"
+5. "Я на позиции"
+6. "Докладываю"
+7. "Уходим отсюда, сейчас рванет!"
+8. "Никак нет"
+9. "Противник убит"
 
-0. Exit
+0. Выход
 }
 
 // weapon names
@@ -803,12 +803,12 @@ Already_Have_Kevlar_Helmet
 
 Already_Have_Kevlar_Bought_Helmet
 {
-
+У вас уже есть шлем!
 }
 
 Already_Have_Helmet_Bought_Kevlar
 {
-
+У вас уже есть бронежилет!
 }
 
 Cannot_Carry_Anymore
@@ -853,7 +853,7 @@ Too_Many_CTs
 
 Wait_3_Seconds
 {
-Please wait 3 seconds.
+Пожалуйста, подождите 3 секунды.
 }
 
 Only_1_Team_Change
@@ -928,12 +928,12 @@ Killed_Teammate
 
 Banned_For_Killing_Teammates
 {
-You are being banned from the server for killing too many teammates
+Вы забанены сервером за неоднократное убийство товарищей по команде
 }
 
 Cannot_Vote_Map
 {
-You cannot vote within 3 minutes of a new map
+Вы не можете голосовать на протяжении 3 минут на новой карте
 }
 
 Weapon_Cannot_Be_Dropped
@@ -1060,42 +1060,42 @@ Game_Commencing
 
 Game_connected
 {
-%s connected
+%s подключается
 }
 
 Game_disconnected
 {
-%s has left the game
+%s вышел из игры
 }
 
 Game_join_terrorist
 {
-%s is joining the Terrorist force
+%s присоединился к Террористам
 }
 
 Game_join_ct
 {
-%s is joining the Counter-Terrorist force
+%s присоединился к Контр-Террористам
 }
 
 Game_join_terrorist_auto
 {
-%s is joining the Terrorist force (auto)
+%s присоединился к Террористам (автомат.)"
 }
 
 Game_join_ct_auto
 {
-%s is joining the Counter-Terrorist force (auto)
+%s присоединился к Контр-Террористам (автомат.)"
 }
 
 Game_scoring
 {
-Scoring will not start until both teams have players
+Счет очков вестись не будет, пока обе команды не наберут игроков
 }
 
 Game_idle_kick
 {
-%s has been idle for too long and has been kicked
+%s долгое время бездействовал и был отсоединен
 }
 
 Game_bomb_drop
@@ -1110,17 +1110,17 @@ Game_bomb_pickup
 
 Game_no_timelimit
 {
-* No Time Limit *
+* Нет ограничения времени *
 }
 
 Game_timelimit
 {
-Time Remaining:  %s:%.2s
+Осталось времени на карту: %s:%.2s
 }
 
 Game_unknown_command
 {
-Unknown command: %s
+Неизвестная команда: %s
 }
 
 Game_in_position
@@ -1135,22 +1135,22 @@ Game_added_position
 
 Game_teammate_kills
 {
-Teammate kills: %s of 3
+Убийств товарищей по команде: %s из 3
 }
 
 Game_required_votes
 {
-Required number of votes for a new map = %s
+Необходимое количество голосов за новую карту = %s
 }
 
 Game_radio
 {
-%s (RADIO): %s
+%s (РАДИО): %s
 }
 
 Game_teammate_attack
 {
-%s attacked a teammate
+%s атаковал товарища по команде
 }
 
 Game_kicked
@@ -1160,42 +1160,42 @@ Game_kicked
 
 Game_vote_cast
 {
-Vote cast against player # %s
+Сумма голосов против игрока # %s
 }
 
 Game_vote_usage
 {
-Usage:  vote <id>
+Используйте:  vote <id>
 }
 
 Game_vote_player_not_found
 {
-Player # %s was not found
+Игрок # %s не был найден
 }
 
 Game_vote_players_on_your_team
 {
-You can only vote for players on your team
+Вы можете голосовать только за игроков своей команды
 }
 
 Game_vote_not_yourself
 {
-You can't vote to kick yourself!
+Вы не можете голосовать против себя!
 }
 
 Game_voted_for_map
 {
-You voted for Map # %s
+Вы проголосовали за карту # %s
 }
 
 Game_votemap_usage
 {
-Usage:  votemap <id>
+Используйте:  votemap <id>
 }
 
 Cannot_Vote_Need_More_People
 {
-You can't vote for a map by yourself!
+Вы не можете сами голосовать за карту!
 }
 
 Map_Vote_Extend
@@ -1205,7 +1205,7 @@ Map_Vote_Extend
 
 Cannot_Vote_With_Less_Than_Three
 {
-You can't vote with less than three people on your team
+Вы не можете голосовать, если в вашей команде менее 3 человек.
 }
 
 Game_will_restart_in
@@ -1215,127 +1215,127 @@ Game_will_restart_in
 
 Game_will_restart_in_console
 {
-The game will restart in %s %s
+Рестарт произойдет через %s секунд(у)
 }
 
 Cover_me
 {
-Cover Me!
+Прикройте меня!
 }
 
 You_take_the_point
 {
-You Take the Point.
+Возмите эту точку на себя.
 }
 
 Hold_this_position
 {
-Hold This Position.
+Удерживайте эту позицию.
 }
 
 Regroup_team
 {
-Regroup Team.
+Перегруппируйтесь.
 }
 
 Follow_me
 {
-Follow Me.
+Идите за мной.
 }
 
 Taking_fire
 {
-Taking Fire...Need Assistance!
+Атакуют... Нужна поддержка!
 }
 
 Go_go_go
 {
-Go go go!
+Пошли, пошли!
 }
 
 Team_fall_back
 {
-Team, fall back!
+Отступаем!
 }
 
 Stick_together_team
 {
-Stick together, team.
+Команда, держимся групой.
 }
 
 Get_in_position_and_wait
 {
-Get in position and wait for my go.
+Займите позицию и ждите команды.
 }
 
 Storm_the_front
 {
-Storm the Front!
+Атакуем фронт!
 }
 
 Report_in_team
 {
-Report in, team.
+Доложите обстановку.
 }
 
 Affirmative
 {
-Affirmative.
+Так точно.
 }
 
 Roger_that
 {
-Roger that.
+Понял.
 }
 
 Enemy_spotted
 {
-Enemy spotted.
+Вижу противника.
 }
 
 Need_backup
 {
-Need backup.
+Нужна поддержка.
 }
 
 Sector_clear
 {
-Sector clear.
+Сектор чист.
 }
 
 In_position
 {
-I'm in position.
+Я на позиции.
 }
 
 Reporting_in
 {
-Reporting in.
+Докладываю.
 }
 
 Get_out_of_there
 {
-Get out of there, it's gonna blow!
+Уходим отсюда, сейчас рванет!
 }
 
 Negative
 {
-Negative.
+Никак нет.
 }
 
 Enemy_down
 {
-Enemy down.
+Противник убит.
 }
 
 Hostage_down
 {
-Hostage down.
+Заложник убит.
 }
 
 Fire_in_the_hole
 {
-Fire in the hole!
+Осторожно, граната!
 }
 
 Cant_buy
@@ -1360,12 +1360,12 @@ Terrorist_cant_buy
 
 Vote
 {
-%s :  %s (%s vote)
+%s :  %s (%s голос)
 }
 
 Votes
 {
-%s :  %s (%s votes)
+%s :  %s (%s голосов)
 }
 
 Hint_press_buy_to_purchase
@@ -1495,22 +1495,22 @@ Hint_press_use_so_hostage_will_follow
 
 Friend
 {
-Friend
+Друг
 }
 
 Enemy
 {
-Enemy
+Противник
 }
 
 Hostage
 {
-Hostage
+Заложник
 }
 
 Health
 {
-Health
+Здоровье
 }
 
 Map_descr_not_avail

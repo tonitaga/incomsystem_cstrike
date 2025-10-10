@@ -1,636 +1,1725 @@
-//----------------------------------------------------------------------------
-// BotChatter.db
-// Author: Michael S. Booth, Turtle Rock Studios (www.turtlerockstudios.com)
+//==========================================//
+// Русская версия чаттера ботов             //
+// Версия: 1.0                              //
+// Авторские права © BoBa_KoMaTo3HuK        //
+// Все права защищены.                      //
+//==========================================//
+//                                 РУССКАЯ ВЕРСИЯ ЧАТТЕРА БОТОВ 
+//                                 Russian BotChatter.db
 //
-// This database defines "Places" (phrases that describe a location in the world)
-// and "Chatter" (phrases used for everything else) the bots use to talk via their radio.
-// 
-// Phrases (ie: either Place or Chatter) can contain any number of wav filenames that
-// contain voice recordings saying something appropriate for that phrase's concept.
-// For instance, the Chatter entry for "Affirmative" contains several wav files saying
-// things that mean "yes", such as "affirmative", "yes sir", "roger that", and so on.
+//                                 ГОЛОС: BoBa_KoMaTo3HuK
 //
-// Some phrases have a "Radio" line. This maps that phrase to a Standard Radio event and
-// is used when the player has restricted the bots to only using Standard Radio messages.
-// In that case, that radio message will be played instead of the normal phrase.
+//                                 Использованная программа: Sound Forge 5.0
 //
-// The keyword "Important" flags that phrase as being "mission critical", and means it
-// will be spoken if the player has set the bots to "minimal" chatter.
+//--------------------------------------------------------------------------------------------
 //
-// "Count" and "Place" qualifiers mean that any subsequent wav files will only be selected
-// if the bot is referring to the given Count or Place.
+// Эта база данных содержит названия "мест" на картах  в Counter-Strike,
+// и различные фразы, которые боты используют, общаясь между собой 
+// по голосовому чату.
+//
+// Эти названия "мест" или фразы могут состоять из любого количества .WAV файлов
+// для каждого "места" или для одного типа фразы.
+// Они могут отражать различные названия одного и того же места, или различные 
+// произношения одной и той же фразы. Например, бот для фразы "Affirmative" (Так точно!)
+// может использовать несколько фраз - "Так, точно!", "Окей", "Слушаюсь", "Вас понял"
+//
+// Некоторые фразы помечены словом "Radio" - это значит, что, если Вы поставите 
+// ограничение Чаттера (Chatter) в "Standart", то вместо фраз ботов будут выводиться 
+// соответствующие стандартные радиокоманды, то есть вместо "Пошел ты в ж." бот 
+// скажет вам "Negative!" :)
+//
+// Фразы помеченные словом "Important", означают, что они будут проиграны в случае, 
+// если Вы установите ограничение Чаттера (Chatter) в "minimal", то есть боты для 
+// переговоров между собой будут использовать минимум фраз.
+//
+// Категории "Count" и "Place" включают в себя список фраз, и бот сможет произнести 
+// только эти фразы, встретив в файле навигации (на карте) или находясь в ситуации 
+// с именем этой категории
+//
+// ПРИМЕЧАНИЕ ДЛЯ ТЕХ, КТО ЗАХОЧЕТ ЗАПИСАТЬ ФРАЗЫ САМОСТОЯТЕЛЬНО:
+//
+// Если не стоит особых отметок, то фразы нужно произносить коротко и спокойным тоном
+// Фразы служат для того, чтобы бот смог описать ситуацию, например бот увидел врагов
+// в районе моста и один из них несёт бомбу, тогда он признесёт следующие фразы
+//   "Мост!" ... "Вижу бомбера" ... "Нужна поддержка!"  
 //
 //
-// VOICE ACTOR NOTES:
-// Unless otherwise stated, these phrases should be spoken in a terse, matter-of-fact manner.
-// The bots will utter "batches" of phrases to communicate the situation. For example, if a bot
-// discovers many enemies near the bridge, and one of them is carrying the bomb, he will say
-// something like:
-//   "Bridge" ... "There's the bomber" ... "Need help!"  
-//
-//
-// ***NOTE: Total filename length must be less than 64!
+// ***ВНИМАНИЕ: Полное имя файла не должно превышать 64 символа !
 //
 
 
 //
-// Places must be first in this database
+// Места (Places) должны быть указаны первыми в этой базе данных
 //
 
-Place BombsiteA
-	radio\bot\a.wav
-End
-
-Place BombsiteB
-	radio\bot\b.wav
-End
-
-Place BombsiteC
-	radio\bot\c.wav
-End
-
-Place Hostages
-	radio\bot\hostages.wav
-End
-
-Place HostageRescueZone
-	radio\bot\rescue_zone.wav
-	radio\bot\rescue_zone2.wav
-End
-
-Place VipRescueZone
-	radio\bot\rescue_zone.wav
-	radio\bot\rescue_zone2.wav
-End
-
-Place CTSpawn
-	radio\bot\ct_spawn.wav
-End
-
-Place TSpawn
-	radio\bot\t_spawn.wav
-End
-
+// Английские варианты названий мест.
 
 Place Bridge
-	radio\bot\bridge.wav
+	radio\bot\Russian\_Places\MOST.wav
 End
 
 Place Middle
-	radio\bot\middle.wav
+        radio\bot\Russian\_Places\W_CENTRE.wav
+        radio\bot\Russian\_Places\W_CENTRE1.wav
+        radio\bot\Russian\_Places\W_CENTRE2.wav
+        radio\bot\Russian\_Places\W_CENTRE3.wav
 End
 
 Place House
-	radio\bot\house.wav
+	radio\bot\Russian\_Places\DOM.WAV
 End
 
 Place Apartment
-	radio\bot\apartment.wav
+	radio\bot\Russian\_Places\KOMNATA.wav
 End
 
 Place Apartments
-	radio\bot\apartments.wav
+	radio\bot\Russian\_Places\KOMNATI.WAV
 End
 
 Place Market
-	radio\bot\market.wav
-	radio\bot\market2.wav
+	radio\bot\Russian\_Places\MAGAZIN.wav
 End
 
 Place Sewers
-	radio\bot\sewers.wav
-	radio\bot\sewers2.wav
+        radio\bot\Russian\_Places\TRUBA.wav
+        radio\bot\Russian\_Places\TRUBI.wav
 End
 
 Place Tunnel
-	radio\bot\tunnel.wav
-	radio\bot\tunnel2.wav
+	radio\bot\Russian\_Places\W_tonnele.wav
+	radio\bot\Russian\_Places\W_tonnele1.wav
+	radio\bot\Russian\_Places\W_tonnele2.wav
 End
 
 Place Ducts
-	radio\bot\vents.wav
-	radio\bot\vents2.wav
-	radio\bot\ventilation_system.wav
+	radio\bot\Russian\_Places\KISHKA.WAV
+	radio\bot\Russian\_Places\KISHKA1.WAV
 End
 
 Place Village
-	radio\bot\villiage.wav
+	radio\bot\Russian\_Places\DEREWNJA.wav
 End
 
 Place Roof
-	radio\bot\roof.wav
+	radio\bot\Russian\_Places\na_krishe.wav
+      radio\bot\Russian\_Places\NA_KRISHE1.WAV
 End
 
 Place Upstairs
-	radio\bot\upstairs.wav
+	radio\bot\Russian\_Places\NAWERHU.wav
 End
 
 Place Downstairs
-	radio\bot\downstairs.wav
+	radio\bot\Russian\_Places\WNIZU.wav
 End
 
 Place Basement
-	radio\bot\basement.wav
-End
-
-Place Crawlspace
-	radio\bot\crawlspace.wav
+	radio\bot\Russian\_Places\OSNOWANIE.wav
 End
 
 Place Kitchen
-	radio\bot\kitchen.wav
-	radio\bot\kitchen2.wav
+	radio\bot\Russian\_Places\KUHNJA.wav
 End
 
 Place Inside
-	radio\bot\inside.wav
+        radio\bot\Russian\_Places\WNUTRI.WAV
 End
 
 Place Outside
-	radio\bot\outside.wav
+	radio\bot\Russian\_Places\SNARUZHI.wav
 End
 
 Place Tower
-	radio\bot\tower.wav
+	radio\bot\Russian\_Places\Na_bashne.wav
 End
 
 Place WineCellar
-	radio\bot\wine_cellar.wav
+        radio\bot\Russian\_Places\PODWAL.wav
 End
 
 Place Garage
-	radio\bot\garage.wav
+        radio\bot\Russian\_Places\W_GARAZHE.WAV
+        radio\bot\Russian\_Places\W_GARAZHE1.WAV
 End
 
 Place Courtyard
-	radio\bot\courtyard.wav
+	radio\bot\Russian\_Places\Wo_Dwore.wav
 End
 
 Place Water
-	radio\bot\water.wav
+        radio\bot\Russian\_Places\w_wode.wav
+        radio\bot\Russian\_Places\w_wode1.wav
 End
 
 Place FrontDoor
-	radio\bot\front_door.wav
-	radio\bot\front_door2.wav
+	radio\bot\Russian\_Places\CENTRALNIJ_WHOD.WAV
 End
 
 Place BackDoor
-	radio\bot\back_door.wav
+	  radio\bot\Russian\_Places\U_zadnego_whoda.wav
 End
 
 Place SideDoor
-	radio\bot\side_door.wav
+	radio\bot\Russian\_Places\U_bokowoj_dweri.wav
 End
 
 Place BackWay
-	radio\bot\back_way.wav
+	radio\bot\Russian\_Places\U_zadnego_whoda.wav
 End
 
 Place FrontYard
-	radio\bot\front_yard.wav
+	radio\bot\Russian\_Places\DWOR_PEREDNIJ.wav
 End
 
 Place BackYard
-	radio\bot\back_yard.wav
+	radio\bot\Russian\_Places\DWOR_ZADNIJ.wav
 End
 
 Place SideYard
-	radio\bot\side_yard.wav
-End
-
-Place Lobby
-	radio\bot\lobby.wav
+	radio\bot\Russian\_Places\DWOR_BOKOWOJ.wav
 End
 
 Place Vault
-	radio\bot\vault.wav
+	radio\bot\Russian\_Places\HRANILISHE.wav
 End
 
 Place Elevator
-	radio\bot\elevator.wav
-	radio\bot\elevator2.wav
+	radio\bot\Russian\_Places\ELEWATOR.wav
 End
 
 Place DoubleDoors
-	radio\bot\double_doors.wav
+	radio\bot\Russian\_Places\DWOJNIE_DWERI.wav
 End
 
 Place SecurityDoors
-	radio\bot\security_doors.wav
+	radio\bot\Russian\_Places\UKREPLENNIE_DWERI.wav
 End
 
 Place LongHall
-	radio\bot\long_hall.wav
+	  radio\bot\Russian\_Places\ZAL_BOLSHOJ.wav
 End
 
 Place SideHall
-	radio\bot\side_hall.wav
+	radio\bot\Russian\_Places\ZAL_BOKOWOJ.wav
 End
 
 Place FrontHall
-	radio\bot\front_hall.wav
+      radio\bot\Russian\_Places\ZAL_PEREDNIJ.WAV
 End
 
 Place BackHall
-	radio\bot\back_hall.wav
+      radio\bot\Russian\_Places\ZAL_ZADNIJ.WAV
 End
 
 Place MainHall
-	radio\bot\main_hall.wav
+      radio\bot\Russian\_Places\ZAL_OSNOWNOJ.WAV
 End
 
 Place FarSide
-	radio\bot\far_side.wav
+	  radio\bot\Russian\_Places\w_dalnem.wav
+	  radio\bot\Russian\_Places\na_dalnem.wav
 End
 
 Place Windows
-	radio\bot\windows.wav
+        radio\bot\Russian\_Places\OKNA.wav
 End
 
 Place Window
-	radio\bot\window.wav
+        radio\bot\Russian\_Places\OKNO.wav
+        radio\bot\Russian\_Places\OKNO1.wav
 End
 
 Place Attic
-	radio\bot\attic.wav
+	radio\bot\Russian\_Places\na_cherdake.wav
+	radio\bot\Russian\_Places\na_cherdake1.wav
 End
 
 Place StorageRoom
-	radio\bot\storage_room.wav
+	radio\bot\Russian\_Places\W_SARAE.wav
+	radio\bot\Russian\_Places\W_SARAE1.wav
 End
 
 Place ProjectorRoom
-	radio\bot\projector_room.wav
+	radio\bot\Russian\_Places\W_BUDKE.WAV
 End
 
 Place MeetingRoom
-	radio\bot\meeting_room.wav
+      radio\bot\Russian\_Places\KOMNATA.WAV
 End
 
 Place ConferenceRoom
-	radio\bot\conference_room.wav
+      radio\bot\Russian\_Places\W_KONFERENTS_ZALE.WAV
 End
 
 Place ComputerRoom
-	radio\bot\computer_room.wav
+	radio\bot\Russian\_Places\KOMPUTERS.wav
+	radio\bot\Russian\_Places\KOMPUTERS1.wav
 End
 
 Place BigOffice
-	radio\bot\big_office.wav
+      radio\bot\Russian\_Places\OFIS_BOLSHOJ.WAV
 End
 
 Place LittleOffice
-	radio\bot\little_office.wav
+      radio\bot\Russian\_Places\OFIS_MALIJ.WAV
 End
 
 Place Dumpster
-	radio\bot\dumpster.wav
+	radio\bot\Russian\_Places\u_pomojki.wav
 End
 
 Place Airplane
-	radio\bot\airplane.wav
+	radio\bot\Russian\_Places\SAMOLET.wav
 End
 
 Place Underground
-	radio\bot\underground.wav
-End
-
-Place Bunker
-	radio\bot\bunker.wav
+	radio\bot\Russian\_Places\PODZEMKA.wav
 End
 
 Place Mines
-	radio\bot\mines.wav
-	radio\bot\old_mines.wav
+	radio\bot\Russian\_Places\SHAHTA.wav
 End
 
 Place Front
-	radio\bot\front.wav
+	radio\bot\Russian\_Places\PEREDNIJ.wav
 End
 
 Place Back
-	radio\bot\back.wav
+	radio\bot\Russian\_Places\NA_ZADNEM.wav
 End
 
 Place Rear
-	radio\bot\rear.wav
+	radio\bot\Russian\_Places\NA_ZADNEM.wav
 End
 
 Place Side
-	radio\bot\side.wav
+	radio\bot\Russian\_Places\SBOKU.wav
 End
 
 Place Ramp
-	radio\bot\ramp.wav
-	radio\bot\ramp2.wav
+	radio\bot\Russian\_Places\RAMPA.wav
 End
 
 Place Underpass
-	radio\bot\underpass.wav
+	radio\bot\Russian\_Places\W_tonnele.wav
+	radio\bot\Russian\_Places\W_tonnele1.wav
+	radio\bot\Russian\_Places\W_tonnele2.wav
 End
 
 Place Overpass
-	radio\bot\overpass.wav
+        radio\bot\Russian\_Places\w_obhodnom.wav
 End
 
 Place Stairs
-	radio\bot\stairs.wav
+	radio\bot\Russian\_Places\na_podjeme.wav
 End
 
 Place Ladder
-	radio\bot\ladder.wav
+	radio\bot\Russian\_Places\LESTNITSA.wav
 End
 
 Place Gate
-	radio\bot\gate.wav
+	radio\bot\Russian\_Places\WOROTA.wav
 End
 
 Place GateHouse
-	radio\bot\gatehouse.wav
+	radio\bot\Russian\_Places\WHODNOE_ZDANIE.wav
 End
 
 Place LoadingDock
-	radio\bot\loading_dock.wav
+	radio\bot\Russian\_Places\DOKI.wav
 End
 
 Place GuardHouse
-	radio\bot\guardhouse.wav
+	radio\bot\Russian\_Places\w_musorke.wav
+	radio\bot\Russian\_Places\KPP.WAV
 End
 
 Place Entrance
-	radio\bot\entrance.wav
+	radio\bot\Russian\_Places\WHOD.wav
 End
 
 Place VendingMachines
-	radio\bot\vending_machines.wav
-	radio\bot\vending_machines2.wav
+	radio\bot\Russian\_Places\AWTOMATI.wav
 End
 
 Place Loft
-	radio\bot\loft.wav
+	radio\bot\Russian\_Places\na_cherdake.wav
+	radio\bot\Russian\_Places\na_cherdake1.wav
 End
 
 Place Balcony
-	radio\bot\balcony.wav
+	radio\bot\Russian\_Places\na_balkone.wav
+ 	radio\bot\Russian\_Places\Na_balkone1.wav
 End
 
 Place Alley
-	radio\bot\alley.wav
+	radio\bot\Russian\_Places\ALLEJA.wav
 End
 
 Place BackAlley
-	radio\bot\back_alley.wav
+	radio\bot\Russian\_Places\ALLEJA_ZADNAJA.wav
 End
 
 Place SideAlley
-	radio\bot\side_alley.wav
+	radio\bot\Russian\_Places\ALLEJA_BOKOWAJA.wav
 End
 
 Place FrontRoom
-	radio\bot\front_room.wav
+	radio\bot\Russian\_Places\KOMNATA_PEREDNAJA.wav
 End
 
 Place BackRoom
-	radio\bot\back_room.wav
+	radio\bot\Russian\_Places\KOMNATA_ZADNAJA.wav
 End
 
 Place SideRoom
-	radio\bot\side_room.wav
+	radio\bot\Russian\_Places\KOMNATA_BOKOWAJA.wav
 End
 
 Place Crates
-	radio\bot\crates.wav
+	radio\bot\Russian\_Places\JASHIKI.WAV
 End
 
 Place Truck
-	radio\bot\truck.wav
+	radio\bot\Russian\_Places\U_Gruzowika.wav
 End
 
 Place Bedroom
-	radio\bot\bedroom.wav
-	radio\bot\bedroom2.wav
+	radio\bot\Russian\_Places\SPALNJA.wav
 End
 
 Place FamilyRoom
-	radio\bot\family_room.wav
+	radio\bot\Russian\_Places\KOMNATA.wav
 End
 
 Place Bathroom
-	radio\bot\bathroom.wav
-	radio\bot\bathroom2.wav
+	radio\bot\Russian\_Places\WANNAJA.wav
 End
 
 Place LivingRoom
-	radio\bot\living_room.wav
+	radio\bot\Russian\_Places\GOSTINAJA.wav
 End
 
 Place Den
-	radio\bot\den.wav
+	radio\bot\Russian\_Places\GNEZDO.WAV
 End
 
 Place Office
-	radio\bot\office.wav
+	radio\bot\Russian\_Places\OFIS.wav
 End
 
 Place Atrium
-	radio\bot\atrium.wav
+	radio\bot\Russian\_Places\PRIEMNAJA.wav
 End
 
 Place Entryway
-	radio\bot\entryway.wav
+	radio\bot\Russian\_Places\WHODNOJ_PUT.wav
 End
 
 Place Foyer
-	radio\bot\foyer.wav
+	radio\bot\Russian\_Places\FOJE.wav
 End
 
 Place Stairwell
-	radio\bot\stairwell.wav
+	radio\bot\Russian\_Places\PROLET.wav
 End
 
 Place Fence
-	radio\bot\fence.wav
+	radio\bot\Russian\_Places\OGRAZHDENIJE.wav
 End
 
 Place Deck
-	radio\bot\deck.wav
+	radio\bot\Russian\_Places\PALUBA.wav
 End
 
 Place Porch
-	radio\bot\porch.wav
+	radio\bot\Russian\_Places\KRILTSO.wav
 End
 
 Place Patio
-	radio\bot\patio.wav
+	radio\bot\Russian\_Places\PATIO.wav
 End
 
 Place Wall
-	radio\bot\wall.wav
+	radio\bot\Russian\_Places\STENA.wav
+End
+
+//------------------------------------------------------------------------
+
+
+
+Place BombsiteA
+	radio\bot\Russian\a\a.wav
+	radio\bot\Russian\a\a1.wav
+	radio\bot\Russian\a\a3.wav
+	radio\bot\Russian\a\a4.wav
+End
+
+Place BombsiteB
+	radio\bot\Russian\b\b.wav
+	radio\bot\Russian\b\b1.wav
+	radio\bot\Russian\b\b2.wav
+	radio\bot\Russian\b\b3.wav
+	radio\bot\Russian\b\b4.wav
+End
+
+Place BombsiteC
+	radio\bot\Russian\c\c.wav
+End
+
+Place Hostages
+        radio\bot\Russian\_Places\U_zalozhnikov.wav
+End
+
+Place HostageRescueZone
+	radio\bot\Russian\_Places\rescue_zone.wav
+	radio\bot\Russian\_Places\rescue_zone1.wav
+	radio\bot\Russian\_Places\rescue_zone2.wav
+End
+
+Place VipRescueZone
+	radio\bot\Russian\_Places\rescue_zone.wav
+	radio\bot\Russian\_Places\rescue_zone1.wav
+	radio\bot\Russian\_Places\rescue_zone2.wav
+End
+
+Place CTSpawn
+	radio\bot\Russian\_Places\na_ct_respe.wav
+	radio\bot\Russian\_Places\na_ct_respe1.wav
+	radio\bot\Russian\_Places\na_ct_respe2.wav
+End
+
+Place TSpawn
+	radio\bot\Russian\_Places\na_t_respe.wav
+	radio\bot\Russian\_Places\na_t_respe1.wav
+	radio\bot\Russian\_Places\na_t_respe2.wav
+End
+
+//--------------------------КАРТЫ------------------------
+
+Place 1
+	radio\bot\Russian\_Places\1.WAV
+END
+
+Place 2
+	radio\bot\Russian\_Places\2.WAV
+END
+
+Place 3
+	radio\bot\Russian\_Places\3.WAV
+END
+
+Place 4
+	radio\bot\Russian\_Places\4.WAV
+END
+
+Place ALLEJA
+	radio\bot\Russian\_Places\ALLEJA.wav
+End
+
+Place ALLEJA_ZADNAJA
+	radio\bot\Russian\_Places\ALLEJA_ZADNAJA.wav
+End
+
+Place ALLEJA_BOKOWAJA
+	radio\bot\Russian\_Places\ALLEJA_BOKOWAJA.wav
+End
+
+Place APPENDIKS
+	radio\bot\Russian\_Places\APPENDIKS.wav
+End
+
+Place AWTOMATI
+	radio\bot\Russian\_Places\AWTOMATI.wav
+End
+
+Place BOCHKA
+	radio\bot\Russian\_Places\BOCHKA.WAV
+	radio\bot\Russian\_Places\BOCHKA1.WAV
+End
+
+Place BUNKER
+	radio\bot\Russian\_Places\BUNKER.wav
+End
+
+Place CENTRALNIJ_WHOD
+	radio\bot\Russian\_Places\CENTRALNIJ_WHOD.WAV
+End
+
+
+Place CHERTA
+	radio\bot\Russian\_Places\CHERTA.WAV
+	radio\bot\Russian\_Places\CHERTA1.WAV
+End
+
+Place DEREWNJA
+	radio\bot\Russian\_Places\DEREWNJA.wav
+End
+
+Place DOM
+	radio\bot\Russian\_Places\DOM.WAV
+END
+
+Place DOKI
+	radio\bot\Russian\_Places\DOKI.wav
+End
+
+Place DWERI_DWOJNIE
+	radio\bot\Russian\_Places\DWOJNIE_DWERI.wav
+End
+
+Place DWERI_UKREPLENNIJE
+	radio\bot\Russian\_Places\UKREPLENNIE_DWERI.wav
+End
+
+Place DWOR_PEREDNIJ
+	radio\bot\Russian\_Places\DWOR_PEREDNIJ.wav
+End
+
+Place DWOR_ZADNIJ
+	radio\bot\Russian\_Places\DWOR_ZADNIJ.wav
+End
+
+Place DWOR_BOKOWOJ
+	radio\bot\Russian\_Places\DWOR_BOKOWOJ.wav
+End
+
+Place ELEWATOR
+	radio\bot\Russian\_Places\ELEWATOR.wav
+End
+
+Place ESTAKADA
+	radio\bot\Russian\_Places\ESTAKADA.WAV
+End
+
+Place FOJE
+	radio\bot\Russian\_Places\FOJE.wav
+End
+
+Place FONAR
+	radio\bot\Russian\_Places\FONAR.WAV
+END
+
+Place GNEZDO
+	radio\bot\Russian\_Places\GNEZDO.WAV
+END
+
+PLACE GORLO
+	radio\bot\Russian\_Places\GORLO.WAV
+	radio\bot\Russian\_Places\GORLO1.WAV
+END
+
+Place GOSTINAJA
+	radio\bot\Russian\_Places\GOSTINAJA.wav
+End
+
+Place HRANILISHE
+	radio\bot\Russian\_Places\HRANILISHE.wav
+End
+
+Place JASHIK
+	radio\bot\Russian\_Places\JASHIK.WAV
+END
+
+Place JASHIKI
+	radio\bot\Russian\_Places\JASHIKI.WAV
+END
+
+
+PLACE KISHKA
+	radio\bot\Russian\_Places\KISHKA.WAV
+	radio\bot\Russian\_Places\KISHKA1.WAV
+END
+
+Place KOMNATA
+	radio\bot\Russian\_Places\KOMNATA.wav
+End
+
+Place KOMNATI
+	radio\bot\Russian\_Places\KOMNATI.WAV
+End
+
+Place KOMNATA_PEREDNAJA
+	radio\bot\Russian\_Places\KOMNATA_PEREDNAJA.wav
+End
+
+Place KOMNATA_ZADNAJA
+	radio\bot\Russian\_Places\KOMNATA_ZADNAJA.wav
+End
+
+Place KOMNATA_BOKOWAJA
+	radio\bot\Russian\_Places\KOMNATA_BOKOWAJA.wav
+End
+
+Place KOMPUTERS
+	radio\bot\Russian\_Places\KOMPUTERS.wav
+	radio\bot\Russian\_Places\KOMPUTERS1.wav
+End
+
+Place KPP
+	radio\bot\Russian\_Places\KPP.WAV
+End
+
+Place KRILTSO
+	radio\bot\Russian\_Places\KRILTSO.wav
+End
+
+Place KUHNJA
+	radio\bot\Russian\_Places\KUHNJA.wav
+End
+
+Place LABORATORIJA
+	radio\bot\Russian\_Places\LABORATORIJA.wav
+End
+
+Place LESTNITSA
+	radio\bot\Russian\_Places\LESTNITSA.wav
+End
+
+Place MAGAZIN
+	radio\bot\Russian\_Places\MAGAZIN.wav
+End
+
+Place MEZHDU_DEPO
+	radio\bot\Russian\_Places\mezhdu_depo.wav
+End
+
+PLACE MOST
+	radio\bot\Russian\_Places\MOST.wav
+End
+
+Place NA_BALKONE
+	radio\bot\Russian\_Places\na_balkone.wav
+ 	radio\bot\Russian\_Places\Na_balkone1.wav
+End
+
+Place NA_BASHNE
+	radio\bot\Russian\_Places\Na_bashne.wav
+End
+
+Place NA_BLIZHNEM
+	radio\bot\Russian\_Places\na_blizhnem.wav
+End
+
+Place na_cherdake
+	radio\bot\Russian\_Places\na_cherdake.wav
+	radio\bot\Russian\_Places\na_cherdake1.wav
+End
+
+Place NA_CT_RESPE
+	radio\bot\Russian\_Places\na_ct_respe.wav
+	radio\bot\Russian\_Places\na_ct_respe1.wav
+	radio\bot\Russian\_Places\na_ct_respe2.wav
+
+End
+
+Place NA_DALNEM
+	  radio\bot\Russian\_Places\na_dalnem.wav
+End
+
+Place NA_DLINNOM
+        radio\bot\Russian\_Places\Na_dlinnom.wav
+        radio\bot\Russian\_Places\Na_dlinnom1.wav
+End
+
+Place NA_DOME
+        radio\bot\Russian\_Places\Na_dome.wav
+End
+
+PLACE NA_ESTAKADE
+        radio\bot\Russian\_Places\NA_ESTAKADE.WAV
+END
+
+PLACE NA_GORE
+        radio\bot\Russian\_Places\NA_GORE.WAV
+        radio\bot\Russian\_Places\NA_GORE1.WAV
+END
+
+PLACE NA_GORKE
+	radio\bot\Russian\_Places\na_gorke.wav
+End
+
+Place NA_KRESTE
+	radio\bot\Russian\_Places\Na_kreste.wav
+End
+
+Place NA_KRISHE
+	radio\bot\Russian\_Places\na_krishe.wav
+      radio\bot\Russian\_Places\NA_KRISHE1.WAV
+End
+
+Place NA_kryshe
+	radio\bot\Russian\_Places\na_krishe.wav
+      radio\bot\Russian\_Places\NA_KRISHE1.WAV
+End
+
+Place NA_MOSTIKE
+	radio\bot\Russian\_Places\na_mostike.wav
+End
+
+Place NA_MOSTU
+        radio\bot\Russian\_Places\Na_mostu.wav
+End
+
+Place NA_OBLOMKE
+	radio\bot\Russian\_Places\na_oblomke.wav
+End
+
+Place NA_PERWOM_ETAZHE
+	radio\bot\Russian\_Places\Na_perwom_etazhe.wav
+	radio\bot\Russian\_Places\Na_perwom_etazhe1.wav
+End
+
+Place NA_WTOROM_ETAZHE
+	radio\bot\Russian\_Places\Na_wtorom_etazhe.wav
+	radio\bot\Russian\_Places\Na_wtorom_etazhe1.wav
+End
+
+PLACE NA_PLOSHADI
+	radio\bot\Russian\_Places\Na_PLOSHADI.wav
+	radio\bot\Russian\_Places\Na_PLOSHADI1.wav
+End
+
+Place NA_PODJEME
+	radio\bot\Russian\_Places\na_podjeme.wav
+End
+
+Place NA_RELSAH
+	radio\bot\Russian\_Places\na_relsah.wav
+End
+
+Place Na_respe_kontrov
+        radio\bot\Russian\_Places\Na_ct_respe.wav
+End
+
+Place NA_SKALE
+        radio\bot\Russian\_Places\Na_skale.wav
+End
+
+Place NA_SKWOZNAKE
+	radio\bot\Russian\_Places\na_skwoznake.wav
+End
+
+Place NA_SPUSKE
+        radio\bot\Russian\_Places\Na_spuske.wav
+End
+
+Place Na_T_respe
+	radio\bot\Russian\_Places\na_t_respe.wav
+	radio\bot\Russian\_Places\na_t_respe1.wav
+	radio\bot\Russian\_Places\na_t_respe2.wav
+End
+
+PLACE NA_TRAPE
+	radio\bot\Russian\_Places\na_TRAPE.wav
+End
+
+PLACE NA_TROTUARE
+	radio\bot\Russian\_Places\NA_TROTUARE.wav
+	radio\bot\Russian\_Places\NA_TROTUARE1.wav
+End
+
+Place NA_WAGONE
+	radio\bot\Russian\_Places\na_wagone.wav
+End
+
+Place NA_WISHKE
+	radio\bot\Russian\_Places\Na_wishke.wav
+End
+
+Place NA_WOKZALE
+	radio\bot\Russian\_Places\na_wokzale.wav
+End
+
+Place NA_YASCHIKE
+        radio\bot\Russian\_Places\Na_yaschike.wav
+End
+
+Place NAWERHU
+	radio\bot\Russian\_Places\NAWERHU.wav
+End
+
+Place NAVERHU_V_ANGARE
+        radio\bot\Russian\_Places\Naverhu_v_angare.wav
+End
+
+Place OFIS
+	radio\bot\Russian\_Places\OFIS.wav
+End
+
+Place OFIS_BOLSHOJ
+      radio\bot\Russian\_Places\OFIS_BOLSHOJ.WAV
+End
+
+Place OFIS_MALIJ
+      radio\bot\Russian\_Places\OFIS_MALIJ.WAV
+End
+
+Place OGRAZHDENIJE
+	radio\bot\Russian\_Places\OGRAZHDENIJE.wav
+End
+
+PLACE OKNA
+        radio\bot\Russian\_Places\OKNA.wav
+END
+
+PLACE OKNO
+        radio\bot\Russian\_Places\OKNO.wav
+        radio\bot\Russian\_Places\OKNO1.wav
+END
+
+Place OSNOWANIE
+	radio\bot\Russian\_Places\OSNOWANIE.wav
+End
+
+Place PALUBA
+	radio\bot\Russian\_Places\PALUBA.wav
+End
+
+PLACE PENAL
+        radio\bot\Russian\_Places\PENAL.wav
+        radio\bot\Russian\_Places\PENAL1.wav
+End
+
+Place PERED_ANGAROM
+        radio\bot\Russian\_Places\Pered_angarom.wav
+End
+
+Place PERED_DOMOM
+	radio\bot\Russian\_Places\pered_domom.wav
+End
+
+Place PEREDNIJ
+	radio\bot\Russian\_Places\PEREDNIJ.wav
+End
+
+PLACE PIRAMIDA
+	radio\bot\Russian\_Places\PIRAMIDA.wav
+End
+
+Place PRIEMNAJA
+	radio\bot\Russian\_Places\PRIEMNAJA.wav
+End
+
+Place SAMOLET
+	radio\bot\Russian\_Places\SAMOLET.wav
+End
+
+Place SBOKU
+	radio\bot\Russian\_Places\SBOKU.wav
+End
+
+PLACE NA_PIRAMIDE
+	radio\bot\Russian\_Places\NA_PIRAMIDE.wav
+End
+
+Place U_PIRAMIDI
+	radio\bot\Russian\_Places\U_PIRAMIDI.wav
+End
+
+Place WNIZU_PIRAMIDI
+	radio\bot\Russian\_Places\WNIZU_PIRAMIDI.wav
+End
+
+Place WWERHU_PIRAMIDI
+	radio\bot\Russian\_Places\WWERHU_PIRAMIDI.wav
+End
+
+PLACE POD_ESTAKADOJ
+	radio\bot\Russian\_Places\POD_ESTAKADOJ.wav
+End
+
+Place POD_KOSOJ
+	radio\bot\Russian\_Places\pod_kosoj.wav
+End
+
+Place POD_MOSTOM
+        radio\bot\Russian\_Places\Pod_mostom.wav
+End
+
+PLACE POD_WAGONOM
+	radio\bot\Russian\_Places\pod_wagonom.wav
+End
+
+PLACE PODWAL
+        radio\bot\Russian\_Places\PODWAL.wav
+END
+
+Place PODZEMKA
+	radio\bot\Russian\_Places\PODZEMKA.wav
+End
+
+PLACE PROBEG
+        radio\bot\Russian\_Places\PROBEG.wav
+        radio\bot\Russian\_Places\PROBEG1.wav
+End
+
+PLACE PROHOD
+        radio\bot\Russian\_Places\PROHOD.wav
+END
+
+Place PROLET
+	radio\bot\Russian\_Places\PROLET.wav
+End
+
+Place SHAHTA
+	radio\bot\Russian\_Places\SHAHTA.wav
+End
+
+Place SNARUZHI
+        radio\bot\Russian\_Places\SNARUZHI.WAV
+End
+
+Place SPALNJA
+	radio\bot\Russian\_Places\SPALNJA.wav
+End
+
+Place STENA
+	radio\bot\Russian\_Places\STENA.wav
+End
+
+Place BackRoom
+	radio\bot\Russian\_Places\KOMNATA_ZADNAJA.wav
+End
+
+Place SideRoom
+	radio\bot\Russian\_Places\KOMNATA_BOKOWAJA.wav
+End
+
+PLACE STOLBI
+        radio\bot\Russian\_Places\STOLBI.wav
+        radio\bot\Russian\_Places\STOLBI1.wav
+END
+
+PLACE TANK
+        radio\bot\Russian\_Places\TANK.wav
+END
+
+PLACE TEMNIJ
+        radio\bot\Russian\_Places\TEMNIJ.wav
+END
+
+PLACE TRUBA
+        radio\bot\Russian\_Places\TRUBA.wav
+        radio\bot\Russian\_Places\TRUBA1.wav
+END
+
+PLACE TRUBI
+        radio\bot\Russian\_Places\TRUBI.wav
+END
+
+Place U_BOKOWOJ_DWERI
+	radio\bot\Russian\_Places\U_bokowoj_dweri.wav
+End
+
+Place U_JASHIKA
+	radio\bot\Russian\_Places\u_jashika.wav
+End
+
+Place U_KOLODTSA
+	radio\bot\Russian\_Places\U_kolodtsa.wav
+End
+
+Place U_KONT
+	radio\bot\Russian\_Places\u_konteinera.wav
+End
+
+Place U_KONTEINERA
+	radio\bot\Russian\_Places\u_konteinera.wav
+End
+
+Place U_LESTNITSI
+	radio\bot\Russian\_Places\u_lestnitsi.wav
+End
+
+Place U_Nizhnih_zalozhej
+	radio\bot\Russian\_Places\U_Nizhnih_zalozhej.wav
+End
+
+Place U_Werhnih_zalozhej
+	radio\bot\Russian\_Places\U_Werhnih_zalozhej.wav
+End
+
+Place U_OBLOMKA
+	radio\bot\Russian\_Places\u_oblomka.wav
+End
+
+Place U_POMOJKI
+	radio\bot\Russian\_Places\u_pomojki.wav
+End
+
+Place U_RESHETKI
+	radio\bot\Russian\_Places\U_reshetki.wav
+End
+
+Place U_SETKI
+	radio\bot\Russian\_Places\U_Setki.wav
+End
+
+Place U_SPUSKA
+        radio\bot\Russian\_Places\U_spuska.wav
+End
+
+PLACE U_WODI
+        radio\bot\Russian\_Places\U_WODI.wav
+End
+
+Place U_ZADNEGO_WHODA
+	  radio\bot\Russian\_Places\U_zadnego_whoda.wav
+End
+
+Place U_ZALOZHNIKOV
+        radio\bot\Russian\_Places\U_zalozhnikov.wav
+End
+
+PLACE UGOL
+        radio\bot\Russian\_Places\UGOL.wav
+END
+
+PLACE UZKIJ
+        radio\bot\Russian\_Places\UZKIJ.wav
+END
+
+Place V_NYCHKE
+	  radio\bot\Russian\_Places\V_nychke.wav
+End
+
+Place V_sortire
+        radio\bot\Russian\_Places\V_sortire.wav
+End
+
+Place V_trube
+        radio\bot\Russian\_Places\V_trube.wav
+End
+
+Place V_uglu
+        radio\bot\Russian\_Places\V_uglu.wav
+End
+
+Place Vnizu_v_angare
+        radio\bot\Russian\_Places\Vnizu_v_angare.wav
+End
+
+Place Vo_dvore
+        radio\bot\Russian\_Places\Vo_dvore.wav
+End
+
+Place W_BUDKE
+	  radio\bot\Russian\_Places\w_budke.wav
+End
+
+PLACE W_CENTRE
+        radio\bot\Russian\_Places\W_CENTRE.wav
+        radio\bot\Russian\_Places\W_CENTRE1.wav
+        radio\bot\Russian\_Places\W_CENTRE2.wav
+        radio\bot\Russian\_Places\W_CENTRE3.wav
+END
+
+Place W_DALNEM
+	  radio\bot\Russian\_Places\w_dalnem.wav
+End
+
+Place W_DLINNOM
+	  radio\bot\Russian\_Places\w_dlinnom.wav
+End
+
+PLACE W_DOME
+        radio\bot\Russian\_Places\W_DOME.WAV
+END
+
+Place w_duple
+	  radio\bot\Russian\_Places\w_duple.wav
+End
+
+PLACE W_GARAZHE
+        radio\bot\Russian\_Places\W_GARAZHE.WAV
+        radio\bot\Russian\_Places\W_GARAZHE1.WAV
+END
+
+Place W_JAME
+	  radio\bot\Russian\_Places\w_jame.wav
+End
+
+Place W_KANALKE
+	  radio\bot\Russian\_Places\W_Kanalke.wav
+End
+
+Place W_koridorah_u_kontrow
+        radio\bot\Russian\_Places\w_koridorah_u_kontrow.wav
+End
+
+Place W_koridorah_u_terrow
+        radio\bot\Russian\_Places\w_koridorah_u_terrow.wav
+End
+
+Place w_kosoj
+	radio\bot\Russian\_Places\w_kosoj.wav
+End
+
+Place W_Kritom_depo
+	radio\bot\Russian\_Places\w_kritom_depo.wav
+End
+
+PLACE W_MESHKE
+	radio\bot\Russian\_Places\w_MESHKE.wav
+End
+
+Place w_musorke
+	radio\bot\Russian\_Places\w_musorke.wav
+End
+
+Place w_nichke
+	radio\bot\Russian\_Places\w_nichke.wav
+End
+
+PLACE W_NISHE
+	radio\bot\Russian\_Places\w_NISHE.wav
+	radio\bot\Russian\_Places\w_NISHE1.wav
+End
+
+Place W_OBHODNOM
+        radio\bot\Russian\_Places\w_obhodnom.wav
+End
+
+Place W_OKNE
+        radio\bot\Russian\_Places\W_Okne.wav
+End
+
+Place W_Okne_Nad_Dwerju
+	radio\bot\Russian\_Places\W_okne_Nad_Dwerju.wav
+End
+
+Place W_Okne_Nad_Jashikami
+	radio\bot\Russian\_Places\W_Okne_nad_jashikami.wav
+End
+
+Place W_Okne_Nad_lesenkoj
+	radio\bot\Russian\_Places\W_Okne_nad_lesenkoj.wav
+End
+
+Place W_Otkritom_depo
+	radio\bot\Russian\_Places\W_Otkritom_depo.wav
+End
+
+Place w_podjeme
+	radio\bot\Russian\_Places\w_podjeme.wav
+End
+
+Place w_podjezde
+	radio\bot\Russian\_Places\w_podjezde.wav
+End
+
+PLACE W_PODWALE
+	radio\bot\Russian\_Places\W_PODWALE.wav
+	radio\bot\Russian\_Places\W_PODWALE1.wav
+End
+
+PLACE W_PROHODE
+	radio\bot\Russian\_Places\W_PROHODE.wav
+End
+
+PLACE W_SARAE
+	radio\bot\Russian\_Places\W_SARAE.wav
+	radio\bot\Russian\_Places\W_SARAE1.wav
+End
+
+Place W_SORTIRE
+	radio\bot\Russian\_Places\W_sortire.wav
+End
+
+Place W_Temnih_Tupikah
+	radio\bot\Russian\_Places\W_temnih_tupikah.wav
+End
+
+Place W_TONNELE
+	radio\bot\Russian\_Places\W_tonnele.wav
+	radio\bot\Russian\_Places\W_tonnele1.wav
+	radio\bot\Russian\_Places\W_tonnele2.wav
+End
+
+Place W_TORTSE
+	radio\bot\Russian\_Places\w_tortse.wav
+End
+
+Place W_TUALETE
+	radio\bot\Russian\_Places\w_tualete.wav
+	radio\bot\Russian\_Places\w_sortire.wav
+End
+
+Place W_TUPIKE
+        radio\bot\Russian\_Places\w_tupike.wav
+End
+
+Place w_uglu
+	radio\bot\Russian\_Places\w_uglu.wav
+End
+
+Place W_WODE
+        radio\bot\Russian\_Places\w_wode.wav
+        radio\bot\Russian\_Places\w_wode1.wav
+End
+
+Place w_zagashnike
+	radio\bot\Russian\_Places\w_zagashnike.wav
+End
+
+Place w_zhopnike
+	radio\bot\Russian\_Places\w_zhopnike.wav
+End
+
+Place W_ZIGZAGE
+	radio\bot\Russian\_Places\w_zigzage.wav
+End
+
+Place WANNAJA
+	radio\bot\Russian\_Places\WANNAJA.wav
+End
+
+Place WHOD
+	radio\bot\Russian\_Places\WHOD.wav
+End
+
+Place WNIZU
+	radio\bot\Russian\_Places\WNIZU.wav
+End
+
+Place WNUTRI
+        radio\bot\Russian\_Places\WNUTRI.WAV
+End
+
+Place WO_DWORE
+	radio\bot\Russian\_Places\Wo_Dwore.wav
+End
+
+Place WO_DWORIKE
+	radio\bot\Russian\_Places\wo_dworike.wav
+End
+
+Place WODA_U_KONTROW
+        radio\bot\Russian\_Places\WODA_U_KONTROW.wav
+End
+
+Place WODA_U_TERROW
+        radio\bot\Russian\_Places\WODA_U_TERROW.wav
+End
+
+Place WOROTA
+	radio\bot\Russian\_Places\WOROTA.wav
+End
+
+Place ZA_ANGAROM
+        radio\bot\Russian\_Places\Za_angarom.wav
+End
+
+Place ZA_DOMOM
+	radio\bot\Russian\_Places\Za_domom.wav
+End
+
+Place ZA_JASHIKOM
+	radio\bot\Russian\_Places\za_jashikom.wav
+End
+
+Place za_kont
+	radio\bot\Russian\_Places\za_konteinerom.wav
+End
+
+Place ZA_KONTEINEROM
+	radio\bot\Russian\_Places\za_konteinerom.wav
+End
+
+Place ZA_SKALOJ
+        radio\bot\Russian\_Places\za_skaloj.wav
+End
+
+Place ZA_WAGONAMI
+        radio\bot\Russian\_Places\za_wagonami.wav
+End
+
+Place ZA_WAGONOM
+        radio\bot\Russian\_Places\za_wagonom.wav
+End
+
+Place ZAL_BOLSHOJ
+	  radio\bot\Russian\_Places\ZAL_BOLSHOJ.wav
+End
+
+Place ZAL_BOKOWOJ
+	radio\bot\Russian\_Places\ZAL_BOKOWOJ.wav
+End
+
+Place ZAL_PEREDNIJ
+      radio\bot\Russian\_Places\ZAL_PEREDNIJ.WAV
+End
+
+Place ZAL_ZADNIJ
+      radio\bot\Russian\_Places\ZAL_ZADNIJ.WAV
+End
+
+Place ZAL_OSNOWNOJ
+      radio\bot\Russian\_Places\ZAL_OSNOWNOJ.WAV
+End
+
+Place ZAL_KONFERENTS
+      radio\bot\Russian\_Places\W_KONFERENTS_ZALE.WAV
+End
+
+Place ZELENKA
+        radio\bot\Russian\_Places\ZELENKA.wav
 End
 
 
 
+
+-------------------- АВТОМОБИЛИ -----------------------
+
+Place U_BENZOWOZA
+	radio\bot\Russian\_Places\U_Benzowoza.wav
+End
+
+PLACE NA_GRUZOWIKE
+        radio\bot\Russian\_Places\NA_GRUZOVIKE.WAV
+END
+
+Place U_GRUZOWIKA
+	radio\bot\Russian\_Places\U_Gruzowika.wav
+End
+
+Place U_UAZIKA
+	radio\bot\Russian\_Places\u_uazika.wav
+End
+
+Place U_MASHINI
+	radio\bot\Russian\_Places\u_MASHINI.wav
+End
+
+PLACE POD_MASHINOJ
+	radio\bot\Russian\_Places\POD_MASHINOJ.wav
+End
+
 //-----------------------------------------------------------------------------------------
 //
-// Chatter phrases follow
+// Дальше идут фразы "переговоров" ботов
 //
 
 // one or more enemies have just been sighted for the first time
+//
+// бот впервые заметил одного или более врагов
+//
 Chatter EnemySpotted
 	Radio EVENT_RADIO_ENEMY_SPOTTED
 
 	Count 1
-		radio\bot\one_guy.wav
+		radio\bot\Russian\Spotted\spotted1.wav
+		radio\bot\Russian\Spotted\spotted11.wav
+		radio\bot\Russian\Spotted\spotted12.wav
 
 	Count 2
-		radio\bot\two_of_them.wav
+		radio\bot\Russian\Spotted\spotted2.wav
+		radio\bot\Russian\Spotted\spotted21.wav
+		radio\bot\Russian\Spotted\spotted22.wav
 
 	Count 3
-		radio\bot\three.wav
-		radio\bot\three_of_them.wav
+		radio\bot\Russian\Spotted\spotted3.wav
+		radio\bot\Russian\Spotted\spotted31.wav
+		radio\bot\Russian\Spotted\spotted33.wav
 
 	Count Many
 		// VOICE NOTE: The bot is scared here - there are a lot of enemies!
-		radio\bot\a_bunch_of_them.wav
-		radio\bot\theyre_all_over_the_place2.wav
-		radio\bot\theyre_everywhere2.wav
-		radio\bot\theres_too_many_of_them.wav
-		radio\bot\theres_too_many.wav
-		radio\bot\too_many2.wav
-		radio\bot\the_actions_hot_here.wav 
-		radio\bot\its_a_party.wav 
+		radio\bot\Russian\Spotted\more.wav
+		radio\bot\Russian\Spotted\more1.wav
+		radio\bot\Russian\Spotted\more2.wav
+		radio\bot\Russian\Spotted\more3.wav
 End
 
 // the bot has recently seen an enemy die
+// 
+// Бот видел как убили врага
+//
 Chatter EnemyDown
 	Radio EVENT_RADIO_ENEMY_DOWN
 
-	radio\bot\enemy_down.wav 
-	radio\bot\enemy_down2.wav 
+	radio\bot\Russian\Enemydown\killed.wav
+	radio\bot\Russian\Enemydown\killed1.wav
+	radio\bot\Russian\Enemydown\killed2.wav
+	radio\bot\Russian\Enemydown\killed3.wav
+	radio\bot\Russian\Enemydown\killed4.wav
+	radio\bot\Russian\Enemydown\killed5.wav
 End
 
 // the bot says this when asked to "report in" while he is fighting enemies
+//
+// Бот отвечает это, в тот момент, когда его просят отрапортоваться 
+// "report in" а он в этот момент участвует в перестрелке
+//
 Chatter InCombat
 	Radio EVENT_RADIO_ENEMY_SPOTTED
 
-	radio\bot\attacking.wav 
-	radio\bot\attacking_enemies.wav 
-	radio\bot\engaging_enemies.wav 
-	radio\bot\in_combat.wav 
-	radio\bot\in_combat2.wav 
-	radio\bot\returning_fire.wav 
+	radio\bot\Russian\attacking\attacking.wav
+	radio\bot\Russian\attacking\attacking1.wav
+	radio\bot\Russian\attacking\attacking2.wav
+	radio\bot\Russian\attacking\attacking3.wav
+
 End
 
 // the bot has been asked to "report in" and sees nothing interesting in his area
+//
+// Бот рапортует, что в той зоне, где он находится, он ничего интересного не видит
+//
 Chatter Clear
 	Radio EVENT_RADIO_SECTOR_CLEAR
 
-	radio\bot\clear.wav 
-	radio\bot\clear2.wav 
-	radio\bot\clear3.wav 
-	radio\bot\clear4.wav 
-	radio\bot\area_clear.wav 
-	radio\bot\all_clear_here.wav 
-	radio\bot\nothing_moving_over_here.wav 
-	radio\bot\all_quiet.wav 
-	radio\bot\nothing_happening_over_here.wav 
-	radio\bot\i_got_nothing.wav 
-	radio\bot\nothing.wav 
-	radio\bot\nothing_here.wav 
-	radio\bot\theres_nobody_home.wav 
+	radio\bot\Russian\Clear\clear.wav
+	radio\bot\Russian\Clear\clear1.wav
+	radio\bot\Russian\Clear\clear2.wav
+	radio\bot\Russian\Clear\clear3.wav
+	radio\bot\Russian\Clear\clear4.wav
+	radio\bot\Russian\Clear\clear5.wav
+	radio\bot\Russian\Clear\clear6.wav
+	radio\bot\Russian\Clear\clear7.wav
+	radio\bot\Russian\Clear\clear8.wav
+	radio\bot\Russian\Clear\clear9.wav
+	radio\bot\Russian\Clear\clear11.wav
+	radio\bot\Russian\Clear\clear.wav
+	radio\bot\Russian\Clear\clear1.wav
+	radio\bot\Russian\Clear\clear2.wav
+	radio\bot\Russian\Clear\clear3.wav
+	radio\bot\Russian\Clear\clear4.wav
+	radio\bot\Russian\Clear\clear5.wav
+	radio\bot\Russian\Clear\clear.wav
+	radio\bot\Russian\Clear\clear1.wav
+	radio\bot\Russian\Clear\clear2.wav
+	radio\bot\Russian\Clear\clear3.wav
+	radio\bot\Russian\Clear\clear4.wav
+	radio\bot\Russian\Clear\clear5.wav
+	radio\bot\Russian\Clear\clear6.wav
+	radio\bot\Russian\Clear\clear7.wav
+	radio\bot\Russian\Clear\clear8.wav
+	radio\bot\Russian\Clear\clear9.wav
+	radio\bot\Russian\Clear\clear12.wav
+	radio\bot\Russian\Clear\clear6.wav
+	radio\bot\Russian\Clear\clear7.wav
+	radio\bot\Russian\Clear\clear8.wav
+	radio\bot\Russian\Clear\clear9.wav
+	radio\bot\Russian\Clear\clear.wav
+	radio\bot\Russian\Clear\clear1.wav
+	radio\bot\Russian\Clear\clear2.wav
+	radio\bot\Russian\Clear\clear3.wav
+	radio\bot\Russian\Clear\clear4.wav
+	radio\bot\Russian\Clear\clear5.wav
+	radio\bot\Russian\Clear\clear6.wav
+	radio\bot\Russian\Clear\clear7.wav
+	radio\bot\Russian\Clear\clear8.wav
+	radio\bot\Russian\Clear\clear9.wav
+	radio\bot\Russian\Clear\clear13.wav
 End
 
 // the bot hasn't seen anything in a long time and is asking his teammates to report in
+//
+// Бот долго не видит ни каких ищменений и просит членов команды, сообщить, как у них дела
+//
 Chatter RequestReport
 	Radio EVENT_RADIO_REPORT_IN_TEAM
 
-	radio\bot\report_in_team.wav 
-	radio\bot\anyone_see_them.wav 
-	radio\bot\anyone_see_anything.wav 
-	radio\bot\where_are_they.wav 
-	radio\bot\where_could_they_be.wav 
+	radio\bot\Russian\Report\report.wav
+	radio\bot\Russian\Report\report1.wav
+	radio\bot\Russian\Report\report2.wav
+	radio\bot\Russian\Report\report3.wav
+	radio\bot\Russian\Report\report4.wav
+	radio\bot\Russian\Report\report5.wav
 End
 
 // the bot has killed the enemy has was fighting
+//
+// Бот убил врага
+//
 Chatter KilledMyEnemy
 	Radio EVENT_RADIO_ENEMY_DOWN
 
-	radio\bot\hes_dead.wav 
-	radio\bot\hes_down.wav 
-	radio\bot\got_him.wav 
-	radio\bot\dropped_him.wav 
-	radio\bot\killed_him.wav 
-	radio\bot\ruined_his_day.wav 
-	radio\bot\wasted_him.wav 
-	radio\bot\took_him_out.wav 
-	radio\bot\took_him_out2.wav 
-	radio\bot\took_him_down.wav 
-	radio\bot\made_him_cry.wav 
-	radio\bot\hes_broken.wav 
-	radio\bot\hes_done.wav 
+	radio\bot\Russian\Killed\killed.wav
+	radio\bot\Russian\Killed\killed1.wav
+	radio\bot\Russian\Killed\killed2.wav
+	radio\bot\Russian\Killed\killed3.wav
+	radio\bot\Russian\Killed\killed4.wav
+	radio\bot\Russian\Killed\killed5.wav
 End
 
 // the bot was chasing after his enemy and lost track of him
-// VOICE NOTE: Minor frustration/disappointment/exasperation here
+//
+// Бот гнался за врагом и потерял его из виду.
+//
+// VOICE NOTE: В голосе небольшое разочарование, досада
 Chatter LostEnemy
-	radio\bot\he_got_away.wav 
-	radio\bot\he_got_away2.wav 
-	radio\bot\i_dont_know_where_he_went.wav 
-	radio\bot\i_lost_him.wav 
+	radio\bot\Russian\Lostenemy\lost.wav
+	radio\bot\Russian\Lostenemy\lost1.wav
+	radio\bot\Russian\Lostenemy\lost2.wav
+	radio\bot\Russian\Lostenemy\lost3.wav
+	radio\bot\Russian\Lostenemy\lost4.wav
+	radio\bot\Russian\Lostenemy\lost5.wav
+	radio\bot\Russian\Lostenemy\lost6.wav
 End
 
 // the bot is telling his team that the last enemy has been killed
-// VOICE NOTE: Happy/smugness/satisfaction
+//
+// Бот сообщает всем, что убит последний враг и они победили
+//
+// VOICE NOTE: Голос радостный, довольный
 Chatter NoEnemiesLeft
-	radio\bot\that_was_it.wav
-	radio\bot\that_was_the_last_one.wav
-	radio\bot\that_was_the_last_guy.wav
+	radio\bot\Russian\win\win.wav
+	radio\bot\Russian\win\win1.wav
+	radio\bot\Russian\win\win2.wav
+	radio\bot\Russian\win\win3.wav
+	radio\bot\Russian\win\win4.wav
+	radio\bot\Russian\win\win5.wav
+	radio\bot\Russian\win\win6.wav
+	radio\bot\Russian\win\win7.wav
+	radio\bot\Russian\win\win8.wav
+	radio\bot\Russian\win\win9.wav
+	radio\bot\Russian\win\win10.wav
+	radio\bot\Russian\win\win11.wav
 End
 
 // the bot is telling his team there is one enemy left
-// VOICE NOTE: Anticipation
+//
+// Бот сообщает, что противник отался один 
+//
+// VOICE NOTE:  В голосе - ожидание
 Chatter OneEnemyLeft
-	radio\bot\one_guy_left.wav
-	radio\bot\theres_one_left.wav
+	radio\bot\Russian\Enemyone\one.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
+	radio\bot\Russian\Enemyone\one.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
+	radio\bot\Russian\Enemyone\one.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
+	radio\bot\Russian\Enemyone\one.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
+	radio\bot\Russian\Enemyone\one4.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
+	radio\bot\Russian\SomePuks\puk.wav
+	radio\bot\Russian\Enemyone\one.wav
+	radio\bot\Russian\Enemyone\one1.wav
+	radio\bot\Russian\Enemyone\one2.wav
+	radio\bot\Russian\Enemyone\one3.wav
 End
 
 // the bot is telling his team there are two enemies left
+//
+// Бот сообщает, что противников осталось двое
+//
 Chatter TwoEnemiesLeft
-	radio\bot\two_enemies_left.wav 
-	radio\bot\two_to_go.wav 
+	radio\bot\Russian\EnemyTwo\two.wav
+	radio\bot\Russian\EnemyTwo\two1.wav
+	radio\bot\Russian\EnemyTwo\two2.wav
+	radio\bot\Russian\EnemyTwo\two3.wav
+	radio\bot\Russian\EnemyTwo\two4.wav
+	radio\bot\Russian\EnemyTwo\two5.wav
+	radio\bot\Russian\EnemyTwo\two.wav
+	radio\bot\Russian\EnemyTwo\two1.wav
+	radio\bot\Russian\EnemyTwo\two2.wav
+	radio\bot\Russian\EnemyTwo\two3.wav
+	radio\bot\Russian\EnemyTwo\two4.wav
+	radio\bot\Russian\EnemyTwo\two5.wav
+	radio\bot\Russian\EnemyTwo\two.wav
+	radio\bot\Russian\EnemyTwo\two1.wav
+	radio\bot\Russian\EnemyTwo\two2.wav
+	radio\bot\Russian\EnemyTwo\two3.wav
+	radio\bot\Russian\EnemyTwo\two4.wav
+	radio\bot\Russian\EnemyTwo\two5.wav
+	radio\bot\Russian\EnemyTwo\two.wav
+	radio\bot\Russian\SomePuks\puk1.wav
+	radio\bot\Russian\EnemyTwo\two1.wav
+	radio\bot\Russian\EnemyTwo\two2.wav
+	radio\bot\Russian\EnemyTwo\two3.wav
+	radio\bot\Russian\EnemyTwo\two4.wav
+	radio\bot\Russian\EnemyTwo\two5.wav
+	radio\bot\Russian\EnemyTwo\two1.wav
+	radio\bot\Russian\EnemyTwo\two2.wav
+	radio\bot\Russian\EnemyTwo\two3.wav
+	radio\bot\Russian\EnemyTwo\two4.wav
+	radio\bot\Russian\EnemyTwo\two5.wav
 End
 
 // the bot is telling his team there are three enemies left
+//
+// Бот сообщает, что противников осталось трое
+//
 Chatter ThreeEnemiesLeft
-	radio\bot\three_left.wav 
-	radio\bot\three_to_go.wav 
-	radio\bot\three_to_go2.wav 
+	radio\bot\Russian\EnemyThree\three.wav
+	radio\bot\Russian\EnemyThree\three1.wav
+	radio\bot\Russian\EnemyThree\three2.wav
+	radio\bot\Russian\EnemyThree\three3.wav
+	radio\bot\Russian\EnemyThree\three4.wav
+	radio\bot\Russian\EnemyThree\three.wav
+	radio\bot\Russian\EnemyThree\three1.wav
+	radio\bot\Russian\EnemyThree\three2.wav
+	radio\bot\Russian\EnemyThree\three3.wav
+	radio\bot\Russian\EnemyThree\three4.wav
+	radio\bot\Russian\SomePuks\puknetuda.wav
+	radio\bot\Russian\EnemyThree\three.wav
+	radio\bot\Russian\EnemyThree\three1.wav
+	radio\bot\Russian\EnemyThree\three2.wav
+	radio\bot\Russian\EnemyThree\three3.wav
+	radio\bot\Russian\EnemyThree\three4.wav
+	radio\bot\Russian\EnemyThree\three.wav
+	radio\bot\Russian\EnemyThree\three1.wav
+	radio\bot\Russian\EnemyThree\three2.wav
+	radio\bot\Russian\EnemyThree\three3.wav
+	radio\bot\Russian\EnemyThree\three4.wav
 End
 
 // the bot is in trouble and is asking for help
-// VOICE NOTE: he's trying to keep it together, but he is mortally frightened
+//
+// У бота большие проблемы и ему срочно требуется помощь!
+//
+// VOICE NOTE: Он пытается удержаться, но сильно напуган :)
 Chatter Help
 	Radio EVENT_RADIO_TAKING_FIRE
 
-	radio\bot\taking_fire_need_assistance2.wav 
-	radio\bot\i_could_use_some_help.wav 
-	radio\bot\i_could_use_some_help_over_here.wav 
-	radio\bot\help.wav 
-	radio\bot\need_help.wav 
-	radio\bot\need_help2.wav 
-	radio\bot\im_in_trouble.wav 
+	radio\bot\Russian\need_assistance\need.wav
+	radio\bot\Russian\need_assistance\need1.wav
+	radio\bot\Russian\SomePuks\puk2.wav
+	radio\bot\Russian\need_assistance\need2.wav
+	radio\bot\Russian\need_assistance\need3.wav
+	radio\bot\Russian\need_assistance\need4.wav
+	radio\bot\Russian\need_assistance\need5.wav
+	radio\bot\Russian\need_assistance\need6.wav
+	radio\bot\Russian\need_assistance\need7.wav
+	radio\bot\Russian\need_assistance\need8.wav
+	radio\bot\Russian\need_assistance\need9.wav
+	radio\bot\Russian\need_assistance\need10.wav
+	radio\bot\Russian\need_assistance\need11.wav
+	radio\bot\Russian\need_assistance\need12.wav
+	radio\bot\Russian\need_assistance\need13.wav
+	radio\bot\Russian\need_assistance\need14.wav
 End
 
 // the bot is agreeing with the last radio command
+//
+// Бот соглашается с последней радиокомандой
+//
 Chatter Affirmative
 	Radio EVENT_RADIO_AFFIRMATIVE
 
 	Important
 
-	radio\bot\affirmative.wav 
-	radio\bot\roger.wav 
-	radio\bot\roger_that.wav 
+	radio\bot\Russian\ok\ok.wav 
+	radio\bot\Russian\ok\ok1.wav 
+	radio\bot\Russian\ok\ok2.wav 
+	radio\bot\Russian\ok\ok3.wav 
+	radio\bot\Russian\ok\ok4.wav 
+	radio\bot\Russian\ok\ok5.wav 
+	radio\bot\Russian\ok\ok6.wav 
 End
 
 // the bot has declined the last radio command
@@ -639,12 +1728,16 @@ Chatter Negative
 
 	Important
 
-	radio\bot\ahh_negative.wav 
-	radio\bot\negative.wav 
-	radio\bot\negative2.wav 
-	radio\bot\no.wav
-	radio\bot\nnno_sir.wav
-	radio\bot\no_sir.wav
+	radio\bot\Russian\negative\net.wav
+	radio\bot\Russian\negative\net1.wav
+ 	radio\bot\Russian\negative\net3.wav
+	radio\bot\Russian\negative\net4.wav
+	radio\bot\Russian\negative\net5.wav
+	radio\bot\Russian\negative\net6.wav
+	radio\bot\Russian\negative\net7.wav
+	radio\bot\Russian\negative\net8.wav
+	radio\bot\Russian\negative\net9.wav
+	radio\bot\Russian\negative\net10.wav
 End
 
 //-----------------------------------------------------------------------------------------
@@ -658,12 +1751,11 @@ Chatter BombsiteClear
 
 	Important
 
-	radio\bot\clear.wav 
-	radio\bot\clear2.wav 
-	radio\bot\clear3.wav 
-	radio\bot\area_clear.wav 
-	radio\bot\nothing.wav 
-	radio\bot\nothing_here.wav 
+	radio\bot\Russian\Clear\clear1.wav
+	radio\bot\Russian\Clear\clear4.wav
+	radio\bot\Russian\Clear\nobomb.wav
+	radio\bot\Russian\Clear\nobomb1.wav
+	radio\bot\Russian\Clear\nobomb2.wav
 End
 
 // the (CT) bot has begun defusing the bomb
@@ -672,17 +1764,18 @@ Chatter DefusingBomb
 
 	Important
 
-	radio\bot\defusing.wav 
-	radio\bot\defusing_bomb.wav 
-	radio\bot\defusing_bomb_now.wav
+	radio\bot\Russian\Defusing\defusing.wav
+	radio\bot\Russian\Defusing\defusing1.wav
+	radio\bot\Russian\Defusing\defusing2.wav
+	radio\bot\Russian\Defusing\defusing3.wav
+	radio\bot\Russian\Defusing\defusing4.wav
 End
 
 // the (CT) bot is announcing his intention to guard the dropped bomb
 Chatter GoingToGuardLooseBomb
-	radio\bot\im_going_to_guard_the_bomb.wav
-	radio\bot\im_going_to_guard_the_bomb2.wav
-	radio\bot\im_going_to_keep_an_eye_on_the_bomb.wav
-	radio\bot\im_going_to_watch_the_bomb.wav
+	radio\bot\Russian\guardbomb1\buduguard.wav
+	radio\bot\Russian\guardbomb1\buduguard1.wav
+	radio\bot\Russian\guardbomb1\buduguard2.wav
 End
 
 // the (CT) bot it telling his team that he is guarding the dropped bomb
@@ -691,11 +1784,11 @@ Chatter GuardingLooseBomb
 
 	Important
 
-	radio\bot\guarding_the_dropped_bomb.wav
-	radio\bot\ive_got_the_bomb.wav
-	radio\bot\ive_got_the_bomb_here.wav
-	radio\bot\the_bombs_here.wav
-	radio\bot\the_bombs_here_on_the_ground.wav
+	radio\bot\Russian\guardbomb\guardbomb.wav
+	radio\bot\Russian\guardbomb\guardbomb1.wav
+	radio\bot\Russian\guardbomb\guardbomb2.wav
+	radio\bot\Russian\guardbomb\guardbomb3.wav
+	radio\bot\Russian\guardbomb\guardbomb4.wav
 End
 
 // the (Terrorist) bot is planting the bomb
@@ -706,17 +1799,28 @@ Chatter PlantingBomb
 
 	// for maps with no places, and also to be occasionally vague about where we're planting
 	Place ANY
-		radio\bot\planting_the_bomb.wav
-		radio\bot\planting.wav
+		radio\bot\Russian\planting\planting.wav
+		radio\bot\Russian\planting\planting1.wav
+		radio\bot\Russian\planting\planting2.wav
+		radio\bot\Russian\planting\planting3.wav
+		radio\bot\Russian\planting\planting4.wav
+		radio\bot\Russian\planting\planting5.wav
+		radio\bot\Russian\planting\planting6.wav
+		radio\bot\Russian\planting\planting7.wav
+		radio\bot\Russian\planting\planting8.wav
 
 	Place BombsiteA
-		radio\bot\planting_at_a.wav
+		radio\bot\Russian\planting\plantingA.wav
+		radio\bot\Russian\planting\plantingA1.wav
+		radio\bot\Russian\planting\plantingA2.wav
 
 	Place BombsiteB
-		radio\bot\planting_at_b.wav
+		radio\bot\Russian\planting\plantingB.wav
+		radio\bot\Russian\planting\plantingB1.wav
+		radio\bot\Russian\planting\plantingB2.wav
 
 	Place BombsiteC
-		radio\bot\planting_at_c.wav
+		radio\bot\Russian\planting\plantingC.wav
 End
 
 // the (Terrorist) bot is announcing his intention to plant the bomb at a specific bomb site
@@ -727,22 +1831,27 @@ Chatter GoingToPlantBomb
 
 	// for maps with no places, and to be vague occasionally
 	Place ANY
-		radio\bot\im_gonna_go_plant.wav
-		radio\bot\im_gonna_go_plant_the_bomb.wav
+		radio\bot\Russian\goplant\goplant.wav
+		radio\bot\Russian\goplant\goplant1.wav
+		radio\bot\Russian\goplant\goplant2.wav
+		radio\bot\Russian\goplant\goplant3.wav
+		radio\bot\Russian\goplant\goplant4.wav
+		radio\bot\Russian\goplant\goplant5.wav
+		radio\bot\Russian\goplant\goplant6.wav
+		radio\bot\Russian\goplant\goplant7.wav
+		radio\bot\Russian\goplant\goplant8.wav
+		radio\bot\Russian\goplant\goplant9.wav
 
 	Place BombsiteA
-		radio\bot\im_gonna_plant_the_bomb_at_a.wav
-		radio\bot\taking_the_bomb_to_a.wav
+		radio\bot\Russian\goplant\goplantA.wav
+		radio\bot\Russian\goplant\goplantA1.wav
 
 	Place BombsiteB
-		radio\bot\going_to_plant_the_bomb_at_b.wav
-		radio\bot\im_gonna_plant_the_bomb_at_b.wav
-		radio\bot\taking_the_bomb_to_b.wav
+		radio\bot\Russian\goplant\goplantB.wav
+		radio\bot\Russian\goplant\goplantB1.wav
 
 	Place BombsiteC
-		radio\bot\im_gonna_plant_the_bomb_at_c.wav
-		radio\bot\im_gonna_plant_the_bomb_at_c2.wav
-		radio\bot\taking_the_bomb_to_c.wav
+		radio\bot\Russian\goplant\goplantC.wav
 End
 
 // the (CT) bot has spotted the bomb carrier
@@ -752,23 +1861,31 @@ Chatter SpottedBomber
 
 	Important
 
-	radio\bot\i_see_the_bomber.wav
-	radio\bot\theres_the_bomber.wav
-	radio\bot\hes_got_the_bomb.wav
-	radio\bot\hes_got_the_bomb2.wav
-	radio\bot\hes_got_the_package.wav
-	radio\bot\spotted_the_delivery_boy.wav
+	radio\bot\Russian\seebomber\seebomber.wav
+	radio\bot\Russian\seebomber\seebomber1.wav
+	radio\bot\Russian\seebomber\seebomber2.wav
+	radio\bot\Russian\seebomber\seebomber3.wav
+	radio\bot\Russian\seebomber\seebomber4.wav
+	radio\bot\Russian\seebomber\seebomber5.wav
+	radio\bot\Russian\seebomber\seebomber6.wav
+	radio\bot\Russian\seebomber\seebomber7.wav
+	radio\bot\Russian\seebomber\seebomber8.wav
+	radio\bot\Russian\seebomber\seebomber9.wav
+	radio\bot\Russian\seebomber\seebomber10.wav
+	radio\bot\Russian\seebomber\seebomber11.wav
+	radio\bot\Russian\seebomber\seebomber12.wav
+	radio\bot\Russian\seebomber\seebomber13.wav
 End
 
 // the bot has spotted a dropped bomb on the ground
 Chatter SpottedLooseBomb
 	Important
 
-	radio\bot\bombs_on_the_ground.wav
-	radio\bot\bombs_on_the_ground_here.wav
-	radio\bot\the_bomb_is_down.wav
-	radio\bot\the_bomb_is_on_the_ground.wav
-	radio\bot\they_dropped_the_bomb.wav
+	radio\bot\Russian\seebomb\seebomb.wav
+	radio\bot\Russian\seebomb\seebomb1.wav
+	radio\bot\Russian\seebomb\seebomb2.wav
+	radio\bot\Russian\seebomb\seebomb3.wav
+	radio\bot\Russian\seebomb\seebomb4.wav
 End
 
 // the (CT) bot heard a Terrorist pick up the dropped bomb
@@ -776,10 +1893,12 @@ End
 Chatter TheyPickedUpTheBomb
 	Important
 
-	radio\bot\they_took_the_bomb.wav
-	radio\bot\they_took_the_bomb2.wav
-	radio\bot\they_got_the_bomb.wav
-	radio\bot\they_picked_up_the_bomb.wav
+	radio\bot\Russian\pickbomb\pickbomb.wav
+	radio\bot\Russian\pickbomb\pickbomb1.wav
+	radio\bot\Russian\pickbomb\pickbomb2.wav
+	radio\bot\Russian\pickbomb\pickbomb3.wav
+	radio\bot\Russian\pickbomb\pickbomb4.wav
+	radio\bot\Russian\pickbomb\pickbomb5.wav
 End
 
 // the (CT) bot has found the location of the ticking bomb
@@ -790,33 +1909,37 @@ Chatter PlantedBombPlace
 
 	// for maps with no places
 	Place UNDEFINED
-		radio\bot\theres_the_bomb.wav
-		radio\bot\theres_the_bomb2.wav
+		radio\bot\Russian\bombhere\bombhere.wav
+		radio\bot\Russian\bombhere\bombhere1.wav
+		radio\bot\Russian\bombhere\bombhere2.wav
+		radio\bot\Russian\bombhere\bombhere3.wav
+		radio\bot\Russian\bombhere\bombhere4.wav
+		radio\bot\Russian\bombhere\bombhere5.wav
 
 	Place BombsiteA
-		radio\bot\the_bombs_at_a.wav
-		//radio\bot\they_planted_at_a.wav		(can't use these, because T's respond with this as well)
-		radio\bot\the_bombs_ticking_at_a.wav
+		radio\bot\Russian\bombhere\bombhereA.wav
+		radio\bot\Russian\bombhere\bombhereA1.wav
+		radio\bot\Russian\bombhere\bombhereA2.wav
 
 	Place BombsiteB
-		radio\bot\the_bombs_at_b.wav
-		//radio\bot\they_planted_at_b.wav
-		radio\bot\the_bombs_ticking_at_b.wav
+		radio\bot\Russian\bombhere\bombhereB.wav
+		radio\bot\Russian\bombhere\bombhereB1.wav
+		radio\bot\Russian\bombhere\bombhereB2.wav
 
 	Place BombsiteC
-		radio\bot\the_bombs_at_c.wav
-		//radio\bot\they_planted_at_c.wav
-		radio\bot\the_bombs_ticking_at_c.wav
+		radio\bot\Russian\bombhere\bombhereC.wav
 End
 
 // the bot is asking his teammates where the bomb is
 Chatter WhereIsTheBomb
 	Important
 
-	radio\bot\wheres_the_bomb.wav
-	radio\bot\wheres_the_bomb2.wav
-	radio\bot\wheres_the_bomb3.wav
-	radio\bot\where_is_it.wav
+	radio\bot\Russian\gdebomba\gdebomba.wav
+	radio\bot\Russian\gdebomba\gdebomba1.wav
+	radio\bot\Russian\gdebomba\gdebomba2.wav
+	radio\bot\Russian\gdebomba\gdebomba3.wav
+	radio\bot\Russian\gdebomba\gdebomba4.wav
+	radio\bot\Russian\gdebomba\gdebomba5.wav
 End
 
 // the (CT) bot is announcing his intention to guard a bombsite
@@ -825,19 +1948,55 @@ Chatter GoingToDefendBombsite
 
 	// for maps with no places, or we're just being vague
 	Place ANY
-		radio\bot\im_going_to_camp.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\Somepuks\pukbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
+		radio\bot\Russian\guardbplace\guardbplace.wav
+		radio\bot\Russian\guardbplace\guardbplace1.wav
+		radio\bot\Russian\guardbplace\guardbplace2.wav
+		radio\bot\Russian\guardbplace\guardbplace3.wav
 
 	Place BombsiteA
-		radio\bot\im_going_to_guard_bombsite_a.wav
-		radio\bot\im_going_to_camp_a.wav
+		radio\bot\Russian\guardbplace\guardbplaceA.wav
+		radio\bot\Russian\guardbplace\guardbplaceA1.wav
 
 	Place BombsiteB
-		radio\bot\im_going_to_guard_bombsite_b.wav
-		radio\bot\im_going_to_camp_b.wav
+		radio\bot\Russian\guardbplace\guardbplaceB.wav
+		radio\bot\Russian\guardbplace\guardbplaceB1.wav
+		radio\bot\Russian\guardbplace\guardbplaceB2.wav
 
 	Place BombsiteC
-		radio\bot\im_going_to_guard_bombsite_c.wav
-		radio\bot\im_going_to_camp_c.wav
+		radio\bot\Russian\guardbplace\guardbplaceC.wav
 End
 
 // the (CT) bot is announcing that he is currently guarding a bombsite
@@ -846,26 +2005,24 @@ Chatter DefendingBombsite
 
 	// for maps with no places
 	Place UNDEFINED
-		radio\bot\bombsite.wav
-		radio\bot\bombsite2.wav
+		radio\bot\Russian\campbplace\campbplace.wav
+		radio\bot\Russian\campbplace\campbplace1.wav
+		radio\bot\Russian\campbplace\campbplace2.wav
+		radio\bot\Russian\campbplace\campbplace3.wav
+		radio\bot\Russian\campbplace\campbplace4.wav
 
 	Place BombsiteA
-		radio\bot\i_got_a_covered.wav
-		radio\bot\guarding_a.wav
-		radio\bot\im_camping_a.wav
-		radio\bot\heading_to_a.wav
+		radio\bot\Russian\campbplace\campbplaceA.wav
+		radio\bot\Russian\campbplace\campbplaceA1.wav
+		radio\bot\Russian\campbplace\campbplaceA2.wav
 
 	Place BombsiteB
-		radio\bot\i_got_b_covered.wav
-		radio\bot\guarding_b.wav
-		radio\bot\im_camping_b.wav
-		radio\bot\heading_to_b.wav
+		radio\bot\Russian\campbplace\campbplaceB.wav
+		radio\bot\Russian\campbplace\campbplaceB1.wav
+		radio\bot\Russian\campbplace\campbplaceB2.wav
 
 	Place BombsiteC
-		radio\bot\i_got_c_covered.wav
-		radio\bot\guarding_c.wav
-		radio\bot\im_camping_c.wav
-		radio\bot\heading_to_c.wav
+		radio\bot\Russian\campbplace\campbplaceC.wav
 End
 
 // the (CT) bot is announcing that the bombsite is secure and ready for someone to defuse the bomb
@@ -874,39 +2031,47 @@ Chatter BombsiteSecure
 
 	Important
 
-	radio\bot\bombsite_secure.wav
-	radio\bot\bombsite_secured.wav
-	radio\bot\bombsite_under_control.wav
-	radio\bot\weve_got_the_situation.wav
+	radio\bot\Russian\cleardefuseit\defuseit.wav
+	radio\bot\Russian\cleardefuseit\defuseit1.wav
+	radio\bot\Russian\cleardefuseit\defuseit2.wav
+	radio\bot\Russian\cleardefuseit\defuseit3.wav
 End
 
 // the (CT) bot is encouraging the player to defuse the bomb
 Chatter WaitingForHumanToDefuseBomb
-	radio\bot\its_all_up_to_you_sir.wav
-	radio\bot\bombsite_secure_ready_for_you.wav
-	radio\bot\well_cover_you_while_you_defuse.wav
-	radio\bot\well_cover_you_you_defuse.wav
+	radio\bot\Russian\cleardefuseit\humandef.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit2.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit1.wav
 End
 
 // the (CT) bot is anxiously encouraging the player to defuse the bomb
 // VOICE NOTE: Very nervous/anxious/worried
 Chatter WaitingForHumanToDefuseBombPanic
-	radio\bot\we_need_you_to_defuse_that_bomb_sir.wav
-	radio\bot\dont_worry_hell_get_it.wav
-	radio\bot\please_defuse_the_bomb_sir.wav
-	radio\bot\sir_defuse_the_bomb.wav
-	radio\bot\time_is_running_out.wav
-	radio\bot\time_is_running_out2.wav
-	radio\bot\uh_sir_the_bomb.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit2.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit3.wav
+	radio\bot\Russian\sirdefuseit\sirdefuseit4.wav
 End
 
 // when the bomb was defused with less than 2 seconds left
 // VOICE NOTE: Relief/happy
 Chatter BarelyDefused
-	radio\bot\i_wasnt_worried_for_a_minute.wav
-	radio\bot\that_was_a_close_one.wav
-	radio\bot\well_done.wav
-	radio\bot\whew_that_was_close.wav
+	radio\bot\Russian\cool_defuse\cooldefuse2.wav
+	radio\bot\Russian\cool_defuse\cooldefuse.wav
+	radio\bot\Russian\cool_defuse\cooldefuse1.wav
+	radio\bot\Russian\cool_defuse\cooldefuse3.wav
 End
 
 
@@ -919,47 +2084,53 @@ End
 Chatter GoingToGuardHostages
 	Important
 
-	radio\bot\camping_hostages.wav
-	radio\bot\im_going_to_camp_the_hostages.wav
-	radio\bot\im_going_to_guard_the_hostages.wav
-	radio\bot\im_going_to_guard_the_hostages2.wav
+	radio\bot\Russian\igohostage\igohostage.wav
+	radio\bot\Russian\igohostage\igohostage1.wav
+	radio\bot\Russian\igohostage\igohostage2.wav
+	radio\bot\Russian\igohostage\igohostage3.wav
+	radio\bot\Russian\igohostage\igohostage4.wav
+	radio\bot\Russian\igohostage\igohostage5.wav
+	radio\bot\Russian\igohostage\igohostage6.wav
+	radio\bot\Russian\igohostage\igohostage7.wav
 End
 
 // the (Terrorist) bot is currently guarding some hostages
 Chatter GuardingHostages
 	Important
 
-	radio\bot\keeping_an_eye_on_the_hostages.wav
-	radio\bot\guarding_the_hostages.wav
-	radio\bot\guarding_hostages.wav
-	radio\bot\watching_the_hostages.wav
-	radio\bot\im_with_the_hostages.wav
-	radio\bot\im_with_the_hostages2.wav
-	radio\bot\im_at_the_hostages.wav
+	radio\bot\Russian\icamphost\icamphost.wav
+	radio\bot\Russian\icamphost\icamphost1.wav
+	radio\bot\Russian\icamphost\icamphost2.wav
+	radio\bot\Russian\icamphost\icamphost3.wav
+	radio\bot\Russian\icamphost\icamphost4.wav
+	radio\bot\Russian\icamphost\icamphost5.wav
+	radio\bot\Russian\icamphost\icamphost6.wav
 End
 
 // the (Terrorist) bot is announcing his intetion to guard an escape zone
 Chatter GoingToGuardHostageEscapeZone
 	Important
 
-	radio\bot\im_going_to_cover_the_escape_zone.wav
-	radio\bot\im_going_to_watch_the_escape_zone.wav
-	radio\bot\im_going_to_keep_an_eye_on_the_escape.wav
-	radio\bot\heading_to_the_escape_zone.wav
-	radio\bot\heading_to_the_rescue_zone.wav
-	radio\bot\im_going_to_keep_an_eye_on_the_rescue.wav
-	radio\bot\im_going_to_watch_the_rescue_zone.wav
+	radio\bot\Russian\igorescue\igorescue.wav
+	radio\bot\Russian\igorescue\igorescue1.wav
+	radio\bot\Russian\igorescue\igorescue2.wav
+	radio\bot\Russian\igorescue\igorescue3.wav
+	radio\bot\Russian\igorescue\igorescue4.wav
+	radio\bot\Russian\igorescue\igorescue5.wav
 End
 
 // the (Terrorist) bot is currently guarding an escape zone
 Chatter GuardingHostageEscapeZone
 	Important
 
-	radio\bot\watching_the_escape_route.wav
-	radio\bot\im_at_the_escape_zone.wav
-	radio\bot\watching_the_escape_zone.wav
-	radio\bot\guarding_the_escape_zone.wav
-	radio\bot\guarding_the_escape_zone2.wav
+	radio\bot\Russian\icamprescue\icamprescue.wav
+	radio\bot\Russian\icamprescue\icamprescue1.wav
+	radio\bot\Russian\icamprescue\icamprescue2.wav
+	radio\bot\Russian\icamprescue\icamprescue3.wav
+	radio\bot\Russian\icamprescue\icamprescue4.wav
+	radio\bot\Russian\icamprescue\icamprescue5.wav
+	radio\bot\Russian\icamprescue\icamprescue6.wav
+	radio\bot\Russian\icamprescue\icamprescue7.wav
 End
 
 // the (Terrorist) bot is telling his friends that the CT's are taking the hostages right now
@@ -969,38 +2140,49 @@ Chatter HostagesBeingTaken
 
 	Important
 
-	radio\bot\theyre_with_the_hostages.wav
-	radio\bot\theyre_taking_the_hostages.wav
-	radio\bot\theyre_rescuing_the_hostages.wav
-	radio\bot\hostages2.wav
-End
+	radio\bot\Russian\takehostage\takehostage.wav
+	radio\bot\Russian\takehostage\takehostage1.wav
+	radio\bot\Russian\takehostage\takehostage2.wav
+	radio\bot\Russian\takehostage\takehostage3.wav
+	radio\bot\Russian\takehostage\takehostage4.wav
+	radio\bot\Russian\takehostage\takehostage5.wav
+	radio\bot\Russian\takehostage\takehostage6.wav
+	radio\bot\Russian\takehostage\takehostage7.wav
+	radio\bot\Russian\takehostage\takehostage8.wav
+	radio\bot\Russian\takehostage\takehostage9.wav
+	radio\bot\Russian\takehostage\takehostage10.wav
+End	
 
 // the (Terrorist) bot has just discovered that the hostages are gone
 // VOICE NOTE: Anxiety/frustration/anger
 Chatter HostagesTaken
 	Important
 
-	radio\bot\they_took_the_hostages.wav
-	radio\bot\theyve_got_the_hostages.wav
-	radio\bot\the_hostages_are_gone.wav
+	radio\bot\Russian\nohostage\nohostage1.wav
+	radio\bot\Russian\nohostage\nohostage2.wav
+	radio\bot\Russian\nohostage\nohostage3.wav
 End
 
 // the (CT) bot is announcing that he is talking to the hostages
 Chatter TalkingToHostages
 	Important
 
-	radio\bot\talking_to_hostages.wav
-	radio\bot\rescuing_hostages.wav
+	radio\bot\Russian\itakehost\itakehost.wav
+	radio\bot\Russian\itakehost\itakehost1.wav
+	radio\bot\Russian\itakehost\itakehost2.wav
+	radio\bot\Russian\itakehost\itakehost3.wav
 End
 
 // the (CT) bot is annoucing that he has the hostages and is taking them to the escape zone
 Chatter EscortingHostages
 	Important
 
-	radio\bot\the_hostages_are_with_me.wav
-	radio\bot\taking_the_hostages_to_safety.wav
-	radio\bot\ive_got_the_hostages.wav
-	radio\bot\i_have_the_hostages.wav
+	radio\bot\Russian\ihavehost\ihavehost.wav
+	radio\bot\Russian\ihavehost\ihavehost1.wav
+	radio\bot\Russian\ihavehost\ihavehost2.wav
+	radio\bot\Russian\ihavehost\ihavehost3.wav
+	radio\bot\Russian\ihavehost\ihavehost4.wav
+	radio\bot\Russian\ihavehost\ihavehost5.wav
 End
 
 // the (CT) bot is guarding the hostages and is encouraging the human player to come rescue them
@@ -1009,11 +2191,13 @@ Chatter WaitingForHumanToRescueHostages
 
 	Important
 
-	radio\bot\the_hostages_are_waiting.wav
-	radio\bot\hostages_secure_ready_for_you.wav
-	radio\bot\the_hostages_are_eager.wav
-	radio\bot\the_hostages_are_ready.wav
-	radio\bot\weve_got_the_situation.wav
+	radio\bot\Russian\icoverhost\icoverhost.wav
+	radio\bot\Russian\icoverhost\icoverhost1.wav
+	radio\bot\Russian\icoverhost\icoverhost2.wav
+	radio\bot\Russian\icoverhost\icoverhost3.wav
+	radio\bot\Russian\icoverhost\icoverhost4.wav
+	radio\bot\Russian\icoverhost\icoverhost5.wav
+	radio\bot\Russian\icoverhost\icoverhost6.wav
 End
 
 
@@ -1029,30 +2213,35 @@ Chatter SpottedVIP
 
 	Important
 
-	radio\bot\i_see_our_target.wav
-	radio\bot\target_spotted.wav
-	radio\bot\target_acquired.wav
+	radio\bot\Russian\iseeVIP\iseeVIP.wav
+	radio\bot\Russian\iseeVIP\iseeVIP1.wav
+	radio\bot\Russian\iseeVIP\iseeVIP2.wav
+	radio\bot\Russian\iseeVIP\iseeVIP3.wav
+	radio\bot\Russian\iseeVIP\iseeVIP4.wav
+	radio\bot\Russian\iseeVIP\iseeVIP5.wav
 End
 
 // the (Terrorist) bot is announcing his intention to guard an escape zone
 Chatter GoingToGuardVIPEscapeZone
 	Important
 
-	radio\bot\im_going_to_cover_the_escape_zone.wav
-	radio\bot\im_going_to_watch_the_escape_zone.wav
-	radio\bot\im_going_to_keep_an_eye_on_the_escape.wav
-	radio\bot\heading_to_the_escape_zone.wav
+	radio\bot\Russian\igorescue\igorescue.wav
+	radio\bot\Russian\igorescue\igorescue1.wav
+	radio\bot\Russian\igorescue\igorescue2.wav
+	radio\bot\Russian\igorescue\igorescue3.wav
+	radio\bot\Russian\igorescue\igorescue4.wav
+	radio\bot\Russian\igorescue\igorescue5.wav
 End
 
 // the (Terrorist) bot is guarding an escape zone
 Chatter GuardingVIPEscapeZone
 	Important
 
-	radio\bot\watching_the_escape_route.wav
-	radio\bot\im_at_the_escape_zone.wav
-	radio\bot\watching_the_escape_zone.wav
-	radio\bot\guarding_the_escape_zone.wav
-	radio\bot\guarding_the_escape_zone2.wav
+	radio\bot\Russian\icamprescue\icamprescue.wav
+	radio\bot\Russian\icamprescue\icamprescue1.wav
+	radio\bot\Russian\icamprescue\icamprescue2.wav
+	radio\bot\Russian\icamprescue\icamprescue5.wav
+	radio\bot\Russian\icamprescue\icamprescue7.wav
 End
 
 
@@ -1061,87 +2250,114 @@ End
 // the bot was saying something and died in mid-sentance
 // VOICE NOTE: death cry
 Chatter Pain
-	radio\bot\pain2.wav
-	radio\bot\pain4.wav
-	radio\bot\pain5.wav
-	radio\bot\pain8.wav
-	radio\bot\pain9.wav
-	radio\bot\pain10.wav
+	radio\bot\Russian\deadcry\dead.wav
+	radio\bot\Russian\deadcry\dead1.wav
+	radio\bot\Russian\deadcry\dead2.wav
+	radio\bot\Russian\deadcry\dead3.wav
+	radio\bot\Russian\deadcry\dead4.wav
+	radio\bot\Russian\deadcry\dead5.wav
+	radio\bot\Russian\deadcry\dead6.wav
+	radio\bot\Russian\deadcry\dead7.wav
+	radio\bot\Russian\deadcry\dead8.wav
+	radio\bot\Russian\deadcry\dead9.wav
+	radio\bot\Russian\deadcry\dead10.wav
+	radio\bot\Russian\deadcry\dead11.wav
+	radio\bot\Russian\deadcry\dead12.wav
 End
 
 // the bot is congratulating his team for winning the round
 Chatter WonRound
-	radio\bot\good_job_team.wav
-	radio\bot\nice_work_team.wav
-	radio\bot\way_to_be_team.wav
-	radio\bot\well_done.wav
+	radio\bot\Russian\win\win.wav
+	radio\bot\Russian\win\win1.wav
+	radio\bot\Russian\win\win2.wav
+	radio\bot\Russian\win\win3.wav
+	radio\bot\Russian\win\win4.wav
+	radio\bot\Russian\win\win5.wav
+	radio\bot\Russian\win\win6.wav
+	radio\bot\Russian\win\win.wav
+	radio\bot\Russian\win\win1.wav
+	radio\bot\Russian\win\win2.wav
+	radio\bot\Russian\win\win3.wav
+	radio\bot\Russian\win\win4.wav
+	radio\bot\Russian\win\win5.wav
+	radio\bot\Russian\win\win6.wav
+	radio\bot\Russian\Somepuks\pukresp.wav
+	radio\bot\Russian\win\win.wav
+	radio\bot\Russian\win\win1.wav
+	radio\bot\Russian\win\win2.wav
+	radio\bot\Russian\win\win3.wav
+	radio\bot\Russian\win\win4.wav
+	radio\bot\Russian\win\win5.wav
+	radio\bot\Russian\win\win6.wav
+	radio\bot\Russian\win\win.wav
+	radio\bot\Russian\win\win1.wav
+	radio\bot\Russian\win\win2.wav
+	radio\bot\Russian\win\win3.wav
+	radio\bot\Russian\win\win4.wav
+	radio\bot\Russian\win\win5.wav
+	radio\bot\Russian\win\win6.wav
 End
 
 // the bot is celebrating because his team crushed the enemies very quickly
 // VOICE NOTE: Hoots and hollers of excitement, bragging, boasting, etc
 Chatter WonRoundQuickly
-	radio\bot\i_am_dangerous.wav
-	radio\bot\do_not_mess_with_me.wav
-	radio\bot\we_owned_them.wav
-	radio\bot\they_never_knew_what_hit_them.wav
-	radio\bot\thats_the_way_this_is_done.wav
-	radio\bot\and_thats_how_its_done.wav
-	radio\bot\owned.wav
-	radio\bot\yesss.wav
-	radio\bot\yesss2.wav
-	radio\bot\yea_baby.wav
-	radio\bot\whoo.wav
-	radio\bot\whoo2.wav
-	radio\bot\oh_yea.wav
-	radio\bot\oh_yea2.wav
+	radio\bot\Russian\ohyes\ohyes.wav
+	radio\bot\Russian\ohyes\ohyes1.wav
+	radio\bot\Russian\ohyes\ohyes2.wav
+	radio\bot\Russian\ohyes\ohyes3.wav
+	radio\bot\Russian\ohyes\ohyes4.wav
+	radio\bot\Russian\ohyes\ohyes5.wav
+	radio\bot\Russian\ohyes\ohyes6.wav
+	radio\bot\Russian\ohyes\ohyes7.wav
+	radio\bot\Russian\ohyes\ohyes8.wav
 End
 
 // the bot won the round and is the last player alive
 // VOICE NOTE: Bragging, boasting, etc
 Chatter LastManStanding
-	radio\bot\i_am_dangerous.wav
-	radio\bot\do_not_mess_with_me.wav
-	radio\bot\this_is_my_house.wav
+	radio\bot\Russian\alone\imsuper.wav
+	radio\bot\Russian\alone\imsuper1.wav
+	radio\bot\Russian\alone\imsuper2.wav
+	radio\bot\Russian\alone\imsuper3.wav
 End
 
 // the bot emits a short, exicited noise because he did something especially good
 // VOICE NOTE: Hoots and hollers of excitement
 Chatter ThrillEmote
-	radio\bot\yesss.wav
-	radio\bot\yesss2.wav
-	radio\bot\yea_baby.wav
-	radio\bot\whoo.wav
-	radio\bot\whoo2.wav
-	radio\bot\oh_yea.wav
-	radio\bot\oh_yea2.wav
+	radio\bot\Russian\cool\cool.wav
+	radio\bot\Russian\cool\cool1.wav
+	radio\bot\Russian\cool\cool2.wav
+	radio\bot\Russian\cool\cool3.wav
+	radio\bot\Russian\cool\cool4.wav
+	radio\bot\Russian\cool\cool5.wav
 End
 
 // the bot is afraid (usually because he is outnumbered by enemies)
 // VOICE NOTE: Worry/anxiety/fear
 Chatter ScaredEmote
-	radio\bot\whoa.wav
-	radio\bot\uh_oh.wav
-	radio\bot\oh_no.wav
-	radio\bot\yikes.wav
-	radio\bot\oh.wav
-	radio\bot\oh_boy.wav
-	radio\bot\oh_boy2.wav
-	radio\bot\aah.wav
+	radio\bot\Russian\ups\ups.wav
+	radio\bot\Russian\ups\ups1.wav
+	radio\bot\Russian\ups\ups2.wav
+	radio\bot\Russian\ups\ups3.wav
+	radio\bot\Russian\ups\ups4.wav
+	radio\bot\Russian\ups\ups5.wav
+	radio\bot\Russian\ups\ups6.wav
+	radio\bot\Russian\ups\ups7.wav
+	radio\bot\Russian\ups\ups8.wav
+	radio\bot\Russian\ups\ups9.wav
 End
 
 // the bot is agreeing with a plan someone else announced
 Chatter AgreeWithPlan
 	Important
 
-	radio\bot\me_too.wav
-	radio\bot\ill_come_with_you.wav
-	radio\bot\ill_go_with_you.wav
-	radio\bot\ill_go_too.wav
-	radio\bot\i_got_your_back.wav
-	radio\bot\i_got_your_back2.wav
-	radio\bot\im_with_you.wav
-	radio\bot\sounds_like_a_plan.wav
-	radio\bot\good_idea.wav
+	radio\bot\Russian\metoo\metoo.wav
+	radio\bot\Russian\metoo\metoo1.wav
+	radio\bot\Russian\metoo\metoo2.wav
+	radio\bot\Russian\metoo\metoo3.wav
+	radio\bot\Russian\metoo\metoo4.wav
+	radio\bot\Russian\metoo\metoo5.wav
+	radio\bot\Russian\metoo\metoo6.wav
 End
 
 // the bot is telling a friend that he will "cover them" and watch their back
@@ -1150,9 +2366,11 @@ Chatter CoveringFriend
 
 	Important
 
-	radio\bot\i_got_your_back.wav
-	radio\bot\i_got_your_back2.wav
-	radio\bot\im_with_you.wav
+	radio\bot\Russian\imcover\imcover.wav
+	radio\bot\Russian\imcover\imcover1.wav
+	radio\bot\Russian\imcover\imcover2.wav
+	radio\bot\Russian\imcover\imcover3.wav
+	radio\bot\Russian\imcover\imcover4.wav
 End
 
 // the bot is responding to someone's request for help
@@ -1162,21 +2380,40 @@ Chatter OnMyWay
 
 	Important
 
-	radio\bot\on_my_way.wav
-	radio\bot\on_my_way2.wav
-	radio\bot\im_coming.wav
-	radio\bot\hang_on_im_coming.wav
-	radio\bot\be_right_there.wav
+	radio\bot\Russian\icome\icome.wav
+	radio\bot\Russian\icome\icome1.wav
+	radio\bot\Russian\icome\icome2.wav
+	radio\bot\Russian\icome\icome3.wav
+	radio\bot\Russian\icome\icome4.wav
+	radio\bot\Russian\icome\icome5.wav
+	radio\bot\Russian\icome\icome6.wav
+	radio\bot\Russian\icome\icome7.wav
+	radio\bot\Russian\icome\icome8.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\icome\icome.wav
+	radio\bot\Russian\icome\icome1.wav
+	radio\bot\Russian\icome\icome2.wav
+	radio\bot\Russian\icome\icome3.wav
+	radio\bot\Russian\icome\icome4.wav
+	radio\bot\Russian\icome\icome5.wav
+	radio\bot\Russian\icome\icome6.wav
+	radio\bot\Russian\icome\icome7.wav
+	radio\bot\Russian\icome\icome8.wav
 End
 
 // the bot has decided to hide for a little while, instead of seeking out the enemy
 // VOICE NOTE: Anxiety/worry/cowardice
 Chatter WaitingHere
-	radio\bot\lets_wait_here.wav
-	radio\bot\lets_hold_up_here_for_a_minute.wav
-	radio\bot\im_gonna_hang_back.wav
-	radio\bot\im_going_to_wait_here.wav
-	radio\bot\im_waiting_here.wav
+	radio\bot\Russian\iwaithere\iwaithere.wav
+	radio\bot\Russian\iwaithere\iwaithere1.wav
+	radio\bot\Russian\iwaithere\iwaithere2.wav
+	radio\bot\Russian\iwaithere\iwaithere3.wav
+	radio\bot\Russian\iwaithere\iwaithere4.wav
+	radio\bot\Russian\iwaithere\iwaithere5.wav
+	radio\bot\Russian\iwaithere\iwaithere6.wav
+	radio\bot\Russian\iwaithere\iwaithere7.wav
+	radio\bot\Russian\iwaithere\iwaithere8.wav
+
 End
 
 // the bot has been in combat for a long time, and can't get away
@@ -1184,64 +2421,134 @@ End
 Chatter PinnedDown
 	Radio EVENT_RADIO_NEED_BACKUP
 
-	radio\bot\they_got_me_pinned_down_here.wav
-	radio\bot\im_pinned_down.wav
+	radio\bot\Russian\need_backup\need_backup.wav
+	radio\bot\Russian\need_backup\need_backup1.wav
+	radio\bot\Russian\need_backup\need_backup2.wav
+	radio\bot\Russian\need_backup\need_backup3.wav
+	radio\bot\Russian\need_backup\need_backup4.wav
+	radio\bot\Russian\need_backup\need_backup5.wav
+	radio\bot\Russian\need_backup\need_backup6.wav
 End
 
 // the bot heard an enemy noise
 // VOICE NOTE: Said as an undertone/afterthought
 Chatter HeardNoise
-	radio\bot\i_hear_them.wav
-	radio\bot\hang_on_i_heard_something.wav
-	radio\bot\i_hear_something.wav
-	radio\bot\i_heard_them.wav
-	radio\bot\i_heard_something_over_there.wav
+	radio\bot\Russian\ihear\ihear.wav
+	radio\bot\Russian\ihear\ihear1.wav
+	radio\bot\Russian\ihear\ihear2.wav
+	radio\bot\Russian\ihear\ihear3.wav
+	radio\bot\Russian\ihear\ihear4.wav
+	radio\bot\Russian\ihear\ihear5.wav
+	radio\bot\Russian\ihear\ihear6.wav
+	radio\bot\Russian\ihear\ihear7.wav
+	radio\bot\Russian\ihear\ihear8.wav
+	radio\bot\Russian\ihear\ihear9.wav
+	radio\bot\Russian\ihear\ihear10.wav
+	radio\bot\Russian\ihear\ihear.wav
+	radio\bot\Russian\ihear\ihear1.wav
+	radio\bot\Russian\ihear\ihear2.wav
+	radio\bot\Russian\ihear\ihear3.wav
+	radio\bot\Russian\ihear\ihear4.wav
+	radio\bot\Russian\ihear\ihear5.wav
+	radio\bot\Russian\ihear\ihear6.wav
+	radio\bot\Russian\ihear\ihear7.wav
+	radio\bot\Russian\ihear\ihear8.wav
+	radio\bot\Russian\ihear\ihear9.wav
+	radio\bot\Russian\Somepuks\pukktozdes.wav
+	radio\bot\Russian\ihear\ihear.wav
+	radio\bot\Russian\ihear\ihear1.wav
+	radio\bot\Russian\ihear\ihear2.wav
+	radio\bot\Russian\ihear\ihear3.wav
+	radio\bot\Russian\ihear\ihear4.wav
+	radio\bot\Russian\ihear\ihear5.wav
+	radio\bot\Russian\ihear\ihear6.wav
+	radio\bot\Russian\ihear\ihear7.wav
+	radio\bot\Russian\ihear\ihear8.wav
+	radio\bot\Russian\ihear\ihear9.wav
+	radio\bot\Russian\ihear\ihear10.wav
+	radio\bot\Russian\ihear\ihear.wav
+	radio\bot\Russian\ihear\ihear1.wav
+	radio\bot\Russian\ihear\ihear2.wav
+	radio\bot\Russian\ihear\ihear3.wav
+	radio\bot\Russian\ihear\ihear4.wav
+	radio\bot\Russian\ihear\ihear5.wav
+	radio\bot\Russian\ihear\ihear6.wav
+	radio\bot\Russian\ihear\ihear7.wav
+	radio\bot\Russian\ihear\ihear8.wav
+	radio\bot\Russian\ihear\ihear9.wav
 End
 
 // the bot has been blinded by a Flashbang Grenade
 // VOICE NOTE: Surprise/shock/fear/anxiety
 Chatter Blinded
-	radio\bot\ive_been_blinded.wav
-	radio\bot\my_eyes.wav
-	radio\bot\i_cant_see.wav
-	radio\bot\im_blind.wav
+	radio\bot\Russian\flash\flash.wav
+	radio\bot\Russian\flash\flash1.wav
+	radio\bot\Russian\flash\flash2.wav
+	radio\bot\Russian\flash\flash3.wav
+	radio\bot\Russian\flash\flash4.wav
+	radio\bot\Russian\flash\flash5.wav
+	radio\bot\Russian\flash\flash6.wav
+	radio\bot\Russian\flash\flash7.wav
+	radio\bot\Russian\flash\flash8.wav
+	radio\bot\Russian\flash\flash.wav
+	radio\bot\Russian\flash\flash1.wav
+	radio\bot\Russian\flash\flash2.wav
+	radio\bot\Russian\flash\flash3.wav
+	radio\bot\Russian\flash\flash4.wav
+	radio\bot\Russian\flash\flash5.wav
+	radio\bot\Russian\flash\flash6.wav
+	radio\bot\Russian\flash\flash8.wav
 End
 
 // the bot is congratulating a friend on a well placed shot
 // VOICE NOTE: upbeat/supportive/impressed
 Chatter NiceShot
-	radio\bot\good_one.wav
-	radio\bot\good_one2.wav
-	radio\bot\nice_shot.wav
-	radio\bot\nice_shot2.wav
-	radio\bot\good_shot.wav
-	radio\bot\good_shot2.wav
-	radio\bot\nice.wav
-	radio\bot\nice2.wav
-	radio\bot\very_nice.wav
+	radio\bot\Russian\niceshoot\niceshoot.wav
+	radio\bot\Russian\niceshoot\niceshoot1.wav
+	radio\bot\Russian\niceshoot\niceshoot5.wav
+	radio\bot\Russian\niceshoot\niceshoot6.wav
+	radio\bot\Russian\niceshoot\niceshoot7.wav
+	radio\bot\Russian\niceshoot\niceshoot8.wav
+	radio\bot\Russian\niceshoot\niceshoot9.wav
 End
 
 // the bot is congratulating a human player on a well placed shot
 // VOICE NOTE: upbeat/supportive/impressed
 Chatter NiceShotSir
-	radio\bot\good_one_sir.wav
-	radio\bot\good_one_sir2.wav
-	radio\bot\nice_shot_sir.wav
-	radio\bot\nice_one_sir.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\niceshoot.wav
+	radio\bot\Russian\niceshoot\niceshoot1.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\niceshoot5.wav
+	radio\bot\Russian\niceshoot\niceshoot6.wav
+	radio\bot\Russian\niceshoot\niceshoot7.wav
+	radio\bot\Russian\niceshoot\niceshoot8.wav
+	radio\bot\Russian\niceshoot\niceshoot9.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\nicehuman1.wav
+	radio\bot\Russian\niceshoot\nicehuman2.wav
+	radio\bot\Russian\niceshoot\nicehuman3.wav
+	radio\bot\Russian\niceshoot\nicehuman4.wav
+	radio\bot\Russian\niceshoot\niceshoot10.wav
 End
 
 // the bot is congratulating the "commander" in the solo game
 // VOICE NOTE: upbeat/supportive/impressed
 Chatter NiceShotCommander
-	radio\bot\nice_shot_commander.wav
-	radio\bot\nice_shot_commander2.wav
-	radio\bot\good_shot_commander.wav
-	radio\bot\good_shot_commander2.wav
-	radio\bot\nice_one_commander.wav
-	radio\bot\good_one_sir.wav
-	radio\bot\good_one_sir2.wav
-	radio\bot\nice_shot_sir.wav
-	radio\bot\nice_one_sir.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\niceshoot.wav
+	radio\bot\Russian\niceshoot\niceshoot1.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\niceshoot5.wav
+	radio\bot\Russian\niceshoot\niceshoot6.wav
+	radio\bot\Russian\niceshoot\niceshoot7.wav
+	radio\bot\Russian\niceshoot\niceshoot8.wav
+	radio\bot\Russian\niceshoot\niceshoot9.wav
+	radio\bot\Russian\niceshoot\fatality2.wav
+	radio\bot\Russian\niceshoot\nicehuman1.wav
+	radio\bot\Russian\niceshoot\nicehuman2.wav
+	radio\bot\Russian\niceshoot\nicehuman3.wav
+	radio\bot\Russian\niceshoot\nicehuman4.wav
 End
 
 // when the player dies in the solo game
@@ -1251,9 +2558,42 @@ Chatter CommanderDown
 
 	Important
 
-	radio\bot\the_commander_is_down_repeat.wav
-	radio\bot\the_commander_is_down.wav
-	radio\bot\weve_lost_the_commander.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down6.wav
+	radio\bot\Russian\cmdr_down\cmdr_down3.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down4.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down5.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down6.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\tapki1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down6.wav
+	radio\bot\Russian\cmdr_down\tapki.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\seeffire\seeffire7.wav
+	radio\bot\Russian\cmdr_down\cmdr_down.wav
+	radio\bot\Russian\cmdr_down\cmdr_down1.wav
+	radio\bot\Russian\cmdr_down\cmdr_down2.wav
+	radio\bot\Russian\cmdr_down\cmdr_down6.wav
+	radio\bot\Russian\cmdr_down\pivo.wav
+	radio\bot\Russian\cmdr_down\cmdr_down3.wav
 End
 
 // the bot has decided to follow a human player
@@ -1262,10 +2602,75 @@ Chatter FollowingSir
 
 	Important
 
-	radio\bot\lead_on_sir.wav
-	radio\bot\lead_the_way_sir.wav
-	radio\bot\lead_the_way.wav
-	radio\bot\ok_sir_lets_go.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow.wav
+	radio\bot\Russian\followman\follow1.wav
+	radio\bot\Russian\followman\follow2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow4.wav
+	radio\bot\Russian\followman\follow5.wav
+	radio\bot\Russian\followman\follow6.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow8.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow10.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow11.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow13.wav
+	radio\bot\Russian\followman\follow14.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow16.wav
+	radio\bot\Russian\followman\follow17.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\opohmel.wav
+	radio\bot\Russian\followman\opohmel1.wav
+	radio\bot\Russian\followman\opohmel2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow.wav
+	radio\bot\Russian\followman\follow1.wav
+	radio\bot\Russian\followman\follow2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow4.wav
+	radio\bot\Russian\followman\follow5.wav
+	radio\bot\Russian\followman\follow6.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow8.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow10.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow11.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow13.wav
+	radio\bot\Russian\followman\follow14.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow16.wav
+	radio\bot\Russian\followman\follow17.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
 End
 
 // the bot has decided to follow the human player in the solo game
@@ -1274,24 +2679,88 @@ Chatter FollowingCommander
 
 	Important
 
-	radio\bot\lead_on_sir.wav
-	radio\bot\lead_the_way_sir.wav
-	radio\bot\lead_the_way.wav
-	radio\bot\ok_sir_lets_go.wav
-	radio\bot\lead_on_commander.wav
-	radio\bot\lead_the_way_commander.wav
-	radio\bot\ok_cmdr_lets_go.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow.wav
+	radio\bot\Russian\followman\follow1.wav
+	radio\bot\Russian\followman\follow2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow4.wav
+	radio\bot\Russian\followman\follow5.wav
+	radio\bot\Russian\followman\follow6.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow8.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow10.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow11.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow13.wav
+	radio\bot\Russian\followman\follow14.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow16.wav
+	radio\bot\Russian\followman\follow17.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\opohmel.wav
+	radio\bot\Russian\followman\opohmel1.wav
+	radio\bot\Russian\followman\opohmel2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow.wav
+	radio\bot\Russian\followman\follow1.wav
+	radio\bot\Russian\followman\follow2.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow4.wav
+	radio\bot\Russian\followman\follow5.wav
+	radio\bot\Russian\followman\follow6.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow8.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow10.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow11.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow13.wav
+	radio\bot\Russian\followman\follow14.wav
+	radio\bot\Russian\followman\follow15.wav
+	radio\bot\Russian\followman\follow16.wav
+	radio\bot\Russian\followman\follow17.wav
+	radio\bot\Russian\followman\follow3.wav
+	radio\bot\Russian\followman\follow7.wav
+	radio\bot\Russian\followman\follow9.wav
+	radio\bot\Russian\followman\follow12.wav
+	radio\bot\Russian\followman\follow15.wav
 End
 
 // the bot is expressing its shock that a friend has killed another friend (friendly fire)
 // VOICE NOTE: Grief/sadness/worry/astonishment
 Chatter KilledFriend
-	radio\bot\what_happened.wav
-	radio\bot\noo.wav
-	radio\bot\oh_my_god.wav
-	radio\bot\oh_man.wav
-	radio\bot\oh_no_sad.wav
-	radio\bot\what_have_you_done.wav
+	radio\bot\Russian\seeffire\seeffire.wav
+	radio\bot\Russian\seeffire\seeffire1.wav
+	radio\bot\Russian\seeffire\seeffire2.wav
+	radio\bot\Russian\seeffire\seeffire3.wav
+	radio\bot\Russian\seeffire\seeffire4.wav
+	radio\bot\Russian\seeffire\seeffire5.wav
+	radio\bot\Russian\seeffire\seeffire6.wav
+	radio\bot\Russian\seeffire\seeffire7.wav
 End
 
 // the bot is crying out because he was injured by friendly fire
@@ -1299,19 +2768,25 @@ End
 Chatter FriendlyFire
 	Important
 
-	radio\bot\cut_it_out.wav
-	radio\bot\what_are_you_doing.wav
-	radio\bot\stop_it.wav
-	radio\bot\ow_its_me.wav
-	radio\bot\ow.wav
-	radio\bot\ouch.wav
-	radio\bot\im_on_your_side.wav
-	radio\bot\hold_your_fire.wav
-	radio\bot\hey.wav
-	radio\bot\hey2.wav
-	radio\bot\ouch.wav
-	radio\bot\ouch.wav
-	radio\bot\ouch.wav
+	radio\bot\Russian\Friendlyfire\ffire.wav
+	radio\bot\Russian\Friendlyfire\ffire1.wav
+	radio\bot\Russian\friendlyfire\ffire2.wav
+	radio\bot\Russian\friendlyfire\ffire3.wav
+	radio\bot\Russian\friendlyfire\ffire4.wav
+	radio\bot\Russian\friendlyfire\ffire5.wav
+	radio\bot\Russian\friendlyfire\ffire6.wav
+	radio\bot\Russian\friendlyfire\ffire7.wav
+	radio\bot\Russian\friendlyfire\ffire8.wav
+	radio\bot\Russian\friendlyfire\ffire9.wav
+	radio\bot\Russian\Friendlyfire\ffire10.wav
+	radio\bot\Russian\Friendlyfire\ffire11.wav
+	radio\bot\Russian\Friendlyfire\ffire12.wav
+	radio\bot\Russian\Friendlyfire\ffire13.wav
+	radio\bot\Russian\Friendlyfire\ffire14.wav
+	radio\bot\Russian\Friendlyfire\ffire15.wav
+	radio\bot\Russian\Friendlyfire\ffire16.wav
+	radio\bot\Russian\Friendlyfire\ffire17.wav
+	radio\bot\Russian\Friendlyfire\ffire18.wav
 End
 
 
@@ -1424,7 +2899,13 @@ Chatter RequestHostageLocation
 End
 
 Chatter MeToo
-	radio\bot\me_too.wav
+	radio\bot\Russian\metoo\metoo.wav
+	radio\bot\Russian\metoo\metoo1.wav
+	radio\bot\Russian\metoo\metoo2.wav
+	radio\bot\Russian\metoo\metoo3.wav
+	radio\bot\Russian\metoo\metoo4.wav
+	radio\bot\Russian\metoo\metoo5.wav
+	radio\bot\Russian\metoo\metoo6.wav
 End
 
 

@@ -3,29 +3,29 @@
 
 #pragma tabsize 0
 
-new nightvisionOverrideActive[33];
+//new nightvisionOverrideActive[33];
 
 public plugin_init()
 {
 	register_plugin("Incomsystem Skins Menu", "1.0", "Tonitaga")
 	register_clcmd("say /skins-menu", "GameMenu")
-	register_clcmd("nightvision", "nightvision")
+	//register_clcmd("nightvision", "nightvision")
 }
 
-public nightvision(id)
-{
-	if (nightvisionOverrideActive[id])
-	{
-		GameMenu(id)
-		return PLUGIN_HANDLED;
-	}
-	nightvisionOverrideActive[id] = true
-	return PLUGIN_CONTINUE;
-}
-public client_putinserver(id)
-{
-	nightvisionOverrideActive[id] = true
-}
+//public nightvision(id)
+//{
+//	if (nightvisionOverrideActive[id])
+//	{
+//		GameMenu(id)
+//		return PLUGIN_HANDLED;
+//	}
+//	nightvisionOverrideActive[id] = true
+//	return PLUGIN_CONTINUE;
+//}
+//public client_putinserver(id)
+//{
+//	nightvisionOverrideActive[id] = true
+//}
 
 public GameMenu(id)
 {

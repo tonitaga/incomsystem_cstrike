@@ -33,7 +33,7 @@ new M4[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-m4a1","M4Menu");
+	register_clcmd("say /skins-m4a1","MenuM4");
 	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
@@ -83,9 +83,4 @@ public ChangeCurrentWeapon(id)
 	{
 		set_pev(id, pev_viewmodel2, M4Models[M4[id]]);
 	}
-}
-
-public M4Menu(id)
-{
-	MenuM4(id);
 }

@@ -9,19 +9,27 @@ new const AUTHOR[] = "Tonitaga";
 new const AWPModels[][] =
 {
 	"models/v_awp.mdl",
+	"models/incom/awp/v_awp_colorway.mdl",
+	"models/incom/awp/v_awp_dragon_lore.mdl",
 	"models/incom/awp/v_awp_fever_dream.mdl",
-	"models/incom/awp/v_awp_d_cyan.mdl",
-	"models/incom/awp/v_awp_tiger.mdl",
-	"models/incom/awp/v_awp_dragon_lore.mdl"
+	"models/incom/awp/v_awp_lightning_strike.mdl",
+	"models/incom/awp/v_awp_medusa.mdl",
+	"models/incom/awp/v_awp_ohka.mdl",
+	"models/incom/awp/v_awp_oni_taiji.mdl",
+	"models/incom/awp/v_awp_tiger.mdl"
 };
 
 new const AWPMenuNames[][] =
 {
     "Awp [DEFAULT]",
-    "Awp Fever Dream",
-    "Awp D'Cyan",
-    "Awp Tiger",
-    "Awp Dragon Lore"
+    "Awp Colorway",
+    "Awp Dragon Lore",
+	"Awp Fever Dream",
+	"Awp Lightning Strike",
+	"Awp Medusa",
+	"Awp Ohka",
+	"Awp Oni Taiji",
+	"Awp Tiger"
 };
 
 new AWP[33];
@@ -29,7 +37,7 @@ new AWP[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-awp","AwpMenu");
+	register_clcmd("say /skins-awp","MenuAwp");
 	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
@@ -46,10 +54,14 @@ public MenuAwp(id)
 	new menu = menu_create("\y>>>>> \rAWP skin selection menu \y<<<<<^n \dby >>\Tonitaga\d<<", "AwpCase")
 	
 	menu_additem(menu, "Awp \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wAwp \yFever Dream", "2", 0)
-	menu_additem(menu, "\wAwp \yD'Cyan", "3", 0)
-	menu_additem(menu, "\wAwp \yTiger", "4", 0)
-	menu_additem(menu, "\wAwp \yDragon Lore", "5", 0)
+	menu_additem(menu, "\wAwp \yColorway", "2", 0)
+	menu_additem(menu, "\wAwp \yDragon Lore", "3", 0)
+	menu_additem(menu, "\wAwp \yFever Dream", "4", 0)
+	menu_additem(menu, "\wAwp \yLightning Strike", "5", 0)
+	menu_additem(menu, "\wAwp \yMedusa", "6", 0)
+	menu_additem(menu, "\wAwp \yOhka", "7", 0)
+	menu_additem(menu, "\wAwp \yOni Taiji", "8", 0)
+	menu_additem(menu, "\wAwp \yTiger", "9", 0)
 	
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
 	menu_display(id, menu, 0 );
@@ -78,9 +90,4 @@ public ChangeCurrentWeapon(id)
 	{
 		set_pev(id, pev_viewmodel2, AWPModels[AWP[id]]);
 	}
-}
-
-public AwpMenu(id)
-{
-	MenuAwp(id);
 }

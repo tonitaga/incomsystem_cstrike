@@ -13,9 +13,9 @@ new const KNFModels[][] =
 	"models/incom/knife/v_knife_bayonet_doppler_sapphire.mdl",
 	"models/incom/knife/v_knife_butterfly_crimson_web.mdl",
 	"models/incom/knife/v_knife_butterfly_fade.mdl",
-	"models/incom/knife/v_knife_kerambit_gradient.mdl",
-	"models/incom/knife/v_knife_kerambit_lore.mdl",
 	"models/incom/knife/v_knife_kerambit_doppler_emerald.mdl",
+	"models/incom/knife/v_knife_kerambit_lore.mdl",
+	"models/incom/knife/v_knife_kerambit_gradient.mdl",
 	"models/incom/knife/v_knife_skeleton-fade.mdl",
 	"models/incom/knife/v_knife_flip_ultraviolet.mdl"
 };
@@ -27,9 +27,9 @@ new const KNFMenuNames[][] =
     "Knife Bayonet Doppler Sapphire",
     "Knife Butterfly Сrimson Web",
 	"Knife Butterfly Fade",
-    "Knife Kerambit Gradient",
-	"Knife Kerambit Lore",
 	"Knife Kerambit Doppler Emerald",
+	"Knife Kerambit Lore",
+	"Knife Kerambit Gradient",
 	"Knife Skeleton Fade",
 	"Knife Flip Ultraviolet"
 };
@@ -39,7 +39,7 @@ new KNF[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-knife","KnfMenu");
+	register_clcmd("say /skins-knife","MenuKnf");
 	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
@@ -92,9 +92,4 @@ public ChangeCurrentWeapon(id)
 	{
 		set_pev(id, pev_viewmodel2, KNFModels[KNF[id]]);
 	}
-}
-
-public KnfMenu(id)
-{
-	MenuKnf(id);
 }

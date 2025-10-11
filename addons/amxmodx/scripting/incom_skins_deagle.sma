@@ -12,7 +12,8 @@ new const DGLModels[][] =
 	"models/incom/deagle/v_deagle_red.mdl",
 	"models/incom/deagle/v_deagle_emperor_dragon.mdl",
 	"models/incom/deagle/v_deagle_hypnotic.mdl",
-	"models/incom/deagle/v_deagle_blaze.mdl"
+	"models/incom/deagle/v_deagle_blaze.mdl",
+	"models/incom/deagle/v_deagle_printstream_cs2.mdl"
 };
 
 new const DGLMenuNames[][] =
@@ -21,7 +22,8 @@ new const DGLMenuNames[][] =
     "Deagle Red",
     "Deagle Emperor Dragon",
     "Deagle Hypnotic",
-    "Deagle Blaze"
+    "Deagle Blaze",
+    "Deagle Printstream (CS2 Model)"
 };
 
 new DGL[33];
@@ -29,7 +31,7 @@ new DGL[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-deagle","DglMenu");
+	register_clcmd("say /skins-deagle","MenuDgl");
 	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
@@ -50,6 +52,7 @@ public MenuDgl(id)
 	menu_additem(menu, "\wDeagle \yEmperor Dragon", "3", 0)
 	menu_additem(menu, "\wDeagle \yHypnotic", "4", 0)
 	menu_additem(menu, "\wDeagle \yBlaze", "5", 0)
+	menu_additem(menu, "\wDeagle \yPrintstream (CS2 Model)", "6", 0)
 	
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
 	menu_display(id, menu, 0 );
@@ -77,9 +80,4 @@ public ChangeCurrentWeapon(id)
 	{
 		set_pev(id, pev_viewmodel2, DGLModels[DGL[id]]);
 	}
-}
-
-public DglMenu(id)
-{
-	MenuDgl(id)
 }

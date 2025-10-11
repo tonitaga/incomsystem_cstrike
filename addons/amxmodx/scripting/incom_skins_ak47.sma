@@ -35,7 +35,7 @@ new AK[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-ak47","AkMenu");
+	register_clcmd("say /skins-ak47","MenuAk");
 	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
@@ -86,9 +86,4 @@ public ChangeCurrentWeapon(id)
 	{
 		set_pev(id, pev_viewmodel2, AKModels[AK[id]]);
 	}
-}
-
-public AkMenu(id)
-{
-	MenuAk(id);
 }

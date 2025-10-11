@@ -24,7 +24,7 @@ public client_connect(id)
 
 public round_end()
 {
-    new rand = random_num(1,8)
+    new rand = random_num(1,9)
     
     client_cmd(0,"stopsound")
     set_task(0.5, "play_round_sound", rand)
@@ -42,6 +42,7 @@ public play_round_sound(sound_id)
         case 6: client_cmd(0,"spk incom/roundend6")
         case 7: client_cmd(0,"spk incom/roundend7")
         case 8: client_cmd(0,"spk incom/roundend8")
+        case 9: client_cmd(0,"spk incom/roundend9")
     }
 }
 
@@ -56,6 +57,7 @@ public plugin_precache()
     precache_sound("incom/roundend6.wav")
     precache_sound("incom/roundend7.wav")
     precache_sound("incom/roundend8.wav")
+    precache_sound("incom/roundend9.wav")
     
     return PLUGIN_CONTINUE
 }

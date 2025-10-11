@@ -1,0 +1,18 @@
+$2000$
+by Calou (ppoulain@tele2.fr) le 29/07/2007
+map fun 32 Slots
+
+- reprise de la celebre $1000$ dans le but de pouvoir la jouer à 32
+- plus grande que sa grande soeur
+- nouvelle textures provenant de CS-Source
+- Passages surelevés à l'arriere de chaque respawn
+- lumiere generale revue
+
+- Remake of the celeb $1000$ for playing at 32 slots
+- Bigger than her sister
+- new textures (cs:source)
+- Increased size
+- general lighting revised
+
+
+[Press FIRE to continue]

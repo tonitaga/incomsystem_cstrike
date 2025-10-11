@@ -53,7 +53,7 @@ public MenuM4(id)
 	menu_additem(menu, "\wM4a1 \yAsiimov'R", "2", 0)
 	menu_additem(menu, "\wM4a1 \yDesolate Space", "3", 0)
 	menu_additem(menu, "\wM4a1 \yGolden'R", "4", 0)
-	menu_additem(menu, "\wM4a1 \yHowlHowld", "5", 0)
+	menu_additem(menu, "\wM4a1 \yHowl", "5", 0)
 	menu_additem(menu, "\wM4a1 \yHyper Beast", "6", 0)
 	menu_additem(menu, "\wM4a1 \yMaster Piece", "7", 0)
 

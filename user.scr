@@ -32,7 +32,7 @@
 
 
 // Half-Life User Info Configuration Layout Script (stores last settings chosen, too)
-// File generated:  Tue Feb 26 06:28:06 PM
+// File generated:  Sat Oct 11 10:33:38 AM
 //
 //
 // Cvar	-	Setting
@@ -44,29 +44,29 @@ DESCRIPTION INFO_OPTIONS
 	"cl_corpsestay"
 	{
 		"#Cstrike_Corpse_Stay"
-		{ NUMBER 0 600 }
-		{ "600" }
+		{ NUMBER 0.000000 600.000000 }
+		{ "180.000000" }
 	}
 
 	"mp_decals"
 	{
 		"#Valve_Multiplayer_Decal_Limit"
-		{ NUMBER 0 4096 }
-		{ "300" }
+		{ NUMBER 0.000000 4096.000000 }
+		{ "300.000000" }
 	}
 
 	"max_shells"
 	{
 		"#Cstrike_Max_Shells"
-		{ NUMBER 0 -1 }
-		{ "50" }
+		{ NUMBER 0.000000 -1.000000 }
+		{ "120.000000" }
 	}
 
 	"max_smokepuffs"
 	{
 		"#Cstrike_Max_Smoke_Puffs"
-		{ NUMBER 0 -1 }
-		{ "20" }
+		{ NUMBER 0.000000 -1.000000 }
+		{ "120.000000" }
 	}
 
 	"fastsprites"
@@ -78,7 +78,7 @@ DESCRIPTION INFO_OPTIONS
 			"#Cstrike_Smoke_Medium" "1"
 			"#Cstrike_Smoke_Worst" "2"
 		}
-		{ "1" }
+		{ "0.000000" }
 	}
 
 	"cl_righthand"
@@ -89,7 +89,7 @@ DESCRIPTION INFO_OPTIONS
 			"#Cstrike_Left_Handed" "0"
 			"#Cstrike_Right_Handed" "1"
 		}
-		{ "1" }
+		{ "1.000000" }
 	}
 
 	"_vgui_menus"
@@ -100,7 +100,7 @@ DESCRIPTION INFO_OPTIONS
 			"#Cstrike_Old_Style_Menus" "0"
 			"#Cstrike_VGUI_Menus" "1"
 		}
-		{ "1" }
+		{ "1.000000" }
 		SetInfo
 	}
 
@@ -116,14 +116,14 @@ DESCRIPTION INFO_OPTIONS
 	{
 		"#Valve_Center_Player_Names"
 		{ BOOL }
-		{ "1" }
+		{ "0" }
 	}
 
 	"_ah"
 	{
 		"#Cstrike_AutoHelp"
 		{ BOOL }
-		{ "1" }
+		{ "0" }
 		SetInfo
 	}
 
@@ -138,7 +138,7 @@ DESCRIPTION INFO_OPTIONS
 	{
 		"#Valve_Observer_Crosshair"
 		{ BOOL }
-		{ "0" }
+		{ "1" }
 	}
 
 	"cl_radartype"
@@ -149,6 +149,7 @@ DESCRIPTION INFO_OPTIONS
 			"#Cstrike_Transparent" "0"
 			"#Cstrike_Solid" "1"
 		}
-		{ "0" }
+		{ "0.000000" }
 	}
+
 }

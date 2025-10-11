@@ -10,18 +10,28 @@ new const KNFModels[][] =
 {
 	"models/v_knife.mdl",
 	"models/incom/knife/v_knife_bayonet_lore.mdl",
-	"models/incom/knife/v_knife_bufferfly_doppler.mdl",
-	"models/incom/knife/v_knife_butterfly_lore.mdl",
-	"models/incom/knife/v_knife_kerambit_gradient.mdl"
+	"models/incom/knife/v_knife_bayonet_doppler_sapphire.mdl",
+	"models/incom/knife/v_knife_butterfly_crimson_web.mdl",
+	"models/incom/knife/v_knife_butterfly_fade.mdl",
+	"models/incom/knife/v_knife_kerambit_gradient.mdl",
+	"models/incom/knife/v_knife_kerambit_lore.mdl",
+	"models/incom/knife/v_knife_kerambit_doppler_emerald.mdl",
+	"models/incom/knife/v_knife_skeleton-fade.mdl",
+	"models/incom/knife/v_knife_flip_ultraviolet.mdl"
 };
 
 new const KNFMenuNames[][] =
 {
     "Knife [DEFAULT]",
     "Knife Bayonet Lore",
-    "Knife Butterfly Doppler",
-    "Knife Butterfly Lore",
-    "Knife Kerambit Gradient"
+    "Knife Bayonet Doppler Sapphire",
+    "Knife Butterfly Сrimson Web",
+	"Knife Butterfly Fade",
+    "Knife Kerambit Gradient",
+	"Knife Kerambit Lore",
+	"Knife Kerambit Doppler Emerald",
+	"Knife Skeleton Fade",
+	"Knife Flip Ultraviolet"
 };
 
 new KNF[33];
@@ -29,8 +39,8 @@ new KNF[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /knife","KnfMenu");
-	register_event("CurWeapon", "CurentWeapon", "be", "1=1");
+	register_clcmd("say /skins-knife","KnfMenu");
+	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
@@ -43,13 +53,18 @@ public plugin_precache()
 
 public MenuKnf(id)
 {
-	new menu = menu_create("\y>>>>> \rKnife Menu \y<<<<<^n \dby >>\rTonitaga\d<<", "KnfCase")
+	new menu = menu_create("\y>>>>> \rKnife skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "KnfCase")
 	
 	menu_additem(menu, "Knife \r[DEFAULT]^n", "1", 0)
 	menu_additem(menu, "\wKnife \yBayonet Lore", "2", 0)
-	menu_additem(menu, "\wKnife \yButterfly Doppler", "3", 0)
-	menu_additem(menu, "\wKnife \yButterfly Lore", "4", 0)
-	menu_additem(menu, "\wKnife \yKerambit Gradient", "5", 0)
+	menu_additem(menu, "\wKnife \yBayonet Doppler Sapphire", "3", 0)
+	menu_additem(menu, "\wKnife \yButterfly Сrimson Web", "4", 0)
+	menu_additem(menu, "\wKnife \yButterfly Fade", "5", 0)
+	menu_additem(menu, "\wKnife \yKerambit Doppler Emerald", "6", 0)
+	menu_additem(menu, "\wKnife \yKerambit Lore", "7", 0)
+	menu_additem(menu, "\wKnife \yKerambit Gradient", "8", 0)
+	menu_additem(menu, "\wKnife \ySkeleton Fade", "9", 0)
+	menu_additem(menu, "\wKnife \yFlip Ultraviolet", "10", 0)
 	
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
 	menu_display(id, menu, 0 );
@@ -71,7 +86,7 @@ public KnfCase(id, menu, item)
 	return 1;
 }
 
-public CurentWeapon(id) 
+public ChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_KNIFE) 
 	{
@@ -81,10 +96,5 @@ public CurentWeapon(id)
 
 public KnfMenu(id)
 {
-	if(is_user_alive(id))
-	{
-		MenuKnf(id);
-	}else{
-		MenuKnf(id);
-	}
+	MenuKnf(id);
 }

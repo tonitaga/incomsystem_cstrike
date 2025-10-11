@@ -9,19 +9,25 @@ new const AUTHOR[] = "Tonitaga";
 new const AKModels[][] =
 {
 	"models/v_ak47.mdl",
-	"models/incom/ak47/v_ak47_wasteland_rebel.mdl",
-	"models/incom/ak47/v_ak47_frontside_misty.mdl",
-	"models/incom/ak47/v_ak47_furious_pouacock.mdl",
-	"models/incom/ak47/v_ak47_vulkan.mdl"
+	"models/incom/ak47/v_ak47_vulkan.mdl",
+	"models/incom/ak47/v_ak47_aquamarine_revenge.mdl",
+	"models/incom/ak47/v_ak47_bloodsport.mdl",
+	"models/incom/ak47/v_ak47_case_hardened.mdl",
+	"models/incom/ak47/v_ak47_fire_serpent.mdl",
+	"models/incom/ak47/v_ak47_gold.mdl",
+	"models/incom/ak47/v_ak47_the_empress.mdl"
 };
 
 new const AKMenuNames[][] =
 {
     "Ak47 [DEFAULT]",
-    "Ak47 Wasteland Rebel",
-    "Ak47 Frontside misty",
-    "Ak47 Furious Pouacock",
-    "Ak47 Vulkan"
+    "Ak47 Vulkan",
+	"Ak47 Aquamarine Revenge",
+	"Ak47 Bloodsport",
+	"Ak47 Case Hardened",
+	"Ak47 Fire Serpent",
+	"Ak47 Gold",
+	"Ak47 The Empress"
 };
 
 new AK[33];
@@ -29,8 +35,8 @@ new AK[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /ak","AkMenu");
-	register_event("CurWeapon", "CurentWeapon", "be", "1=1");
+	register_clcmd("say /skins-ak47","AkMenu");
+	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
@@ -43,13 +49,16 @@ public plugin_precache()
 
 public MenuAk(id)
 {
-	new menu = menu_create("\y>>>>> \rAK47 Menu \y<<<<<^n \dby >>\rTonitaga\d<<", "AkCase")
+	new menu = menu_create("\y>>>>> \rAK47 skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "AkCase")
 	
 	menu_additem(menu, "Ak47 \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wAk47 \yWasteland Rebel", "2", 0)
-	menu_additem(menu, "\wAk47 \yFrontside misty", "3", 0)
-	menu_additem(menu, "\wAk47 \yFurious Pouacock", "4", 0)
-	menu_additem(menu, "\wAk47 \yVulkan", "5", 0)
+	menu_additem(menu, "\wAk47 \yVulkan", "2", 0)
+	menu_additem(menu, "\wAk47 \yAquamarine Revenge", "3", 0)
+	menu_additem(menu, "\wAk47 \yBloodsport", "4", 0)
+	menu_additem(menu, "\wAk47 \yCase Hardened", "5", 0)
+	menu_additem(menu, "\wAk47 \yFire Serpent", "6", 0)
+	menu_additem(menu, "\wAk47 \yGold", "7", 0)
+	menu_additem(menu, "\wAk47 \yThe Empress", "8", 0)
 	
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
 	menu_display(id, menu, 0 );
@@ -71,7 +80,7 @@ public AkCase(id, menu, item)
 	return 1;
 }
 
-public CurentWeapon(id) 
+public ChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_AK47) 
 	{
@@ -81,10 +90,5 @@ public CurentWeapon(id)
 
 public AkMenu(id)
 {
-	if(is_user_alive(id))
-	{
-		MenuAk(id);
-	}else{
-		MenuAk(id);
-	}
+	MenuAk(id);
 }

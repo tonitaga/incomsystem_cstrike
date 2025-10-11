@@ -1,56 +1,34 @@
-﻿<!DOCTYPE html>
-<html lang="ru">
+﻿<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INCOMSYSTEM [DEV ZONE]</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
     <style>
         body { 
             background-color: #000000; 
             color: #ffffff; 
             font-family: 'Courier New', monospace;
             margin: 10px;
-            overflow-x: hidden;
         }
         .header { 
             color: #00ffff; 
             font-weight: bold;
             font-size: 18px;
-            text-shadow: 0 0 5px #00ffff;
         }
         .highlight { color: #ff6600; }
         .green { color: #00ff00; }
         .yellow { color: #ffff00; }
         .blue { color: #0088ff; }
+        .pizza { color: #ff9900; font-weight: bold; }
         hr { 
             border: 1px solid #333333; 
             width: 80%; 
         }
-        .video-container {
+        .skins-menu {
+            background: #111122;
+            border: 1px dashed #4444ff;
+            padding: 15px;
             margin: 20px auto;
-            width: 80%;
-            max-width: 640px;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 10px #00ffff;
-        }
-        .video-container video {
-            width: 100%;
-            display: block;
-        }
-        .blink {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .console {
-            background-color: #111111;
-            border: 1px solid #333333;
-            padding: 10px;
-            margin: 10px auto;
-            width: 80%;
-            font-family: 'Courier New', monospace;
+            width: 70%;
         }
     </style>
 </head>
@@ -58,20 +36,27 @@
     <center>
         <br>
         <div class="header">INCOMSYSTEM DEV ZONE</div>
-        <div>// Обеденный код-ревью через хэдшоты</div>
+        <div>/* Обеденный код-ревью через хэдшоты */</div>
         <br><hr><br>
 
-        <!-- Видео вместо кода -->
-        <div class="video-container">
-            <video controls autoplay muted>
-                <source src="https://github.com/tonitaga/incomsystem_cstrike/raw/main/media/incom/greeting.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
+        
+        <div class="green">play_cs();</div>
+        <div class="green">make_headshot();</div>
+        <div class="green">eat_pizza();</div>
+
+        <br><hr><br>
+
+        <div class="skins-menu">
+            <div class="pizza">🍕 МЕНЮ СКИНОВ 🍕</div>
+            <div>Напишите в чат: <span class="yellow">/skins-menu</span></div>
+            <div>Получите крутые скины бесплатно!</div>
+            <div>Стоимость: <span class="pizza">1 кусок пиццы</span></div>
+            <div style="font-size: 12px; margin-top: 8px;">*пицца должна быть настоящей</div>
         </div>
 
-        <br><hr><br>
+        <br>
 
-        <div class="blue">СИСТЕМНЫЕ ТРЕВОВАНИЯ:</div>
+        <div class="blue">СИСТЕМНЫЕ ТРЕБОВАНИЯ:</div>
         <div>• Любовь к пицце (обязательно)</div>
         <div>• Умение дебажить код и противников</div>
         <div>• 100% точность (headshot_rate)</div>
@@ -80,51 +65,11 @@
 
         <div class="blue">ИНФОРМАЦИЯ О СЕССИИ:</div>
         <div>> Время: <span class="yellow">12:00 - 12:30</span></div>
-        <div>> Статус: <span class="green blink">// Код компилируется...</span></div>
+        <div>> Статус: <span class="green">// Код компилируется...</span></div>
 
-        <br>
-        
-        <div class="console">
-            > Загрузка INCOMSYSTEM...<br>
-            > Инициализация звуковой системы...<br>
-            > Статус: <span class="green">Готово</span><br>
-            > Добро пожаловать, игрок!
-        </div>
-        
         <br>
         <div class="highlight">Warning:</div> 
         <div>Читеры будут занесены в <span style="color: #ff0000;">blacklist.txt</span></div>
     </center>
-
-    <!-- Аудио для воспроизведения при загрузке -->
-    <audio id="greetingSound" preload="auto">
-        <source src="https://github.com/tonitaga/incomsystem_cstrike/raw/main/sound/incom/greeting.wav" type="audio/wav">
-    </audio>
-
-    <script>
-        // Воспроизведение звука при загрузке страницы
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('greetingSound');
-            
-            // Попытка воспроизвести звук
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // Автовоспроизведение успешно
-                    console.log("Звук приветствия воспроизводится");
-                }).catch(error => {
-                    // Автовоспроизведение не удалось
-                    console.log("Автовоспроизведение заблокировано. Звук будет воспроизведен после взаимодействия с пользователем.");
-                    
-                    // Добавляем обработчик клика для воспроизведения звука
-                    document.body.addEventListener('click', function playOnClick() {
-                        audio.play();
-                        document.body.removeEventListener('click', playOnClick);
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>

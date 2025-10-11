@@ -8,9 +8,10 @@ new nightvisionOverrideActive[33];
 public plugin_init()
 {
 	register_plugin("Incomsystem Skins Menu", "1.0", "Tonitaga")
-	register_clcmd("say /menu", "GameMenu")
+	register_clcmd("say /skins-menu", "GameMenu")
 	register_clcmd("nightvision", "nightvision")
 }
+
 public nightvision(id)
 {
 	if (nightvisionOverrideActive[id])
@@ -28,7 +29,7 @@ public client_putinserver(id)
 
 public GameMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rServer Menu \y<<<<<", "menu_case")
+	new menu = menu_create("\y>>>>> \rServer Skins Menu \y<<<<<", "menu_case")
 
 	menu_additem(menu, "\yKnife \wMenu", "1", 0)
 	menu_additem(menu, "\yAwp \wMenu", "2", 0) 
@@ -52,14 +53,15 @@ public menu_case(id, menu, item)
 	menu_item_getinfo(menu, item, acces, data,5, iName, 63, callback)
 	new key = str_to_num(data)
 	
-	switch(key){
-	
-	case 1: client_cmd(id,"say /knife")
-	case 2: client_cmd(id,"say /awp")
-	case 3: client_cmd(id,"say /ak")
-	case 4: client_cmd(id,"say /m4")
-	case 5: client_cmd(id,"say /dgl")
+	switch(key)
+	{
+		case 1: client_cmd(id,"say /skins-knife")
+		case 2: client_cmd(id,"say /skins-awp")
+		case 3: client_cmd(id,"say /skins-ak47")
+		case 4: client_cmd(id,"say /skins-m4a1")
+		case 5: client_cmd(id,"say /skins-deagle")
 	}
+
 	menu_destroy(menu)
 	return PLUGIN_HANDLED
 }

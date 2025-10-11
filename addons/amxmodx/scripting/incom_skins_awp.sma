@@ -29,8 +29,8 @@ new AWP[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /awp","AwpMenu");
-	register_event("CurWeapon", "CurentWeapon", "be", "1=1");
+	register_clcmd("say /skins-awp","AwpMenu");
+	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
@@ -43,7 +43,7 @@ public plugin_precache()
 
 public MenuAwp(id)
 {
-	new menu = menu_create("\y>>>>> \rAWP Menu \y<<<<<^n \dby >>\Tonitaga\d<<", "AwpCase")
+	new menu = menu_create("\y>>>>> \rAWP skin selection menu \y<<<<<^n \dby >>\Tonitaga\d<<", "AwpCase")
 	
 	menu_additem(menu, "Awp \r[DEFAULT]^n", "1", 0)
 	menu_additem(menu, "\wAwp \yFever Dream", "2", 0)
@@ -72,7 +72,7 @@ public AwpCase(id, menu, item)
 	return 1;
 }
 
-public CurentWeapon(id) 
+public ChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_AWP) 
 	{
@@ -82,10 +82,5 @@ public CurentWeapon(id)
 
 public AwpMenu(id)
 {
-	if(is_user_alive(id))
-	{
-		MenuAwp(id);
-	}else{
-		MenuAwp(id);
-	}
+	MenuAwp(id);
 }

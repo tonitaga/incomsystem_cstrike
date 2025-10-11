@@ -29,8 +29,8 @@ new DGL[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /dgl","DglMenu");
-	register_event("CurWeapon", "CurentWeapon", "be", "1=1");
+	register_clcmd("say /skins-deagle","DglMenu");
+	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
@@ -43,7 +43,7 @@ public plugin_precache()
 
 public MenuDgl(id)
 {
-	new menu = menu_create("\y>>>>> \rDeagle Menu \y<<<<<^n \dby >>\rTonitaga\d<<", "DglCase")
+	new menu = menu_create("\y>>>>> \rDeagle skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "DglCase")
 	
 	menu_additem(menu, "Deagle \r[DEFAULT]^n", "1", 0)
 	menu_additem(menu, "\wDeagle \yRed", "2", 0)
@@ -71,7 +71,7 @@ public DglCase(id, menu, item)
 	return 1;
 }
 
-public CurentWeapon(id) 
+public ChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_DEAGLE) 
 	{
@@ -81,10 +81,5 @@ public CurentWeapon(id)
 
 public DglMenu(id)
 {
-	if(is_user_alive(id))
-	{
-		MenuDgl(id);
-	}else{
-		MenuDgl(id);
-	}
+	MenuDgl(id)
 }

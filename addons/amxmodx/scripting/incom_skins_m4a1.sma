@@ -9,19 +9,23 @@ new const AUTHOR[] = "Tonitaga";
 new const M4Models[][] =
 {
 	"models/v_m4a1.mdl",
-	"models/incom/m4a1/v_m4a1_d_cyan.mdl",
+	"models/incom/m4a1/v_m4a1_asiimov.mdl",
+	"models/incom/m4a1/v_m4a1_desolate_space.mdl",
 	"models/incom/m4a1/v_m4a1_golden_r.mdl",
+	"models/incom/m4a1/v_m4a1_howl.mdl",
 	"models/incom/m4a1/v_m4a1_hyper_beast.mdl",
-	"models/incom/m4a1/v_m4a1_howl.mdl"
+	"models/incom/m4a1/v_m4a1_master_piece.mdl"
 };
 
 new const M4MenuNames[][] =
 {
     "M4a1 [DEFAULT]",
-    "M4a1 D'Cyan",
-    "M4a1 Golden'R",
-    "M4a1 Hyper Beast",
-    "M4a1 Howl"
+    "M4a1 Asiimov",
+    "M4a1 Desolate Space",
+	"M4a1 Golden'R",
+	"M4a1 Howl",
+	"M4a1 Hyper Beast",
+	"M4a1 Master Piece"
 };
 
 new M4[33];
@@ -29,8 +33,8 @@ new M4[33];
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /m4","M4Menu");
-	register_event("CurWeapon", "CurentWeapon", "be", "1=1");
+	register_clcmd("say /skins-m4a1","M4Menu");
+	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
@@ -43,14 +47,16 @@ public plugin_precache()
 
 public MenuM4(id)
 {
-	new menu = menu_create("\y>>>>> \rM4a1 Menu \y<<<<<^n \dby >>\rTonitaga\d<<", "M4Case")
+	new menu = menu_create("\y>>>>> \rM4a1 skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "M4Case")
 	
 	menu_additem(menu, "M4a1 \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wM4a1 \yD'Cyan", "2", 0)
-	menu_additem(menu, "\wM4a1 \yGolden'R", "3", 0)
-	menu_additem(menu, "\wM4a1 \yHyper Beast", "4", 0)
-	menu_additem(menu, "\wM4a1 \yHowl", "5", 0)
-	
+	menu_additem(menu, "\wM4a1 \yAsiimov'R", "2", 0)
+	menu_additem(menu, "\wM4a1 \yDesolate Space", "3", 0)
+	menu_additem(menu, "\wM4a1 \yGolden'R", "4", 0)
+	menu_additem(menu, "\wM4a1 \yHowlHowld", "5", 0)
+	menu_additem(menu, "\wM4a1 \yHyper Beast", "6", 0)
+	menu_additem(menu, "\wM4a1 \yMaster Piece", "7", 0)
+
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
 	menu_display(id, menu, 0 );
 	
@@ -71,7 +77,7 @@ public M4Case(id, menu, item)
 	return 1;
 }
 
-public CurentWeapon(id) 
+public ChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_M4A1) 
 	{
@@ -81,10 +87,5 @@ public CurentWeapon(id)
 
 public M4Menu(id)
 {
-	if(is_user_alive(id))
-	{
-		MenuM4(id);
-	}else{
-		MenuM4(id);
-	}
+	MenuM4(id);
 }

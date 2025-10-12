@@ -2,82 +2,90 @@
 #include <cstrike>
 #include <cromchat>
 
-new const PLUGIN[] = "Incomsystem Deagle Menu";
-new const VERSION[] = "1.0";
-new const AUTHOR[] = "Tonitaga";
+new const PLUGIN[]       = "Incomsystem Deagle Menu";
+new const VERSION[]      = "2.0";
+new const AUTHOR[]       = "Tonitaga"
+new const SKIN_COMMAND[] = "say /skins-deagle";
 
-new const DGLModels[][] =
+new const Models_V[][] =
 {
 	"models/v_deagle.mdl",
-	"models/incom/deagle/v_deagle_red.mdl",
-	"models/incom/deagle/v_deagle_emperor_dragon.mdl",
-	"models/incom/deagle/v_deagle_hypnotic.mdl",
-	"models/incom/deagle/v_deagle_blaze.mdl",
-	"models/incom/deagle/v_deagle_printstream_cs2.mdl"
+	"models/incom/deagle/blaze/v_deagle.mdl",
+	"models/incom/deagle/bloodsport/v_deagle.mdl"
 };
 
-new const DGLMenuNames[][] =
+new const Models_P[][] =
+{
+	"models/p_deagle.mdl",
+	"models/incom/deagle/blaze/p_deagle.mdl",
+	"models/incom/deagle/bloodsport/p_deagle.mdl"
+};
+
+new const ModelNames[][] =
 {
     "Deagle [DEFAULT]",
-    "Deagle Red",
-    "Deagle Emperor Dragon",
-    "Deagle Hypnotic",
-    "Deagle Blaze",
-    "Deagle Printstream (CS2 Model)"
+	"Deagle Blaze",
+	"Deagle Bloodsport",
 };
 
-new DGL[33];
+new SkinStorage[33];
 
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-deagle","MenuDgl");
-	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
+	register_clcmd(SKIN_COMMAND,"IncomMenu");
+	register_event("CurWeapon", "IncomChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
-{ 
-	for(new i; i < sizeof DGLModels; i++) 
+{
+	for(new i; i < sizeof Models_V; i++) 
 	{
-		precache_model(DGLModels[i]);
+		precache_model(Models_V[i]);
+	}
+
+	for(new i; i < sizeof Models_P; i++) 
+	{
+		precache_model(Models_P[i]);
 	}
 }
 
-public MenuDgl(id)
+public IncomMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rDeagle skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "DglCase")
+	new menu = menu_create("\y>>>>> \rDeagle skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "IncomCase")
 	
-	menu_additem(menu, "Deagle \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wDeagle \yRed", "2", 0)
-	menu_additem(menu, "\wDeagle \yEmperor Dragon", "3", 0)
-	menu_additem(menu, "\wDeagle \yHypnotic", "4", 0)
-	menu_additem(menu, "\wDeagle \yBlaze", "5", 0)
-	menu_additem(menu, "\wDeagle \yPrintstream (CS2 Model)", "6", 0)
-	
+	menu_additem(menu, "Deagle \r[DEFAULT]^n",  "1", 0)
+	menu_additem(menu, "\yDeagle \wBlaze",      "2", 0)
+	menu_additem(menu, "\yDeagle \wBloodsport", "3", 0)
+
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
-	menu_display(id, menu, 0 );
+	menu_display(id, menu, 0);
 	
-	return 1; 
+	return 1;
 }
 
-public DglCase(id, menu, item)
+public IncomCase(id, menu, item)
 {
 	if(item == MENU_EXIT)
 	{
 		return 1;
 	}
-	new nick[33]; get_user_name(id, nick, 32);
-	DGL[id] = item;
-	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s &x01as Your Deagle", nick, DGLMenuNames[item]);
+
+	new nick[33];
+	get_user_name(id, nick, 32);
+
+	SkinStorage[id] = item;
+	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s&x01", nick, ModelNames[item]);
 	
-	menu_destroy (menu);
+	menu_destroy(menu);
 	return 1;
 }
 
-public ChangeCurrentWeapon(id) 
+public IncomChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_DEAGLE) 
 	{
-		set_pev(id, pev_viewmodel2, DGLModels[DGL[id]]);
+		set_pev(id, pev_viewmodel2,   Models_V[SkinStorage[id]]);
+		set_pev(id, pev_weaponmodel2, Models_P[SkinStorage[id]]);
 	}
 }

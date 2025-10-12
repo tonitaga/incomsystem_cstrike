@@ -2,85 +2,106 @@
 #include <cstrike>
 #include <cromchat>
 
-new const PLUGIN[] = "Incomsystem M4A1 Menu";
-new const VERSION[] = "1.0";
-new const AUTHOR[] = "Tonitaga";
+new const PLUGIN[]       = "Incomsystem M4A1 Menu";
+new const VERSION[]      = "2.0";
+new const AUTHOR[]       = "Tonitaga"
+new const SKIN_COMMAND[] = "say /skins-m4a1";
 
-new const M4Models[][] =
+new const Models_V[][] =
 {
 	"models/v_m4a1.mdl",
-	"models/incom/m4a1/v_m4a1_asiimov.mdl",
-	"models/incom/m4a1/v_m4a1_desolate_space.mdl",
-	"models/incom/m4a1/v_m4a1_golden_r.mdl",
-	"models/incom/m4a1/v_m4a1_howl.mdl",
-	"models/incom/m4a1/v_m4a1_hyper_beast.mdl",
-	"models/incom/m4a1/v_m4a1_master_piece.mdl"
+	"models/incom/m4a1/desolate_space/v_m4a1.mdl",
+	"models/incom/m4a1/asiimov/v_m4a1.mdl",
+	"models/incom/m4a1/chanticos_fire/v_m4a1.mdl",
+	"models/incom/m4a1/dragon_king/v_m4a1.mdl",
+	"models/incom/m4a1/golden_coil/v_m4a1.mdl",
+	"models/incom/m4a1/hyper_beast/v_m4a1.mdl",
 };
 
-new const M4MenuNames[][] =
+new const Models_P[][] =
 {
-    "M4a1 [DEFAULT]",
-    "M4a1 Asiimov",
-    "M4a1 Desolate Space",
-	"M4a1 Golden'R",
-	"M4a1 Howl",
-	"M4a1 Hyper Beast",
-	"M4a1 Master Piece"
+	"models/p_m4a1.mdl",
+	"models/incom/m4a1/desolate_space/p_m4a1.mdl",
+	"models/incom/m4a1/asiimov/p_m4a1.mdl",
+	"models/incom/m4a1/chanticos_fire/p_m4a1.mdl",
+	"models/incom/m4a1/dragon_king/p_m4a1.mdl",
+	"models/incom/m4a1/golden_coil/p_m4a1.mdl",
+	"models/incom/m4a1/hyper_beast/p_m4a1.mdl",
 };
 
-new M4[33];
+new const ModelNames[][] =
+{
+    "M4A1 [DEFAULT]",
+    "M4A1 Desolate Space",
+	"M4A1 Asiimov",
+	"M4A1 Chanticos Fire",
+	"M4A1 Dragon King",
+	"M4A1 Golden Coil",
+	"M4A1 Hyper Beast",
+};
+
+new SkinStorage[33];
 
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-m4a1","MenuM4");
-	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
+	register_clcmd(SKIN_COMMAND,"IncomMenu");
+	register_event("CurWeapon", "IncomChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
-{ 
-	for(new i; i < sizeof M4Models; i++) 
+{
+	for(new i; i < sizeof Models_V; i++) 
 	{
-		precache_model(M4Models[i]);
+		precache_model(Models_V[i]);
+	}
+
+	for(new i; i < sizeof Models_P; i++) 
+	{
+		precache_model(Models_P[i]);
 	}
 }
 
-public MenuM4(id)
+public IncomMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rM4a1 skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "M4Case")
+	new menu = menu_create("\y>>>>> \rM4A1 skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "IncomCase")
 	
-	menu_additem(menu, "M4a1 \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wM4a1 \yAsiimov'R", "2", 0)
-	menu_additem(menu, "\wM4a1 \yDesolate Space", "3", 0)
-	menu_additem(menu, "\wM4a1 \yGolden'R", "4", 0)
-	menu_additem(menu, "\wM4a1 \yHowl", "5", 0)
-	menu_additem(menu, "\wM4a1 \yHyper Beast", "6", 0)
-	menu_additem(menu, "\wM4a1 \yMaster Piece", "7", 0)
+	menu_additem(menu, "M4A1 \r[DEFAULT]^n",      "1", 0)
+	menu_additem(menu, "\yM4A1 \wDesolate Space", "2", 0)
+	menu_additem(menu, "\yM4A1 \wAsiimov",        "3", 0)
+	menu_additem(menu, "\yM4A1 \wChanticos Fire", "4", 0)
+	menu_additem(menu, "\yM4A1 \wDragon King",    "5", 0)
+	menu_additem(menu, "\yM4A1 \wGolden Coil",    "6", 0)
+	menu_additem(menu, "\yM4A1 \wHyper Beast",    "7", 0)
 
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
-	menu_display(id, menu, 0 );
+	menu_display(id, menu, 0);
 	
-	return 1; 
+	return 1;
 }
 
-public M4Case(id, menu, item)
+public IncomCase(id, menu, item)
 {
 	if(item == MENU_EXIT)
 	{
 		return 1;
 	}
-	new nick[33]; get_user_name(id, nick, 32);
-	M4[id] = item;
-	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s &x01as Your M4a1", nick, M4MenuNames[item]);
+
+	new nick[33];
+	get_user_name(id, nick, 32);
+
+	SkinStorage[id] = item;
+	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s&x01", nick, ModelNames[item]);
 	
-	menu_destroy (menu);
+	menu_destroy(menu);
 	return 1;
 }
 
-public ChangeCurrentWeapon(id) 
+public IncomChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_M4A1) 
 	{
-		set_pev(id, pev_viewmodel2, M4Models[M4[id]]);
+		set_pev(id, pev_viewmodel2,   Models_V[SkinStorage[id]]);
+		set_pev(id, pev_weaponmodel2, Models_P[SkinStorage[id]]);
 	}
 }

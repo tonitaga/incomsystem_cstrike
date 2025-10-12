@@ -2,75 +2,90 @@
 #include <cstrike>
 #include <cromchat>
 
-new const PLUGIN[] = "Incomsystem Glock18 Menu";
-new const VERSION[] = "1.0";
-new const AUTHOR[] = "Tonitaga";
+new const PLUGIN[]       = "Incomsystem Glock Menu";
+new const VERSION[]      = "2.0";
+new const AUTHOR[]       = "Tonitaga"
+new const SKIN_COMMAND[] = "say /skins-glock";
 
-new const GlockModels[][] =
+new const Models_V[][] =
 {
 	"models/v_glock18.mdl",
-	"models/incom/glock/v_glock18_fade.mdl",
-	"models/incom/glock/v_glock18_water_elemental.mdl"
+	"models/incom/glock/fade/v_glock18.mdl",
+	"models/incom/glock/cubes_world/v_glock18.mdl"
 };
 
-new const GlockModelNames[][] =
+new const Models_P[][] =
 {
-    "Glock18 [DEFAULT]",
-	"Glock18 Fade",
-	"Glock18 Water Elemental"
+	"models/p_glock18.mdl",
+	"models/incom/glock/fade/p_glock18.mdl",
+	"models/incom/glock/cubes_world/p_glock18.mdl"
 };
 
-new GlocksStorage[33];
+new const ModelNames[][] =
+{
+    "Glock [DEFAULT]",
+	"Glock Fade",
+	"Glock Cubes World"
+};
+
+new SkinStorage[33];
 
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-glock","MenuGloak");
-	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
+	register_clcmd(SKIN_COMMAND,"IncomMenu");
+	register_event("CurWeapon", "IncomChangeCurrentWeapon", "be", "1=1");
 }
 
 public plugin_precache() 
-{ 
-	for(new i; i < sizeof GlockModels; i++) 
+{
+	for(new i; i < sizeof Models_V; i++) 
 	{
-		precache_model(GlockModels[i]);
+		precache_model(Models_V[i]);
+	}
+
+	for(new i; i < sizeof Models_P; i++) 
+	{
+		precache_model(Models_P[i]);
 	}
 }
 
-public MenuGloak(id)
+public IncomMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rGlock18 skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "GlockCase")
+	new menu = menu_create("\y>>>>> \rGlock skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "IncomCase")
 	
-	menu_additem(menu, "Glock \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wGlock \yFade", "2", 0)
-	menu_additem(menu, "\wGlock \yWater Elemental", "3", 0)
-	
+	menu_additem(menu, "Glock \r[DEFAULT]^n",   "1", 0)
+	menu_additem(menu, "\yGlock \wFade",        "2", 0)
+	menu_additem(menu, "\yGlock \wCubes World", "3", 0)
+
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
-	menu_display(id, menu, 0 );
+	menu_display(id, menu, 0);
 	
-	return 1; 
+	return 1;
 }
 
-public GlockCase(id, menu, item)
+public IncomCase(id, menu, item)
 {
 	if(item == MENU_EXIT)
 	{
 		return 1;
 	}
 
-	new nick[33]; get_user_name(id, nick, 32);
+	new nick[33];
+	get_user_name(id, nick, 32);
 
-	GlocksStorage[id] = item;
-	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s &x01as Your Glock18", nick, GlockModelNames[item]);
+	SkinStorage[id] = item;
+	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s&x01", nick, ModelNames[item]);
 	
 	menu_destroy(menu);
 	return 1;
 }
 
-public ChangeCurrentWeapon(id) 
+public IncomChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_GLOCK18) 
 	{
-		set_pev(id, pev_viewmodel2, GlockModels[GlocksStorage[id]]);
+		set_pev(id, pev_viewmodel2,   Models_V[SkinStorage[id]]);
+		set_pev(id, pev_weaponmodel2, Models_P[SkinStorage[id]]);
 	}
 }

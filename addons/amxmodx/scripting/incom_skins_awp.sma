@@ -2,92 +2,102 @@
 #include <cstrike>
 #include <cromchat>
 
-new const PLUGIN[] = "Incomsystem AWP Menu";
-new const VERSION[] = "1.0";
-new const AUTHOR[] = "Tonitaga";
+new const PLUGIN[]       = "Incomsystem AWP Menu";
+new const VERSION[]      = "2.0";
+new const AUTHOR[]       = "Tonitaga"
+new const SKIN_COMMAND[] = "say /skins-awp";
 
-new const AWPModels[][] =
+new const Models_V[][] =
 {
 	"models/v_awp.mdl",
-	"models/incom/awp/v_awp_colorway.mdl",
-	"models/incom/awp/v_awp_dragon_lore.mdl",
-	"models/incom/awp/v_awp_fever_dream.mdl",
-	"models/incom/awp/v_awp_lightning_strike.mdl",
-	"models/incom/awp/v_awp_medusa.mdl",
-	"models/incom/awp/v_awp_ohka.mdl",
-	"models/incom/awp/v_awp_oni_taiji.mdl",
-	"models/incom/awp/v_awp_tiger.mdl"
+	"models/incom/awp/dragon_lore/v_awp.mdl",
+	"models/incom/awp/fever_dream/v_awp.mdl",
+	"models/incom/awp/hyper_beast/v_awp.mdl",
+	"models/incom/awp/lightning_strike/v_awp.mdl",
+	"models/incom/awp/oni_taiji/v_awp.mdl",
 };
 
-new const AWPMenuNames[][] =
+new const Models_P[][] =
 {
-    "Awp [DEFAULT]",
-    "Awp Colorway",
-    "Awp Dragon Lore",
-	"Awp Fever Dream",
-	"Awp Lightning Strike",
-	"Awp Medusa",
-	"Awp Ohka",
-	"Awp Oni Taiji",
-	"Awp Tiger"
+	"models/p_awp.mdl",
+	"models/incom/awp/dragon_lore/p_awp.mdl",
+	"models/incom/awp/fever_dream/p_awp.mdl",
+	"models/incom/awp/hyper_beast/p_awp.mdl",
+	"models/incom/awp/lightning_strike/p_awp.mdl",
+	"models/incom/awp/oni_taiji/p_awp.mdl",
 };
 
-new AWP[33];
+new const ModelNames[][] =
+{
+    "AWP [DEFAULT]",
+	"AWP Dragon	Lore",
+	"AWP Fever Dream",
+	"AWP Hyper Beast",
+	"AWP Lightning Strike",
+	"AWP Oni Taiji",
+};
+
+new SkinStorage[33];
 
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	register_clcmd("say /skins-awp","MenuAwp");
-	register_event("CurWeapon", "ChangeCurrentWeapon", "be", "1=1");
+	register_clcmd(SKIN_COMMAND,"IncomMenu");
+	register_event("CurWeapon", "IncomChangeCurrentWeapon", "be", "1=1");
 }
 
-public plugin_precache() 
-{ 
-	for(new i; i < sizeof AWPModels; i++) 
+public plugin_precache()
+{
+	for(new i; i < sizeof Models_V; i++) 
 	{
-		precache_model(AWPModels[i]);
+		precache_model(Models_V[i]);
+	}
+
+	for(new i; i < sizeof Models_P; i++) 
+	{
+		precache_model(Models_P[i]);
 	}
 }
 
-public MenuAwp(id)
+public IncomMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rAWP skin selection menu \y<<<<<^n \dby >>\Tonitaga\d<<", "AwpCase")
+	new menu = menu_create("\y>>>>> \rAWP skin selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "IncomCase")
 	
-	menu_additem(menu, "Awp \r[DEFAULT]^n", "1", 0)
-	menu_additem(menu, "\wAwp \yColorway", "2", 0)
-	menu_additem(menu, "\wAwp \yDragon Lore", "3", 0)
-	menu_additem(menu, "\wAwp \yFever Dream", "4", 0)
-	menu_additem(menu, "\wAwp \yLightning Strike", "5", 0)
-	menu_additem(menu, "\wAwp \yMedusa", "6", 0)
-	menu_additem(menu, "\wAwp \yOhka", "7", 0)
-	menu_additem(menu, "\wAwp \yOni Taiji", "8", 0)
-	menu_additem(menu, "\wAwp \yTiger", "9", 0)
-	
+	menu_additem(menu, "AWP \r[DEFAULT]^n",        "1", 0)
+	menu_additem(menu, "\yAWP \wDragon Lore",     "2", 0)
+	menu_additem(menu, "\yAWP \wFever Dream",      "3", 0)
+	menu_additem(menu, "\yAWP \wHyper Beast",      "4", 0)
+	menu_additem(menu, "\yAWP \wLightning Strike", "5", 0)
+	menu_additem(menu, "\yAWP \wOni Taiji",        "6", 0)
+
 	menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
-	menu_display(id, menu, 0 );
+	menu_display(id, menu, 0);
 	
-	return 1; 
+	return 1;
 }
 
-public AwpCase(id, menu, item)
+public IncomCase(id, menu, item)
 {
 	if(item == MENU_EXIT)
 	{
 		return 1;
 	}
-	new nick[33]; get_user_name(id, nick, 32);
+
+	new nick[33];
+	get_user_name(id, nick, 32);
+
+	SkinStorage[id] = item;
+	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s&x01", nick, ModelNames[item]);
 	
-	AWP[id] = item;
-	CC_SendMessage(id, "&x03%s &x01You Chouse &x04%s &x01as Your Awp", nick, AWPMenuNames[item]);
-	
-	menu_destroy (menu);
+	menu_destroy(menu);
 	return 1;
 }
 
-public ChangeCurrentWeapon(id) 
+public IncomChangeCurrentWeapon(id) 
 {
 	if(get_user_weapon(id) == CSW_AWP) 
 	{
-		set_pev(id, pev_viewmodel2, AWPModels[AWP[id]]);
+		set_pev(id, pev_viewmodel2,   Models_V[SkinStorage[id]]);
+		set_pev(id, pev_weaponmodel2, Models_P[SkinStorage[id]]);
 	}
 }

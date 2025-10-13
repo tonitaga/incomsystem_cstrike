@@ -8,24 +8,26 @@
 #define VERSION "1.0"
 #define AUTHOR  "Tonitaga"
 
-#define ENABLED       "1"
-#define DISABLED      "0"
-#define DEFAULT_STATE ENABLED
+#define KEY_ENABLED      "amx_incom_respawn_enable"
+#define KEY_GODMODE_TIME "amx_incom_respawn_godmode"
+#define KEY_RESPAWN_TIME "amx_incom_respawn_time"
+#define KEY_GLOW_COLOR   "amx_incom_respawn_glow_color"
+#define KEY_HUD_COLOR    "amx_incom_respawn_hud_color"
 
-// Время неуязвимости по умолчанию в секундах
+#define DEFAULT_ENABLED      "0"
 #define DEFAULT_GODMODE_TIME "3.0"
-
-// Цвет подсветки по умолчанию (Золотой)
-#define DEFAULT_GLOW_COLOR   "255215000"
-
-// Время воскрешения по умолчанию в секундах
 #define DEFAULT_RESPAWN_TIME "1.5"
+#define DEFAULT_GLOW_COLOR   "255215000"
+#define DEFAULT_HUD_COLOR    "110030175"
 
 new g_RespawnEnabled;
 new g_GodmodeTime;
 new g_RespawnTime;
 new g_GlowColor;
-new g_GodmodeTaskOffset = 1000; // Базовый оффсет для задач неуязвимости
+new g_HUDColor;
+
+// Базовый оффсет для задач неуязвимости
+new g_GodmodeTaskOffset = 1000;
 
 public plugin_init()
 {
@@ -35,10 +37,11 @@ public plugin_init()
 	register_event("ShowMenu", "OnTeamSelection", "b", "4&Team_Select");
 	register_event("VGUIMenu", "OnTeamSelection", "b", "1=2");
 
-	g_RespawnEnabled = register_cvar("amx_incom_respawn_enable", DEFAULT_STATE);
-	g_GodmodeTime = register_cvar("amx_incom_respawn_godmode", DEFAULT_GODMODE_TIME);
-	g_RespawnTime = register_cvar("amx_incom_respawn_time", DEFAULT_RESPAWN_TIME);
-	g_GlowColor = register_cvar("amx_incom_respawn_glow_color", DEFAULT_GLOW_COLOR);
+	g_RespawnEnabled = register_cvar(KEY_ENABLED, DEFAULT_ENABLED);
+	g_GodmodeTime    = register_cvar(KEY_GODMODE_TIME, DEFAULT_GODMODE_TIME);
+	g_RespawnTime    = register_cvar(KEY_RESPAWN_TIME, DEFAULT_RESPAWN_TIME);
+	g_GlowColor      = register_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR);
+	g_HUDColor       = register_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR);
 
 	RegisterHam(Ham_TakeDamage, "player", "OnPlayerTakeDamage");
 }
@@ -49,7 +52,9 @@ public OnTeamSelection(playerId)
 	{
 		new playerData[1];
 		playerData[0] = playerId;
-		set_task(1.0, "RespawnPlayerTask", 0, playerData, sizeof(playerData));
+
+		new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
+		set_task(respawnAfter, "RespawnPlayerTask", 0, playerData, sizeof(playerData));
 	}
 }
 
@@ -88,8 +93,10 @@ public RespawnPlayerTask(playerData[])
 	set_task(godmodeDuration, "RemoveGodmodeTask", g_GodmodeTaskOffset + playerId, godmodeData, sizeof(godmodeData));
 	
 	StartGodmodeEffects(playerId);
-	
-	client_print(playerId, print_chat, "[Respawn] Вы воскрешены с неуязвимостью на %.1f секунд!", godmodeDuration);
+
+	new message[128];
+	formatex(message, charsmax(message), "INCOMSYSTEM наделил нас неуязвимостью на %.1f секунд!", godmodeDuration);
+	ShowHudMessage(playerId, message);
 }
 
 public RemoveGodmodeTask(godmodeData[])
@@ -100,7 +107,8 @@ public RemoveGodmodeTask(godmodeData[])
 	{
 		SetGodmode(playerId, false);
 		StopGodmodeEffects(playerId);
-		client_print(playerId, print_chat, "[Respawn] Неуязвимость закончилась!");
+	
+		ShowHudMessage(playerId, "Неуязвимость закончилась");
 	}
 }
 
@@ -117,6 +125,39 @@ public OnPlayerTakeDamage(victim, inflictor, attacker, Float:damage, damageBits)
 	}
 	
 	return HAM_IGNORED;
+}
+
+stock ShowHudMessage(id, const message[])
+{
+	if (!is_user_connected(id))
+		return;
+	
+	ClearHudMessages(id);
+
+	new hudColorStr[32], Float:hudColor[3];
+	get_pcvar_string(g_HUDColor, hudColorStr, charsmax(hudColorStr));
+	ParseRGBColor(hudColorStr, hudColor);
+
+	set_hudmessage(
+		floatround(hudColor[0]),
+		floatround(hudColor[1]),
+		floatround(hudColor[2]),
+		-1.0, 0.3, 0, 6.0, 3.0, 0.1, 0.2, -1
+	);
+	show_hudmessage(id, message);
+}
+
+stock ClearHudMessages(id)
+{
+	if (!is_user_connected(id))
+		return;
+	
+	// Показываем пустое сообщение на всех каналах
+	for (new i = 1; i <= 4; i++)
+	{
+		set_hudmessage(0, 0, 0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, i);
+		show_hudmessage(id, "");
+	}
 }
 
 stock SetGodmode(playerId, bool:godmodeEnabled)

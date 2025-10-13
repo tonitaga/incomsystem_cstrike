@@ -1,0 +1,7 @@
+[en]
+GODMODE_BEGIN_MESSAGE = Incomsystem grants godmode for %.1f seconds(s)
+GODMODE_END_MESSAGE = Godmode is over
+
+[ru]
+GODMODE_BEGIN_MESSAGE = Incomsystem дарует режим бога на %.1f секунд(ы)
+GODMODE_END_MESSAGE = Режим бога закончился

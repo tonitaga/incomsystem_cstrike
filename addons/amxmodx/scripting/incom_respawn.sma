@@ -13,18 +13,21 @@
 #define KEY_RESPAWN_TIME "amx_incom_respawn_time"
 #define KEY_GLOW_COLOR   "amx_incom_respawn_glow_color"
 #define KEY_HUD_COLOR    "amx_incom_respawn_hud_color"
+#define KEY_ENABLE_HUD   "amx_incom_respawn_enable_hud"
 
 #define DEFAULT_ENABLED      "0"
 #define DEFAULT_GODMODE_TIME "3.0"
 #define DEFAULT_RESPAWN_TIME "1.5"
 #define DEFAULT_GLOW_COLOR   "255215000"
 #define DEFAULT_HUD_COLOR    "110030175"
+#define DEFAULT_ENABLE_HUD   "1"
 
 new g_RespawnEnabled;
 new g_GodmodeTime;
 new g_RespawnTime;
 new g_GlowColor;
 new g_HUDColor;
+new g_HUDEnabled;
 
 // Базовый оффсет для задач неуязвимости
 new g_GodmodeTaskOffset = 1000;
@@ -32,6 +35,8 @@ new g_GodmodeTaskOffset = 1000;
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
+
+	register_dictionary("incom_respawn.txt")
 
 	register_event("DeathMsg", "OnPlayerDeath", "a");
 	register_event("ShowMenu", "OnTeamSelection", "b", "4&Team_Select");
@@ -42,6 +47,7 @@ public plugin_init()
 	g_RespawnTime    = register_cvar(KEY_RESPAWN_TIME, DEFAULT_RESPAWN_TIME);
 	g_GlowColor      = register_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR);
 	g_HUDColor       = register_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR);
+	g_HUDEnabled     = register_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD);
 
 	RegisterHam(Ham_TakeDamage, "player", "OnPlayerTakeDamage");
 }
@@ -94,9 +100,12 @@ public RespawnPlayerTask(playerData[])
 	
 	StartGodmodeEffects(playerId);
 
-	new message[128];
-	formatex(message, charsmax(message), "INCOMSYSTEM наделил нас неуязвимостью на %.1f секунд!", godmodeDuration);
-	ShowHudMessage(playerId, message);
+	if (get_pcvar_num(g_HUDEnabled))
+	{
+		new message[128];
+		formatex(message, charsmax(message), "%L", LANG_SERVER, "GODMODE_BEGIN_MESSAGE", godmodeDuration);
+		ShowHudMessage(playerId, message);
+	}
 }
 
 public RemoveGodmodeTask(godmodeData[])
@@ -108,7 +117,12 @@ public RemoveGodmodeTask(godmodeData[])
 		SetGodmode(playerId, false);
 		StopGodmodeEffects(playerId);
 	
-		ShowHudMessage(playerId, "Неуязвимость закончилась");
+		if (get_pcvar_num(g_HUDEnabled))
+		{
+			new message[128];
+			formatex(message, charsmax(message), "%L", LANG_SERVER, "GODMODE_END_MESSAGE");
+			ShowHudMessage(playerId, message);
+		}
 	}
 }
 

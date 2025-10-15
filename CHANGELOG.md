@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Reunion [0.1.92]
     - Revoice [0.1.0.32]
     - ReAPI [5.26.0.338]
+    - ReGameDLL [5.28.0.756]
 
 - Добавлена система воскрешений после смерти (По умолчанию выключена)
 - Добавлен HTTP file server для быстрой подгрузки ресурсов клиентами

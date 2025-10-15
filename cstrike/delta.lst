@@ -3,17 +3,17 @@
 // gamedll routine_name : before transmitting data, invoke the named function from the game .dll to reset fields as needed
 // clientdll routine_name : same as above, except the routine is called via the client.dll
 
-clientdata_t none                    
+clientdata_t none
 {
 	DEFINE_DELTA( flTimeStepSound, DT_INTEGER, 10, 1.0 ),
-	DEFINE_DELTA( origin[0], DT_SIGNED | DT_FLOAT, 21, 128.0 ),
-	DEFINE_DELTA( origin[1], DT_SIGNED | DT_FLOAT, 21, 128.0 ),
+	DEFINE_DELTA( origin[0], DT_SIGNED | DT_FLOAT, 24, 1024.0 ),
+	DEFINE_DELTA( origin[1], DT_SIGNED | DT_FLOAT, 24, 1024.0 ),
 	DEFINE_DELTA( velocity[0], DT_SIGNED | DT_FLOAT, 16, 8.0 ),
 	DEFINE_DELTA( velocity[1], DT_SIGNED | DT_FLOAT, 16, 8.0 ),
 
 	DEFINE_DELTA( m_flNextAttack, DT_FLOAT | DT_SIGNED, 22, 1000.0 ),
 
-	DEFINE_DELTA( origin[2], DT_SIGNED | DT_FLOAT, 21, 128.0 ),
+	DEFINE_DELTA( origin[2], DT_SIGNED | DT_FLOAT, 24, 1024.0 ),
 	DEFINE_DELTA( velocity[2], DT_SIGNED | DT_FLOAT, 16, 8.0 ),
 
 	DEFINE_DELTA( ammo_nails, DT_SIGNED | DT_INTEGER, 10, 1.0 ),
@@ -26,7 +26,7 @@ clientdata_t none
 	DEFINE_DELTA( punchangle[2], DT_SIGNED | DT_FLOAT, 21, 8.0 ),
 	DEFINE_DELTA( flags, DT_INTEGER, 32, 1.0 ), // Cut to 3 bits?
 	DEFINE_DELTA( weaponanim, DT_INTEGER, 8, 1.0 ),
-	DEFINE_DELTA( health, DT_SIGNED | DT_FLOAT, 10, 1.0 ), // Cut # of bits?
+	DEFINE_DELTA( health, DT_FLOAT, 17, 1.0 ), // Cut # of bits?
 	DEFINE_DELTA( maxspeed, DT_FLOAT, 16, 10.0 ),
 	DEFINE_DELTA( flDuckTime, DT_INTEGER, 10, 1.0 ),
 	DEFINE_DELTA( view_ofs[2], DT_SIGNED | DT_FLOAT, 10, 4.0 ),
@@ -93,7 +93,7 @@ entity_state_t gamedll Entity_Encode
 	DEFINE_DELTA( startpos[2], DT_SIGNED | DT_FLOAT, 13, 1.0 ),
 	DEFINE_DELTA( impacttime, DT_TIMEWINDOW_BIG, 13, 100.0 ),
 	DEFINE_DELTA( starttime, DT_TIMEWINDOW_BIG, 13, 100.0 ),
-	
+
 	DEFINE_DELTA( weaponmodel, DT_INTEGER, 10, 1.0 ),
 	DEFINE_DELTA( owner, DT_INTEGER, 5, 1.0 ),
 	DEFINE_DELTA( effects, DT_INTEGER, 8, 1.0 ),
@@ -108,7 +108,7 @@ entity_state_t gamedll Entity_Encode
 	DEFINE_DELTA( controller[3], DT_BYTE, 8, 1.0 ),
 	DEFINE_DELTA( blending[0], DT_BYTE, 8, 1.0 ),
 	DEFINE_DELTA( blending[1], DT_BYTE, 8, 1.0 ),
-	DEFINE_DELTA( body, DT_INTEGER, 8, 1.0 ),
+	DEFINE_DELTA( body, DT_INTEGER, 18, 1.0 ),
 	DEFINE_DELTA( rendermode, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( renderamt, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( renderfx, DT_INTEGER, 8, 1.0 ),
@@ -128,11 +128,11 @@ entity_state_player_t gamedll Player_Encode
 {
 	DEFINE_DELTA( animtime, DT_TIMEWINDOW_8, 8, 1.0 ),
 	DEFINE_DELTA( frame, DT_FLOAT, 8, 1.0 ),
-	DEFINE_DELTA( origin[0], DT_SIGNED | DT_FLOAT, 18, 32.0 ),
+	DEFINE_DELTA( origin[0], DT_SIGNED | DT_FLOAT, 24, 32.0 ),
 	DEFINE_DELTA( angles[0], DT_ANGLE, 16, 1.0 ),
 	DEFINE_DELTA( angles[1], DT_ANGLE, 16, 1.0 ),
-	DEFINE_DELTA( origin[1], DT_SIGNED | DT_FLOAT, 18, 32.0 ),
-	DEFINE_DELTA( origin[2], DT_SIGNED | DT_FLOAT, 18, 32.0 ),
+	DEFINE_DELTA( origin[1], DT_SIGNED | DT_FLOAT, 24, 32.0 ),
+	DEFINE_DELTA( origin[2], DT_SIGNED | DT_FLOAT, 24, 32.0 ),
 	DEFINE_DELTA( gaitsequence, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( sequence, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( modelindex, DT_INTEGER, 10, 1.0 ),
@@ -148,7 +148,7 @@ entity_state_player_t gamedll Player_Encode
 	// DEFINE_DELTA( team, DT_INTEGER, 4, 1.0 )
 	// DEFINE_DELTA( playerclass, DT_INTEGER, 4, 1.0 )
 	DEFINE_DELTA( owner, DT_INTEGER, 5, 1.0 ),
-	DEFINE_DELTA( effects, DT_INTEGER, 8, 1.0 ),
+	DEFINE_DELTA( effects, DT_INTEGER, 16, 1.0 ),
 	DEFINE_DELTA( angles[2], DT_ANGLE, 16, 1.0 ),
 	DEFINE_DELTA( colormap, DT_INTEGER, 16, 1.0 ),
 	DEFINE_DELTA( framerate, DT_SIGNED | DT_FLOAT, 8, 16.0 ),
@@ -159,7 +159,7 @@ entity_state_player_t gamedll Player_Encode
 	DEFINE_DELTA( controller[3], DT_BYTE, 8, 1.0 ),
 	DEFINE_DELTA( blending[0], DT_BYTE, 8, 1.0 ),
 	DEFINE_DELTA( blending[1], DT_BYTE, 8, 1.0 ),
-	DEFINE_DELTA( body, DT_INTEGER, 8, 1.0 ),
+	DEFINE_DELTA( body, DT_INTEGER, 9, 1.0 ),
 	DEFINE_DELTA( rendermode, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( renderamt, DT_INTEGER, 8, 1.0 ),
 	DEFINE_DELTA( renderfx, DT_INTEGER, 8, 1.0 ),

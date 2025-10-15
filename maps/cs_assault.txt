@@ -1,13 +1,14 @@
-CS_ASSAULT - Спасение заложников
-Автор: CryptR (lmuur@dlc.fi)
+Assault - Hostage Rescue
+by CryptR (lmuur@dlc.fi)
 
-Спецназ: Спасите заложников.
-Обезвредьте террористов, не подвергая 
-опасности заложников. Террористы могут 
-наблюдать за вами с камер видеонаблюдения.
+Counter-Terrorists: Rescue the hostages. 
+Take out the Terrorists without jeopardizing 
+the hostages. The Terrorists may be watching
+you with their cameras.
 
-Террористы: Предотвратите операцию спецназа
-по спасению заложников. Используйте любые
-необходимые средства.
+Terrorists: Prevent Counter-Terrorist
+force from rescuing the hostages. Use
+whatever force needed.
 
-Примечания: в миссии имеются 4 заложника.
+Other Notes: There are 4 hostages in 
+the mission. Rescue them!

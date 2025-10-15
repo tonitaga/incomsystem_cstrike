@@ -1,14 +1,11 @@
-DE_AZTEC - Минирование/разминирование
-Автор: Chris Auty (Barney) 
-(narby@counter-strike.net)
-Текстуры: Macman 
+Aztec - Defusion
+by Chris Auty (Barney) (narby@counter-strike.net)
+Texture builds by Macman 
 
-Спецназ: Предотвратите взрыв
-древних руин. Вам необходимо
-найти бомбу и разминировать ее.
+Counter-Terrorists: Prevent the Terrorists
+bombing the archeological site.
 
-Террористы: Установите бомбу на
-древних руинах и уничтожьте их.
+Terrorists: Destroy the valuable Aztec ruins.
 
-Примечания: в миссии имеются 2 цели,
-которые необходимо взорвать.
+Other Notes: There are 2 bomb sites in this 
+mission.

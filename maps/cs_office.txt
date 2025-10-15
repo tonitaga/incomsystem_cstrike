@@ -1,12 +1,15 @@
-CS_OFFICE - Спасение заложников
-Автор: Hobbit (Hobbit6@BellAtlantic.net)	
-Текстуры: Sphinx и George_Pooshoes.
+The Office Complex - Hostage Rescue
 
-Спецназ: Войдите в офис и спасите заложников. 
-Уничтожьте террористов, не cоздавая угрозы
-жизни заложникам.
+by Hobbit (Hobbit@nodream.net)	
+textures by Sphinx and George_Pooshoes.
 
-Террористы: Предотвратите операцию спецназа
-по спасению заложников.
+Counter-Terrorists: Enter the office 
+building and rescue the hostages. 
+Take out the Terrorists without 
+jeopardizing the hostages.
 
-Примечания: в миссии имеются 4 заложника.
+Terrorists: Prevent Counter-Terrorist
+force from rescuing the hostages. 
+
+Other Notes: There are 4 hostages in 
+this mission.

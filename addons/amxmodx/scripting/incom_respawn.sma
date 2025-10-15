@@ -20,9 +20,9 @@
 
 #define DEFAULT_ENABLED      "0"
 #define DEFAULT_GODMODE_TIME "3.0"
-#define DEFAULT_RESPAWN_TIME "1.5"
+#define DEFAULT_RESPAWN_TIME "0.5"
 #define DEFAULT_GLOW_COLOR   "255215000"
-#define DEFAULT_HUD_COLOR    "110030175"
+#define DEFAULT_HUD_COLOR    "000255255"
 #define DEFAULT_ENABLE_HUD   "1"
 
 new g_RespawnEnabled;

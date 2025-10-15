@@ -49,6 +49,11 @@ public plugin_init()
 	register_event("CurWeapon", "IncomChangeCurrentWeapon", "be", "1=1");
 }
 
+public client_putinserver(id)
+{
+	SkinStorage[id] = 1; // "AK47 Fire Serpent"
+}
+
 public plugin_precache() 
 {
 	for(new i; i < sizeof Models_V; i++) 

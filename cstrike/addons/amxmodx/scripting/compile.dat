@@ -61,7 +61,7 @@ Age=1231767687
 [incom_music.sma]
 Age=1531818841
 [incom_respawn.sma]
-Age=1531929012
+Age=1531951113
 [incom_skins_ak47.sma]
 Age=1531928717
 [incom_skins_awp.sma]
@@ -86,3 +86,5 @@ Age=1518122675
 Age=1531610961
 [team_grenade_trail.sma]
 Age=1048861097
+[advanced_vampire.sma]
+Age=1520767752

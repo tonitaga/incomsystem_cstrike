@@ -6,7 +6,7 @@
 #include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.0"
+#define VERSION "1.1"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -42,6 +42,8 @@ public plugin_init()
 	register_event("DeathMsg", "OnPlayerDeath", "a");
 	register_event("ShowMenu", "OnTeamSelection", "b", "4&Team_Select");
 	register_event("VGUIMenu", "OnTeamSelection", "b", "1=2");
+	register_event("HLTV",     "OnRoundStart", "a", "1=0", "2=0");
+
 	register_clcmd(WEAPONS_COMMAND, "ShowWeaponsMenu");
 
 	CreateConvVars()
@@ -57,6 +59,24 @@ static CreateConvVars()
 	g_GlowColor      = register_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR);
 	g_HUDColor       = register_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR);
 	g_HUDEnabled     = register_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD);
+}
+
+public OnRoundStart()
+{
+    if (get_pcvar_num(g_RespawnEnabled))
+	{
+		new players[32], count
+		get_players(players, count)
+
+		for (new i = 0; i < count; i++)
+		{
+			new playerId = players[i]
+			if (is_user_connected(playerId) && is_user_alive(playerId))
+			{
+				set_task(0.25, "ShowWeaponsMenu", playerId);
+			}
+		}
+	}
 }
 
 public OnTeamSelection(playerId)

@@ -1,1 +1,1 @@
-# INCOMSYSTEM CS 1.6 Portable edition
+# INCOMSYSTEM CS 1.6 Server

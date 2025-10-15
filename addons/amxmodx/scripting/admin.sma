@@ -83,7 +83,6 @@ public plugin_init()
 	new configsDir[64]
 	get_configsdir(configsDir, charsmax(configsDir))
 
-	server_cmd("exec %s/amxx.cfg", configsDir)
 	server_cmd("exec %s/sql.cfg", configsDir)
 
 	// Create a vector of 5 cells to store the info.

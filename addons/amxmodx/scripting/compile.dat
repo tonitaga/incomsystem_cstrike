@@ -21,7 +21,7 @@ Age=1531689174
 [imessage.sma]
 Age=1391226915
 [incom_music.sma]
-Age=1531816626
+Age=1531818841
 [mapchooser.sma]
 Age=1391226915
 [mapsmenu.sma]
@@ -85,4 +85,6 @@ Age=1531736784
 [incom_skins_test.sma]
 Age=1531732076
 [incom_respawn.sma]
-Age=1531816928
+Age=1531878325
+[better_smoke.sma]
+Age=1464311151

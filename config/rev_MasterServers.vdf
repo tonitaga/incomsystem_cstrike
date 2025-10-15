@@ -1,0 +1,14 @@
+"MasterServers"
+{
+"hl1"
+{
+"0"
+{
+			"addr"		"ms.allcs.ru:27010      "
+		}
+		"1"
+		{
+			"addr"		"ms.allcs.ru:27010      "
+}
+}
+}

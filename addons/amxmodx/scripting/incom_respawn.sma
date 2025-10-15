@@ -3,10 +3,13 @@
 #include <cstrike>
 #include <hamsandwich>
 #include <fakemeta>
+#include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
 #define VERSION "1.0"
 #define AUTHOR  "Tonitaga"
+
+#define WEAPONS_COMMAND "say /weapons"
 
 #define KEY_ENABLED      "amx_incom_respawn_enable"
 #define KEY_GODMODE_TIME "amx_incom_respawn_godmode"
@@ -36,20 +39,24 @@ public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 
-	register_dictionary("incom_respawn.txt")
-
 	register_event("DeathMsg", "OnPlayerDeath", "a");
 	register_event("ShowMenu", "OnTeamSelection", "b", "4&Team_Select");
 	register_event("VGUIMenu", "OnTeamSelection", "b", "1=2");
+	register_clcmd(WEAPONS_COMMAND, "ShowWeaponsMenu");
 
+	CreateConvVars()
+
+	RegisterHam(Ham_TakeDamage, "player", "OnPlayerTakeDamage");
+}
+
+static CreateConvVars()
+{
 	g_RespawnEnabled = register_cvar(KEY_ENABLED, DEFAULT_ENABLED);
 	g_GodmodeTime    = register_cvar(KEY_GODMODE_TIME, DEFAULT_GODMODE_TIME);
 	g_RespawnTime    = register_cvar(KEY_RESPAWN_TIME, DEFAULT_RESPAWN_TIME);
 	g_GlowColor      = register_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR);
 	g_HUDColor       = register_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR);
 	g_HUDEnabled     = register_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD);
-
-	RegisterHam(Ham_TakeDamage, "player", "OnPlayerTakeDamage");
 }
 
 public OnTeamSelection(playerId)
@@ -82,7 +89,7 @@ public RespawnPlayerTask(playerData[])
 {
 	new playerId = playerData[0];
 
-	if (!is_user_connected(playerId) || cs_get_user_team(playerId) == CS_TEAM_SPECTATOR)
+	if (!is_user_connected(playerId))
 		return;
 	
 	if (is_user_alive(playerId))
@@ -91,7 +98,7 @@ public RespawnPlayerTask(playerData[])
 	ExecuteHamB(Ham_CS_RoundRespawn, playerId);
 	
 	SetGodmode(playerId, true);
-	
+
 	new Float:godmodeDuration = get_pcvar_float(g_GodmodeTime);
 	
 	new godmodeData[1];
@@ -103,9 +110,11 @@ public RespawnPlayerTask(playerData[])
 	if (get_pcvar_num(g_HUDEnabled))
 	{
 		new message[128];
-		formatex(message, charsmax(message), "%L", LANG_SERVER, "GODMODE_BEGIN_MESSAGE", godmodeDuration);
+		formatex(message, charsmax(message), "Incomsystem дарует режим бога на %.1f секунд(ы)", godmodeDuration);
 		ShowHudMessage(playerId, message);
 	}
+	
+	set_task(0.2, "ShowWeaponsMenu", playerId);
 }
 
 public RemoveGodmodeTask(godmodeData[])
@@ -119,9 +128,7 @@ public RemoveGodmodeTask(godmodeData[])
 	
 		if (get_pcvar_num(g_HUDEnabled))
 		{
-			new message[128];
-			formatex(message, charsmax(message), "%L", LANG_SERVER, "GODMODE_END_MESSAGE");
-			ShowHudMessage(playerId, message);
+			ShowHudMessage(playerId, "Режим бога закончился");
 		}
 	}
 }
@@ -247,4 +254,114 @@ stock ParseRGBColor(const colorStr[], Float:color[3])
 		if (color[i] > 255.0) color[i] = 255.0;
 		if (color[i] < 0.0) color[i] = 0.0;
 	}
+}
+
+public ShowWeaponsMenu(playerId)
+{
+	if (get_pcvar_num(g_RespawnEnabled))
+	{
+		new menu = menu_create("\y>>>>> \rWeapon selection menu \y<<<<<^n \dby >>\rTonitaga\d<<", "WeaponCase")
+		
+		menu_additem(menu, "\yAK47 & Deagle", "1", 0);
+		menu_additem(menu, "\yM4A1 & Deagle", "2", 0);
+		menu_additem(menu, "\yAWP  & Deagle", "3", 0);
+		
+		menu_setprop(menu, MPROP_EXIT, MEXIT_ALL);
+		menu_display(playerId, menu, 0);
+	}
+
+	return PLUGIN_HANDLED;
+}
+
+public WeaponCase(playerId, menu, item)
+{
+	if (item == MENU_EXIT)
+	{
+		return PLUGIN_HANDLED;
+	}
+	
+	if (!is_user_alive(playerId))
+	{
+		client_print(playerId, print_chat, "[Weapon Menu] Вы должны быть живы для получения оружия!");
+		return PLUGIN_HANDLED;
+	}
+	
+	strip_user_weapons(playerId);
+	
+	give_item(playerId, "weapon_knife");
+	
+	new data[6], name[64], access, callback;
+	menu_item_getinfo(menu, item, access, data, charsmax(data), name, charsmax(name), callback);
+	
+	new weapon_set = str_to_num(data);
+	
+	switch (weapon_set)
+	{
+		case 1:
+		{
+			give_item(playerId, "weapon_ak47");
+			give_item(playerId, "weapon_deagle");
+
+			GiveAmmo(playerId, "ak47");
+			GiveAmmo(playerId, "deagle");
+		}
+		case 2:
+		{
+			give_item(playerId, "weapon_m4a1");
+			give_item(playerId, "weapon_deagle");
+
+			GiveAmmo(playerId, "m4a1");
+			GiveAmmo(playerId, "deagle");
+		}
+		case 3:
+		{
+			give_item(playerId, "weapon_awp");
+			give_item(playerId, "weapon_deagle");
+			
+			GiveAmmo(playerId, "awp");
+			GiveAmmo(playerId, "deagle");
+		}
+	}
+	
+	return PLUGIN_HANDLED;
+}
+
+stock GiveAmmo(id, const weapon[])
+{
+	new ammo_type[32];
+	
+	if (equal(weapon, "ak47"))
+	{
+		ammo_type = "762Nato";
+	}
+	else if (equal(weapon, "m4a1"))
+	{
+		ammo_type = "556Nato";
+	}
+	else if (equal(weapon, "awp"))
+	{
+		ammo_type = "338Magnum";
+	}
+	else if (equal(weapon, "deagle"))
+	{
+		ammo_type = "50AE";
+	}
+	else
+	{
+		return;
+	}
+
+	new max_ammo = 120;
+
+	if (equal(weapon, "awp"))
+	{
+		max_ammo = 20;
+	}
+
+	else if (equal(weapon, "deagle"))
+	{
+		max_ammo = 28;
+	}
+
+	ExecuteHamB(Ham_GiveAmmo, id, max_ammo, ammo_type, max_ammo);
 }

@@ -9,12 +9,12 @@ new const SKIN_COMMAND[] = "say /skins-menu";
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR)
-	register_clcmd(SKIN_COMMAND, "Menu")
+	register_clcmd(SKIN_COMMAND, "ShowSkinsMenu")
 }
 
-public Menu(id)
+public ShowSkinsMenu(id)
 {
-	new menu = menu_create("\y>>>>> \rIncomsystem Skins Menu \y<<<<<", "menu_case")
+	new menu = menu_create("\y>>>>> \rIncomsystem Skins Menu \y<<<<<^n \dby >>\rTonitaga\d<<", "MenuCase")
 
 	menu_additem(menu, "\yKnife \wMenu", "1", 0)
 	menu_additem(menu, "\yAWP \wMenu", "2", 0) 
@@ -28,7 +28,7 @@ public Menu(id)
 	menu_display(id, menu, 0)
 }
 
-public menu_case(id, menu, item) 
+public MenuCase(id, menu, item) 
 {
 	if(item == MENU_EXIT)
 	{

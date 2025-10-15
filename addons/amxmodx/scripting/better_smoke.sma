@@ -142,7 +142,7 @@ public plugin_init() {
     register_forward(FM_PlaybackEvent, "EV_Playback", ._post = false)
     RegisterHam(Ham_Think, g_baseClassname, "CNullEntity_Think", .Post = false)
 
-    Create_ConVars(.createConfigFile = true)
+    Create_ConVars(.createConfigFile = false)
 
     if (amx_smokegren_fix_waterrender)
         ChangeRenderMode("func_water", kRenderNormal)

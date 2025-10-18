@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Добавлены конфигурационные файлы для плагинов `incom_respawn.amxx` и `incom_weapons_delete.amxx`
 - Добавлен плагин статистики и рангов на базе MySQL/SQLite (AES и СsStatsSQL)
 - Добавлена граната "Хилка", исправлена совместимость с плагином `incom_respawn.amxx`
+- Добавлен плагин на взрывную волну после смерти админа
 
 ## [0.2.0]
 

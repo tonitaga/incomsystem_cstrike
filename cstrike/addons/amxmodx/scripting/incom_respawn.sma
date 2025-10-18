@@ -7,7 +7,7 @@
 #include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.1"
+#define VERSION "1.2"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -44,8 +44,7 @@ public plugin_init()
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 
 	register_event("DeathMsg", "OnPlayerDeath", "a");
-	register_event("ShowMenu", "OnTeamSelection", "b", "4&Team_Select");
-	register_event("VGUIMenu", "OnTeamSelection", "b", "1=2");
+	register_event("TeamInfo", "OnTeamInfo", "a")
 	register_event("HLTV",     "OnRoundStart", "a", "1=0", "2=0");
 
 	register_clcmd(WEAPONS_COMMAND, "MakeShowWeaponsMenuTask");
@@ -68,7 +67,7 @@ public plugin_cfg()
 
 public OnRoundStart()
 {
-    if (get_pcvar_num(g_RespawnEnabled))
+    if (get_pcvar_num(g_RespawnEnabled) && get_pcvar_num(g_WeaponsChooseEnabled))
 	{
 		new players[32], count
 		get_players(players, count)
@@ -80,15 +79,32 @@ public OnRoundStart()
 	}
 }
 
-public OnTeamSelection(playerId)
+public OnTeamInfo()
 {
 	if (get_pcvar_num(g_RespawnEnabled))
 	{
-		new playerData[1];
-		playerData[0] = playerId;
+		new playerId = read_data(1)
+		if (is_user_bot(playerId))
+		{
+			return;
+		}
 
-		new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
-		set_task(respawnAfter, "RespawnPlayerTask", 0, playerData, sizeof(playerData));
+		new team[2]
+		read_data(2, team, 1)
+		
+		if(team[0] == 'T' || team[0] == 'C')
+		{
+			if (task_exists(playerId))
+			{
+				remove_task(playerId);
+			}
+
+			new playerData[1];
+			playerData[0] = playerId;
+
+			new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
+			set_task(respawnAfter, "RespawnPlayerTask", playerId, playerData, sizeof(playerData));
+		}
 	}
 }
 
@@ -102,7 +118,7 @@ public OnPlayerDeath()
 		playerData[0] = deadPlayerId;
 
 		new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
-		set_task(respawnAfter, "RespawnPlayerTask", 0, playerData, sizeof(playerData));
+		set_task(respawnAfter, "RespawnPlayerTask", deadPlayerId, playerData, sizeof(playerData));
 	}
 }
 
@@ -279,7 +295,7 @@ stock ParseRGBColor(const colorStr[], Float:color[3])
 
 public MakeShowWeaponsMenuTask(playerId)
 {
-	if (get_pcvar_num(g_WeaponsChooseEnabled))
+	if (get_pcvar_num(g_RespawnEnabled) && get_pcvar_num(g_WeaponsChooseEnabled))
 	{
 		if (is_user_connected(playerId) && is_user_alive(playerId))
 		{
@@ -348,46 +364,6 @@ public WeaponCase(playerId, menu, item)
 	cs_set_user_bpammo(playerId, CSW_DEAGLE, 63);
 	
 	return PLUGIN_HANDLED;
-}
-
-stock GiveAmmo(id, const weapon[])
-{
-	new ammo_type[32];
-	
-	if (equal(weapon, "ak47"))
-	{
-		ammo_type = "762Nato";
-	}
-	else if (equal(weapon, "m4a1"))
-	{
-		ammo_type = "556Nato";
-	}
-	else if (equal(weapon, "awp"))
-	{
-		ammo_type = "338Magnum";
-	}
-	else if (equal(weapon, "deagle"))
-	{
-		ammo_type = "50AE";
-	}
-	else
-	{
-		return;
-	}
-
-	new max_ammo = 120;
-
-	if (equal(weapon, "awp"))
-	{
-		max_ammo = 20;
-	}
-
-	else if (equal(weapon, "deagle"))
-	{
-		max_ammo = 28;
-	}
-
-	ExecuteHamB(Ham_GiveAmmo, id, max_ammo, ammo_type, max_ammo);
 }
 
 stock RemovePrimaryAndPistolWeapon(playerId)

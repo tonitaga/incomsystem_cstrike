@@ -7,7 +7,7 @@
 #include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.2"
+#define VERSION "1.2.1"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -44,8 +44,9 @@ public plugin_init()
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 
 	register_event("DeathMsg", "OnPlayerDeath", "a");
-	register_event("TeamInfo", "OnTeamInfo", "a")
 	register_event("HLTV",     "OnRoundStart", "a", "1=0", "2=0");
+
+	register_clcmd("joinclass", "OnAgentChoose");
 
 	register_clcmd(WEAPONS_COMMAND, "MakeShowWeaponsMenuTask");
 
@@ -65,6 +66,18 @@ public plugin_cfg()
 	hook_cvar_change(g_RespawnEnabled, "OnRespawnEnabledChanged");
 
 	AutoExecConfig(true, "incom_respawn");
+}
+
+public OnAgentChoose(playerId)
+{
+	if (get_pcvar_num(g_RespawnEnabled))
+	{
+		new playerData[1];
+		playerData[0] = playerId;
+
+		new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
+		set_task(respawnAfter, "RespawnPlayerTask", playerId, playerData, sizeof(playerData))
+	}
 }
 
 public OnRespawnEnabledChanged(cvar, const old_value[], const new_value[])
@@ -105,35 +118,6 @@ public OnRoundStart()
 		for (new i = 0; i < count; i++)
 		{
 			MakeShowWeaponsMenuTask(players[i])
-		}
-	}
-}
-
-public OnTeamInfo()
-{
-	if (get_pcvar_num(g_RespawnEnabled))
-	{
-		new playerId = read_data(1)
-		if (is_user_bot(playerId))
-		{
-			return;
-		}
-
-		new team[2]
-		read_data(2, team, 1)
-		
-		if(team[0] == 'T' || team[0] == 'C')
-		{
-			if (task_exists(playerId))
-			{
-				remove_task(playerId);
-			}
-
-			new playerData[1];
-			playerData[0] = playerId;
-
-			new Float:respawnAfter = get_pcvar_float(g_RespawnTime);
-			set_task(respawnAfter, "RespawnPlayerTask", playerId, playerData, sizeof(playerData));
 		}
 	}
 }

@@ -1,5 +1,7 @@
 # INCOMSYSTEM CS 1.6 Server
 
+[`CHANGELOG.md`](./CHANGELOG.md)
+
 ## Как запустить?
 
 1) Склонировать к себе репозиторий или скачать в виде архива 

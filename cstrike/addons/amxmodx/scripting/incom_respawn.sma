@@ -3,6 +3,7 @@
 #include <cstrike>
 #include <hamsandwich>
 #include <fakemeta>
+#include <engine>
 #include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
@@ -112,7 +113,7 @@ public RespawnPlayerTask(playerData[])
 	if (!is_user_connected(playerId))
 		return;
 	
-	if (is_user_alive(playerId))
+	if (is_user_alive(playerId) || cs_get_user_team(playerId) == CS_TEAM_SPECTATOR)
 		return;
 	
 	ExecuteHamB(Ham_CS_RoundRespawn, playerId);
@@ -311,48 +312,40 @@ public WeaponCase(playerId, menu, item)
 		return PLUGIN_HANDLED;
 	}
 	
-	if (!is_user_alive(playerId))
+	if (!is_user_alive(playerId) || cs_get_user_team(playerId) == CS_TEAM_SPECTATOR)
 	{
 		client_print(playerId, print_chat, "[Weapon Menu] Вы должны быть живы для получения оружия!");
 		return PLUGIN_HANDLED;
 	}
-	
-	strip_user_weapons(playerId);
-	
-	give_item(playerId, "weapon_knife");
+
+	RemovePrimaryAndPistolWeapon(playerId)
 	
 	new data[6], name[64], access, callback;
 	menu_item_getinfo(menu, item, access, data, charsmax(data), name, charsmax(name), callback);
 	
 	new weapon_set = str_to_num(data);
-	
+
 	switch (weapon_set)
 	{
 		case 1:
 		{
 			give_item(playerId, "weapon_ak47");
-			give_item(playerId, "weapon_deagle");
-
-			GiveAmmo(playerId, "ak47");
-			GiveAmmo(playerId, "deagle");
+			cs_set_user_bpammo(playerId, CSW_AK47, 270);
 		}
 		case 2:
 		{
 			give_item(playerId, "weapon_m4a1");
-			give_item(playerId, "weapon_deagle");
-
-			GiveAmmo(playerId, "m4a1");
-			GiveAmmo(playerId, "deagle");
+			cs_set_user_bpammo(playerId, CSW_M4A1, 270);
 		}
 		case 3:
 		{
 			give_item(playerId, "weapon_awp");
-			give_item(playerId, "weapon_deagle");
-			
-			GiveAmmo(playerId, "awp");
-			GiveAmmo(playerId, "deagle");
+			cs_set_user_bpammo(playerId, CSW_AWP, 90);
 		}
 	}
+
+	give_item(playerId, "weapon_deagle");
+	cs_set_user_bpammo(playerId, CSW_DEAGLE, 63);
 	
 	return PLUGIN_HANDLED;
 }
@@ -395,4 +388,66 @@ stock GiveAmmo(id, const weapon[])
 	}
 
 	ExecuteHamB(Ham_GiveAmmo, id, max_ammo, ammo_type, max_ammo);
+}
+
+stock RemovePrimaryAndPistolWeapon(playerId)
+{
+	new weapons[32], num;
+	get_user_weapons(playerId, weapons, num);
+
+	for (new i = 0; i < num; i++)
+	{
+		new weaponId = weapons[i];
+
+		if (IsPrimaryWeapon(weaponId) || IsPistolWeapon(weaponId))
+		{
+			new weaponName[32];
+			get_weaponname(weaponId, weaponName, charsmax(weaponName));
+
+			StripWeapon(playerId, weaponName);
+		}
+	}
+}
+
+stock IsPrimaryWeapon(weaponId)
+{
+	switch (weaponId)
+	{
+		case CSW_AK47, CSW_M4A1, CSW_AWP, CSW_AUG, CSW_SG552, CSW_GALIL, CSW_FAMAS,
+		     CSW_SCOUT, CSW_G3SG1, CSW_SG550, CSW_M249, CSW_UMP45, CSW_MP5NAVY,
+		     CSW_TMP, CSW_P90, CSW_MAC10, CSW_XM1014, CSW_M3:
+			return true;
+	}
+
+	return false;
+}
+
+stock IsPistolWeapon(weaponId)
+{
+	switch (weaponId)
+	{
+		case CSW_DEAGLE, CSW_USP, CSW_GLOCK18, CSW_P228, CSW_ELITE, CSW_FIVESEVEN:
+			return true;
+	}
+	
+	return false;
+}
+
+stock StripWeapon(playerId, const weapon[])
+{
+	new weapon_ent = find_ent_by_owner(-1, weapon, playerId);
+	if (!weapon_ent)
+		return 0;
+	
+	if (get_user_weapon(playerId) == get_weaponid(weapon))
+		ExecuteHamB(Ham_Weapon_RetireWeapon, weapon_ent);
+	
+	if (!ExecuteHamB(Ham_RemovePlayerItem, playerId, weapon_ent))
+		return 0;
+	
+	ExecuteHamB(Ham_Item_Kill, weapon_ent);
+	
+	set_pev(playerId, pev_weapons, pev(playerId, pev_weapons) & ~(1<<get_weaponid(weapon)));
+	
+	return PLUGIN_HANDLED;
 }

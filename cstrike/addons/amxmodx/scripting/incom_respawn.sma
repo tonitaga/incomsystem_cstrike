@@ -62,7 +62,37 @@ public plugin_cfg()
 	g_HUDColor             = create_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR, _, "Цвет HUD сообщений");
 	g_HUDEnabled           = create_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD, _, "Отображение информации на HUD^n0 - Отключен^n1 - Включен", true, 0.0, true, 1.0);
 
+	hook_cvar_change(g_RespawnEnabled, "OnRespawnEnabledChanged");
+
 	AutoExecConfig(true, "incom_respawn");
+}
+
+public OnRespawnEnabledChanged(cvar, const old_value[], const new_value[])
+{
+	new oldVal = str_to_num(old_value);
+	new newVal = str_to_num(new_value);
+	
+	if (oldVal == 1 && newVal == 0)
+	{
+		new players[32], count;
+		get_players(players, count);
+		
+		for (new i = 0; i < count; i++)
+		{
+			new playerId = players[i];
+
+			if (task_exists(g_GodmodeTaskOffset + playerId))
+			{
+				remove_task(g_GodmodeTaskOffset + playerId);
+			}
+
+			if (is_user_connected(playerId))
+			{
+				StopGodmodeEffects(playerId);
+				SetGodmode(playerId, false);
+			}
+		}
+	}
 }
 
 public OnRoundStart()

@@ -1,0 +1,38 @@
+"filters"
+{
+	"favorites"
+	{
+	}
+
+	"history"
+	{
+		"0"
+		{
+			"name"		"10.10.50.181:27015"
+			"address"	"10.10.50.181:27015"
+			"lastplayed"	"1760104155"
+			"appID"		"0"
+			"gamedir"		""
+		}
+
+		"1"
+		{
+			"name"		"192.168.1.185:27015"
+			"address"	"192.168.1.185:27015"
+			"lastplayed"	"1760114029"
+			"appID"		"0"
+			"gamedir"		""
+		}
+
+		"2"
+		{
+			"name"		"192.168.1.185:27016"
+			"address"	"192.168.1.185:27016"
+			"lastplayed"	"1760209800"
+			"appID"		"0"
+			"gamedir"		""
+		}
+
+	}
+
+}

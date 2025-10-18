@@ -1,0 +1,11 @@
+"Server"
+{
+	"MaxPlayers"	"24"
+	"RconPassword"	"123"
+	"ServerName"	"Half-Life dedicated server"
+	"MOD"		"cstrike"
+	"Map"		"de_dust2"
+	"Secure"	"0"
+	"Network"	"0"
+	"Port"		"27016"
+}

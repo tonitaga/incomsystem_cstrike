@@ -1,0 +1,173 @@
+[ru]
+LVL_1 = Техподдержка
+LVL_2 = Мл. Менеджер
+LVL_3 = Менеджер
+LVL_4 = Ст. Менеджер
+LVL_5 = Вед. Менеджер
+LVL_6 = Мл. Тестировщик
+LVL_7 = Тестировщик
+LVL_8 = Ст. Тестировщик
+LVL_9 = Вед. Тестировщик
+LVL_10 = Мл. Программист
+LVL_11 = Программист
+LVL_12 = Ст. Программист
+LVL_13 = Вед. Программист
+LVL_14 = Лидер Команды
+LVL_15 = Надежда Отдела
+LVL_16 = Надежда Департамента
+LVL_17 = Надежда Компании
+
+AES_TAG = ^1[^4AES^1]
+AES_TAG_MENU = \r[\yAES\r]\w
+AES_TAG_CON = [AES]
+
+AES_INFORMER0 = Ник : %s
+AES_INFORMER1 = Ранг : %s
+AES_INFORMER2 = Опыт : [%.0f/%.0f]
+
+AES_HUD_TPL = Опыт : [<exp>/<levelexp>] (+<needexp>)\nРанг : [<rank>]\nСкилл : [<skill>]\nТоп : [<top> из <maxtop>]\nБонусов : [<bonus>]
+AES_HUD_TPL_D = Ник : <name>\nОпыт : [<exp>/<levelexp>] (+<needexp>)\nРанг : [<rank>]\nСкилл : [<skill>]\nТоп : [<top> из <maxtop>]\nБонусов : [<bonus>]\nSteamID : <steamid>
+
+AES_NEWLEVEL_TPL = Поздравляем, <name>, вы достигли <level>ого уровня - Следующий уровень: <levelexp> XP - Нужно: <needexp> XP
+AES_NEWLEVEL_ALL_TPL = <name> достиг <level>ого уровня [ <rank> ]
+
+AES_INFORMER_FAIL = Статистика не учитывается
+AES_PLAYER_XP_MAX = Достигнут максимум развития
+AES_PLAYER_LEVEL_MAX = ^4%s достиг максимального уровня!
+
+AES_INFORMER_ENABLED = HUD сообщение с текущим званием ^3Включено^1.
+AES_INFORMER_DISABLED = HUD сообщение с текущим званием ^3Выключено^1.
+
+AES_NEWLEVEL_ALL = Солдат ^3%s^1 достиг ранга ^4%s^1. Поздравляем!
+AES_NEWLEVEL_ID = Вы заслужили повышение - ^4%s^1. Поздравляем!
+
+AES_BONUS_MENU = Что вы выберите?\n\wУ вас \r<p>\w бонусов
+AES_BONUS_M4A1 = M4A1 \y+патроны
+AES_BONUS_AK47 = AK47 \y+патроны
+AES_BONUS_AWP = AWP \y+патроны
+AES_BONUS_10000M = 10000\r$
+AES_BONUS_200HP = 200\rHP
+AES_BONUS_200CP = 200\rCP
+AES_BONUS_MEGAGRENADE = МегаГраната \r(\y300%% \wурона\r)
+AES_BONUS_MEGADEAGLE = МегаДигл \r(\y200%% \wурона\r)
+
+AES_BONUS_NADE = Граната
+AES_BONUS_FLASHBANG = Флешка
+AES_BONUS_SMOKENADE = Смок
+AES_BONUS_DEFKIT = Дефьюз
+AES_BONUS_NV = Найтвижен
+AES_BONUS_ARMOR = Броня
+AES_BOUNS_HP = Хп
+
+AES_ANEW_INFO1 = \w[\r%d бон.\w]
+AES_ANEW_INFO2 = \w[\r%.2f оп.\w]
+AES_ANEW_INFO3 = \w[\r%d уров.\w]
+AES_ANEW_INFO4 = \w[\r%d рнд.\w]
+AES_ANEW_INFO5 = \w[\rВремя\w]
+AES_ANEW_INFO6 = \w[\rНет флага\w]
+AES_ANEW_INFO7 = \w[\rЗапрешенный флаг\w]
+AES_ANEW_INFO8 = Ваши бонусы:
+AES_ANEW_INFO9 = и %d других.
+
+AES_BONUS_GET_MEGADEAGLE = Ваш ^3дигл^1 наносит в ^42.0^1 больше урона!
+AES_BONUS_GET_MEGAGRENADE = Ваша ^3граната^1 наносит в ^43.0^1 больше урона!
+
+AES_ANEW_GAIN = Вы ^3заработали^1 ^4%d^1 бонус очко(в)!
+AES_ANEW_HUD = У вас %d бонус очков\nВведите /anew в чат
+
+AES_ANEW_DISABLE = ^3Система бонусов отключена!
+AES_ANEW_BLOCKED = ^3Система бонусов на этой карте отключена!
+AES_ANEW_ROUND = ^3Доступно с ^4%d^3 раунда!
+AES_ANEW_NOTENG = ^3У вас недостаточно бонус очков!
+AES_ANEW_NOT = ^3У вас нет бонус очков!
+AES_ANEW_ALIVE = ^3Только для живых игроков!
+AES_ANEW_BUYTIME = %d секунд вышло. Покупка запрещена!
+AES_ANEW_GIVE = Вы взяли ^3%s^1 за ^4%d^1 бонусов.
+AES_ANEW_CALL_PROBLEM = ^3Ошибка:^1 Что-то не так!
+
+[en]
+LVL_1 = Technical Support
+LVL_2 = Junior Manager
+LVL_3 = Manager
+LVL_4 = Senior Manager
+LVL_5 = Lead Manager
+LVL_6 = Junior Tester
+LVL_7 = Tester
+LVL_8 = Senior Tester
+LVL_9 = Lead Tester
+LVL_10 = Junior Programmer
+LVL_11 = Programmer
+LVL_12 = Senior Programmer
+LVL_13 = Lead Programmer
+LVL_14 = Team Leader
+LVL_15 = Divistion's Hope
+LVL_16 = Department's Hope
+LVL_17 = Company's hope
+
+AES_TAG = ^1[^4AES^1]
+AES_TAG_MENU = \r[\yAES\r]\w
+AES_TAG_CON = [AES]
+
+AES_INFORMER0 = Name : %s
+AES_INFORMER1 = Rank : %s
+AES_INFORMER2 = Experience : [%.0f/%.0f]
+
+AES_HUD_TPL = Experience : [<exp>/<levelexp>] (+<needexp>)\nLevel : [<level>/<maxlevel>]\nRank : <rank>
+AES_HUD_TPL_D = Name : <name>\nExperience : [<exp>/<levelexp>] (+<needexp>)\nLevel : [<level>/<maxlevel>]\nRank : <rank>^nSteamID : <steamid>
+
+AES_NEWLEVEL_TPL = Congratulations, <name>, you are now Level <level> - Next Level: <levelexp> XP - Needed: <needexp> XP
+AES_NEWLEVEL_ALL_TPL = <name> now on Level <level> [ <rank> ]
+
+AES_INFORMER_FAIL = You are not ranked yet
+AES_PLAYER_XP_MAX = Maximum experience level reached
+AES_PLAYER_LEVEL_MAX = Everyone say ^4^"Congratulations!!!^"^1 to ^3%s^1, who has ^4reached^1 last Level!
+
+AES_INFORMER_ENABLED = HUD informer ^3Enabled^1.
+AES_INFORMER_DISABLED = HUD informer^3Disabled^1.
+
+AES_NEWLEVEL_ALL = Soldier ^3%s^1 reached ^4%s^1 rank. Congratulations!
+AES_NEWLEVEL_ID = You have reached new rank - ^4%s^1. Congratulations!
+
+AES_BONUS_MENU = What you want to use?\n\wYou have \r<p>\w bonus points
+AES_BONUS_M4A1 = M4A1 \y+ammo
+AES_BONUS_AK47 = AK47 \y+ammo
+AES_BONUS_AWP = AWP \y+ammo
+AES_BONUS_10000M = 10000\r$
+AES_BONUS_200HP = 200\rHP
+AES_BONUS_200CP = 200\rCP
+AES_BONUS_MEGAGRENADE = MegaGrenade \r(\y300%% \wdamage\r)
+AES_BONUS_MEGADEAGLE = MegeDeagle \r(\y200%% \wdamage\r)
+
+AES_BONUS_NADE = HE
+AES_BONUS_FLASHBANG = Flashbang
+AES_BONUS_SMOKENADE = Smokegrenade
+AES_BONUS_DEFKIT = Defuse kit
+AES_BONUS_NV = NW
+AES_BONUS_ARMOR = Armor
+AES_BOUNS_HP = HP
+
+AES_ANEW_INFO1 = \w[\r%d bonus\w]
+AES_ANEW_INFO2 = \w[\r%.2f exp.\w]
+AES_ANEW_INFO3 = \w[\r%d lvl.\w]
+AES_ANEW_INFO4 = \w[\r%d rnd.\w]
+AES_ANEW_INFO5 = \w[\Time\w]
+AES_ANEW_INFO6 = \w[\rNeed flag\w]
+AES_ANEW_INFO7 = \w[\rRestrict flag\w]
+AES_ANEW_INFO8 = Your spawn bonuses:
+AES_ANEW_INFO9 = and %d more.
+
+AES_BONUS_GET_MEGADEAGLE = Your ^3deagle^1 now do ^42.0^1 more damage!
+AES_BONUS_GET_MEGAGRENADE = Your ^3grenade^1 now do ^4100.0^1 more damage!
+
+AES_ANEW_GAIN = You ^3have^1 gained ^4%d^3 bouns points!
+AES_ANEW_HUD = You have %d bonus points\nType /anew in chat
+
+AES_ANEW_DISABLE = ^3Bonus system disabled!
+AES_ANEW_BLOCKED = ^3Bonus system disabled on this map!
+AES_ANEW_ROUND = ^3Allow only from ^4%d^3 round!
+AES_ANEW_NOTENG = ^3You have no engought bonus points!
+AES_ANEW_NOT = ^3You have no bonus points!
+AES_ANEW_ALIVE = ^3Only for alive players!
+AES_ANEW_BUYTIME = %d seconds have passed. You can't buy anything now!
+AES_ANEW_GIVE = You take ^3%s^1 for ^4%d^1 bonus points.
+AES_ANEW_CALL_PROBLEM = ^3WARNING:^1 Something is wrong!

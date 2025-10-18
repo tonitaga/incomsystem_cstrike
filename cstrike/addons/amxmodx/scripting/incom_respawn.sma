@@ -11,23 +11,26 @@
 
 #define WEAPONS_COMMAND "say /weapons"
 
-#define KEY_ENABLED      "amx_incom_respawn_enable"
-#define KEY_GODMODE_TIME "amx_incom_respawn_godmode"
-#define KEY_RESPAWN_TIME "amx_incom_respawn_time"
-#define KEY_GLOW_COLOR   "amx_incom_respawn_glow_color"
-#define KEY_HUD_COLOR    "amx_incom_respawn_hud_color"
-#define KEY_ENABLE_HUD   "amx_incom_respawn_enable_hud"
+#define KEY_ENABLED                "amx_incom_respawn_enable"
+#define KEY_GODMODE_TIME           "amx_incom_respawn_godmode"
+#define KEY_RESPAWN_TIME           "amx_incom_respawn_time"
+#define KEY_WEAPONS_CHOOSE_ENABLED "amx_incom_respawn_weapons_choose_enable"
+#define KEY_GLOW_COLOR             "amx_incom_respawn_glow_color"
+#define KEY_HUD_COLOR              "amx_incom_respawn_hud_color"
+#define KEY_ENABLE_HUD             "amx_incom_respawn_enable_hud"
 
-#define DEFAULT_ENABLED      "0"
-#define DEFAULT_GODMODE_TIME "3.0"
-#define DEFAULT_RESPAWN_TIME "0.5"
-#define DEFAULT_GLOW_COLOR   "255215000"
-#define DEFAULT_HUD_COLOR    "000255255"
-#define DEFAULT_ENABLE_HUD   "1"
+#define DEFAULT_ENABLED                "0"
+#define DEFAULT_GODMODE_TIME           "3.0"
+#define DEFAULT_RESPAWN_TIME           "0.5"
+#define DEFAULT_WEAPONS_CHOOSE_ENABLED "1"
+#define DEFAULT_GLOW_COLOR             "255215000"
+#define DEFAULT_HUD_COLOR              "000255255"
+#define DEFAULT_ENABLE_HUD             "1"
 
 new g_RespawnEnabled;
 new g_GodmodeTime;
 new g_RespawnTime;
+new g_WeaponsChooseEnabled;
 new g_GlowColor;
 new g_HUDColor;
 new g_HUDEnabled;
@@ -44,21 +47,22 @@ public plugin_init()
 	register_event("VGUIMenu", "OnTeamSelection", "b", "1=2");
 	register_event("HLTV",     "OnRoundStart", "a", "1=0", "2=0");
 
-	register_clcmd(WEAPONS_COMMAND, "ShowWeaponsMenu");
-
-	CreateConvVars()
+	register_clcmd(WEAPONS_COMMAND, "MakeShowWeaponsMenuTask");
 
 	RegisterHam(Ham_TakeDamage, "player", "OnPlayerTakeDamage");
 }
 
-static CreateConvVars()
+public plugin_cfg()
 {
-	g_RespawnEnabled = register_cvar(KEY_ENABLED, DEFAULT_ENABLED);
-	g_GodmodeTime    = register_cvar(KEY_GODMODE_TIME, DEFAULT_GODMODE_TIME);
-	g_RespawnTime    = register_cvar(KEY_RESPAWN_TIME, DEFAULT_RESPAWN_TIME);
-	g_GlowColor      = register_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR);
-	g_HUDColor       = register_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR);
-	g_HUDEnabled     = register_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD);
+	g_RespawnEnabled       = create_cvar(KEY_ENABLED, DEFAULT_ENABLED, _, "Статус плагина^n0 - Отключен^n1 - Включен", true, 0.0, true, 1.0);
+	g_GodmodeTime          = create_cvar(KEY_GODMODE_TIME, DEFAULT_GODMODE_TIME, _, "Длительность режима бога после возрождения", true, 0.0, true, 10.0);
+	g_RespawnTime          = create_cvar(KEY_RESPAWN_TIME, DEFAULT_RESPAWN_TIME, _, "Задержка респавна после смерти", true, 0.0, true, 10.0);
+	g_WeaponsChooseEnabled = create_cvar(KEY_WEAPONS_CHOOSE_ENABLED, DEFAULT_WEAPONS_CHOOSE_ENABLED, _, "Включить возможность выбора оружия^n0 - Отключен^n1 - Включен", true, 0.0, true, 1.0);
+	g_GlowColor            = create_cvar(KEY_GLOW_COLOR, DEFAULT_GLOW_COLOR, _, "Цвет свечения игрока в режиме бога");
+	g_HUDColor             = create_cvar(KEY_HUD_COLOR, DEFAULT_HUD_COLOR, _, "Цвет HUD сообщений");
+	g_HUDEnabled           = create_cvar(KEY_ENABLE_HUD, DEFAULT_ENABLE_HUD, _, "Отображение информации на HUD^n0 - Отключен^n1 - Включен", true, 0.0, true, 1.0);
+
+	AutoExecConfig(true, "incom_respawn");
 }
 
 public OnRoundStart()
@@ -70,11 +74,7 @@ public OnRoundStart()
 
 		for (new i = 0; i < count; i++)
 		{
-			new playerId = players[i]
-			if (is_user_connected(playerId) && is_user_alive(playerId))
-			{
-				set_task(0.25, "ShowWeaponsMenu", playerId);
-			}
+			MakeShowWeaponsMenuTask(players[i])
 		}
 	}
 }
@@ -134,7 +134,7 @@ public RespawnPlayerTask(playerData[])
 		ShowHudMessage(playerId, message);
 	}
 	
-	set_task(0.2, "ShowWeaponsMenu", playerId);
+	MakeShowWeaponsMenuTask(playerId)
 }
 
 public RemoveGodmodeTask(godmodeData[])
@@ -273,6 +273,17 @@ stock ParseRGBColor(const colorStr[], Float:color[3])
 	{
 		if (color[i] > 255.0) color[i] = 255.0;
 		if (color[i] < 0.0) color[i] = 0.0;
+	}
+}
+
+public MakeShowWeaponsMenuTask(playerId)
+{
+	if (get_pcvar_num(g_WeaponsChooseEnabled))
+	{
+		if (is_user_connected(playerId) && is_user_alive(playerId))
+		{
+			set_task(0.1, "ShowWeaponsMenu", playerId);
+		}
 	}
 }
 

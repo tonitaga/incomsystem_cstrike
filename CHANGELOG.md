@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Добавлен плагин обнуления счета `/rs`
 - Изменен плагин для отображения нанесенного урона. Теперь плагин можно конфигурировать
 - Добавлены конфигурационные файлы для плагинов `incom_respawn.amxx` и `incom_weapons_delete.amxx`
+- Добавлен плагин статистики на базе MySQL/SQLite
 
 ## [0.2.0]
 

@@ -5,6 +5,7 @@
 #include <fakemeta>
 #include <engine>
 #include <fun>
+#include <parse_color>
 
 #define PLUGIN  "Incomsystem Respawn"
 #define VERSION "1.3.0"
@@ -199,7 +200,7 @@ stock ShowHudMessage(id, const message[], Float:durationOnScreen)
 
 	new hudColorStr[32], Float:hudColor[3];
 	get_pcvar_string(g_HUDColor, hudColorStr, charsmax(hudColorStr));
-	ParseRGBColor(hudColorStr, hudColor);
+	ParseColor_RGB(hudColorStr, hudColor);
 
 	set_hudmessage(
 		floatround(hudColor[0]),
@@ -241,7 +242,7 @@ stock StartGodmodeEffects(playerId)
 	// Получаем цвет из параметра
 	new glowColorStr[32], Float:glowColor[3];
 	get_pcvar_string(g_GlowColor, glowColorStr, charsmax(glowColorStr));
-	ParseRGBColor(glowColorStr, glowColor);
+	ParseColor_RGB(glowColorStr, glowColor);
 	
 	// Подсветка игрока
 	set_pev(playerId, pev_renderfx, kRenderFxGlowShell);
@@ -272,30 +273,6 @@ stock StopGodmodeEffects(playerId)
 		set_pev(weaponEnt, pev_renderfx, kRenderFxNone);
 		set_pev(weaponEnt, pev_rendercolor, {0.0, 0.0, 0.0});
 		set_pev(weaponEnt, pev_renderamt, 0.0);
-	}
-}
-
-stock ParseRGBColor(const colorStr[], Float:color[3])
-{
-	new tempStr[4];
-	
-	// Красный компонент (первые 3 символа)
-	copy(tempStr, 3, colorStr);
-	color[0] = floatstr(tempStr);
-	
-	// Зеленый компонент (следующие 3 символа)
-	copy(tempStr, 3, colorStr[3]);
-	color[1] = floatstr(tempStr);
-	
-	// Синий компонент (последние 3 символа)
-	copy(tempStr, 3, colorStr[6]);
-	color[2] = floatstr(tempStr);
-	
-	// Ограничиваем значения 0-255
-	for (new i = 0; i < 3; i++)
-	{
-		if (color[i] > 255.0) color[i] = 255.0;
-		if (color[i] < 0.0) color[i] = 0.0;
 	}
 }
 

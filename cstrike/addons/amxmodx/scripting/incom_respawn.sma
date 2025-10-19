@@ -7,7 +7,7 @@
 #include <fun>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.2.1"
+#define VERSION "1.3.0"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -160,9 +160,7 @@ public RespawnPlayerTask(playerData[])
 
 	if (get_pcvar_num(g_HUDEnabled))
 	{
-		new message[128];
-		formatex(message, charsmax(message), "Incomsystem дарует режим бога на %.1f секунд(ы)", godmodeDuration);
-		ShowHudMessage(playerId, message);
+		ShowHudMessage(playerId, "Вы неуязвимы", godmodeDuration)
 	}
 	
 	MakeShowWeaponsMenuTask(playerId)
@@ -176,11 +174,6 @@ public RemoveGodmodeTask(godmodeData[])
 	{
 		SetGodmode(playerId, false);
 		StopGodmodeEffects(playerId);
-	
-		if (get_pcvar_num(g_HUDEnabled))
-		{
-			ShowHudMessage(playerId, "Режим бога закончился");
-		}
 	}
 }
 
@@ -199,12 +192,10 @@ public OnPlayerTakeDamage(victim, inflictor, attacker, Float:damage, damageBits)
 	return HAM_IGNORED;
 }
 
-stock ShowHudMessage(id, const message[])
+stock ShowHudMessage(id, const message[], Float:durationOnScreen)
 {
 	if (!is_user_connected(id))
 		return;
-	
-	ClearHudMessages(id);
 
 	new hudColorStr[32], Float:hudColor[3];
 	get_pcvar_string(g_HUDColor, hudColorStr, charsmax(hudColorStr));
@@ -214,8 +205,9 @@ stock ShowHudMessage(id, const message[])
 		floatround(hudColor[0]),
 		floatround(hudColor[1]),
 		floatround(hudColor[2]),
-		-1.0, 0.3, 0, 6.0, 3.0, 0.1, 0.2, -1
+		-1.0, 0.3, 0, 6.0, durationOnScreen
 	);
+
 	show_hudmessage(id, message);
 }
 

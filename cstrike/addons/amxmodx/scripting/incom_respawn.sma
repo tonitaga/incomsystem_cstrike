@@ -8,7 +8,7 @@
 #include <parse_color>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.3.0"
+#define VERSION "1.3.1"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -329,12 +329,12 @@ public WeaponCase(playerId, menu, item)
 		case 1:
 		{
 			give_item(playerId, "weapon_ak47");
-			cs_set_user_bpammo(playerId, CSW_AK47, 270);
+			cs_set_user_bpammo(playerId, CSW_AK47, 210);
 		}
 		case 2:
 		{
 			give_item(playerId, "weapon_m4a1");
-			cs_set_user_bpammo(playerId, CSW_M4A1, 270);
+			cs_set_user_bpammo(playerId, CSW_M4A1, 210);
 		}
 		case 3:
 		{

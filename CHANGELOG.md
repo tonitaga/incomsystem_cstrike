@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.0.draft]
 
 - Добавлен плагин, который запоминает надетый глушитель и режим burst-fire (`weaponstate_remember.amxx`)
+- Из плагина `f_ultimate_sound.amxx` убрано отображение информации о типе убийств и сутиаций на HUD.
+- Добавлен плагин `incom_hud_info.amxx`, который показывает основную информацию о сервере в верхней части экрана клиента.
 
 ## [0.3.0]
 

@@ -1,7 +1,7 @@
 [ru]
-MAIN_MESSAGE = Powered by Tonitaga
-SECONDARY_MESSAGE = Incomsystem [DEV ZONE] 0.0.4.draft
+MAIN_MESSAGE = Incomsystem [DEV ZONE] 0.0.4.draft
+SECONDARY_MESSAGE = Powered by Tonitaga
 
 [en]
-MAIN_MESSAGE = Powered by Tonitaga
-SECONDARY_MESSAGE = Incomsystem [DEV ZONE] 0.0.4.draft
+MAIN_MESSAGE = Incomsystem [DEV ZONE] 0.0.4.draft
+SECONDARY_MESSAGE = Powered by Tonitaga

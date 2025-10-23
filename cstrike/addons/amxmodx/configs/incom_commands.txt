@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset=UTF-8>
+<title>INCOMSYSTEM [DEV ZONE]</title>
+<style>
+body{background:#000;color:#fff;font-family:'Courier New';margin:10px}
+.hdr{ color:#f00; font-weight:bold; font-size:22px; }
+.ylw{color:#ff0}
+.grn{color:#0f0}
+.blue{ color:#08f;}
+.cmds{background:#112;border:1px dashed #44f;padding:15px;margin:10px;max-width:500px}
+</style>
+</head>
+<body>
+<center>
+<br>
+<div class="hdr">INCOMSYSTEM [DEV ZONE]</div>
+<br>
+<div>/* Powered by Tonitaga */</div>
+<div class="blue">v0.4.0</div>
+<br><hr><br>
+<div class=cmds><table>
+<tr><td class=ylw>/skins-menu</td><td class=grn>- Меню выбора скинов</td></tr>
+<tr><td class=ylw>/weapons</td><td class=grn>- Меню выбора оружия в TDM</td></tr>
+<tr><td class=ylw>/maps</td><td class=grn>- Номинировать карту на голосование</td></tr>
+<tr><td class=ylw>/rs</td><td class=grn>- Сбросить текущий счет</td></tr>
+<tr><td class=ylw>/rankstats</td><td class=grn>- Личная статистика</td></tr>
+<tr><td class=ylw>/top15</td><td class=grn>- Топ 15 сервера</td></tr>
+<tr><td class=ylw>/anew</td><td class=grn>- Бонусный магазин</td></tr>
+</table></div>
+</center>
+</body>
+</html>

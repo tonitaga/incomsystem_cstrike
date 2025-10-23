@@ -5,9 +5,10 @@
 #include <fakemeta>
 #include <engine>
 #include <fun>
+#include <parse_color>
 
 #define PLUGIN  "Incomsystem Respawn"
-#define VERSION "1.2.1"
+#define VERSION "1.3.1"
 #define AUTHOR  "Tonitaga"
 
 #define WEAPONS_COMMAND "say /weapons"
@@ -160,9 +161,7 @@ public RespawnPlayerTask(playerData[])
 
 	if (get_pcvar_num(g_HUDEnabled))
 	{
-		new message[128];
-		formatex(message, charsmax(message), "Incomsystem дарует режим бога на %.1f секунд(ы)", godmodeDuration);
-		ShowHudMessage(playerId, message);
+		ShowHudMessage(playerId, "Вы неуязвимы", godmodeDuration)
 	}
 	
 	MakeShowWeaponsMenuTask(playerId)
@@ -176,11 +175,6 @@ public RemoveGodmodeTask(godmodeData[])
 	{
 		SetGodmode(playerId, false);
 		StopGodmodeEffects(playerId);
-	
-		if (get_pcvar_num(g_HUDEnabled))
-		{
-			ShowHudMessage(playerId, "Режим бога закончился");
-		}
 	}
 }
 
@@ -199,23 +193,22 @@ public OnPlayerTakeDamage(victim, inflictor, attacker, Float:damage, damageBits)
 	return HAM_IGNORED;
 }
 
-stock ShowHudMessage(id, const message[])
+stock ShowHudMessage(id, const message[], Float:durationOnScreen)
 {
 	if (!is_user_connected(id))
 		return;
-	
-	ClearHudMessages(id);
 
 	new hudColorStr[32], Float:hudColor[3];
 	get_pcvar_string(g_HUDColor, hudColorStr, charsmax(hudColorStr));
-	ParseRGBColor(hudColorStr, hudColor);
+	ParseColor_RGB(hudColorStr, hudColor);
 
 	set_hudmessage(
 		floatround(hudColor[0]),
 		floatround(hudColor[1]),
 		floatround(hudColor[2]),
-		-1.0, 0.3, 0, 6.0, 3.0, 0.1, 0.2, -1
+		-1.0, 0.3, 0, 6.0, durationOnScreen
 	);
+
 	show_hudmessage(id, message);
 }
 
@@ -249,7 +242,7 @@ stock StartGodmodeEffects(playerId)
 	// Получаем цвет из параметра
 	new glowColorStr[32], Float:glowColor[3];
 	get_pcvar_string(g_GlowColor, glowColorStr, charsmax(glowColorStr));
-	ParseRGBColor(glowColorStr, glowColor);
+	ParseColor_RGB(glowColorStr, glowColor);
 	
 	// Подсветка игрока
 	set_pev(playerId, pev_renderfx, kRenderFxGlowShell);
@@ -280,30 +273,6 @@ stock StopGodmodeEffects(playerId)
 		set_pev(weaponEnt, pev_renderfx, kRenderFxNone);
 		set_pev(weaponEnt, pev_rendercolor, {0.0, 0.0, 0.0});
 		set_pev(weaponEnt, pev_renderamt, 0.0);
-	}
-}
-
-stock ParseRGBColor(const colorStr[], Float:color[3])
-{
-	new tempStr[4];
-	
-	// Красный компонент (первые 3 символа)
-	copy(tempStr, 3, colorStr);
-	color[0] = floatstr(tempStr);
-	
-	// Зеленый компонент (следующие 3 символа)
-	copy(tempStr, 3, colorStr[3]);
-	color[1] = floatstr(tempStr);
-	
-	// Синий компонент (последние 3 символа)
-	copy(tempStr, 3, colorStr[6]);
-	color[2] = floatstr(tempStr);
-	
-	// Ограничиваем значения 0-255
-	for (new i = 0; i < 3; i++)
-	{
-		if (color[i] > 255.0) color[i] = 255.0;
-		if (color[i] < 0.0) color[i] = 0.0;
 	}
 }
 
@@ -360,12 +329,12 @@ public WeaponCase(playerId, menu, item)
 		case 1:
 		{
 			give_item(playerId, "weapon_ak47");
-			cs_set_user_bpammo(playerId, CSW_AK47, 270);
+			cs_set_user_bpammo(playerId, CSW_AK47, 210);
 		}
 		case 2:
 		{
 			give_item(playerId, "weapon_m4a1");
-			cs_set_user_bpammo(playerId, CSW_M4A1, 270);
+			cs_set_user_bpammo(playerId, CSW_M4A1, 210);
 		}
 		case 3:
 		{

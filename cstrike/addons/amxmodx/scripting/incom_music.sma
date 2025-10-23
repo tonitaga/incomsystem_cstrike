@@ -1,11 +1,17 @@
 #include <amxmodx>
 
+#define PLUGIN  "Incomsystem music"
+#define VERSION "2.1"
+#define AUTHOR  "Tonitaga"
+
 public plugin_init() 
 { 
-    register_plugin("Incomsystem music","2.0","Tonitaga")
+    register_plugin(PLUGIN, VERSION, AUTHOR)
     
     // Используем logevent вместо SendAudio
     register_logevent("round_end", 2, "1=Round_End")
+
+    register_clcmd("joinclass", "OnAgentChoose");
     
     // Блокируем стандартные звуки через SendAudio
     register_event("SendAudio", "block_standard_sounds", "a", "2&%!MRAD_terwin", "2&%!MRAD_ctwin", "2&%!MRAD_rounddraw")
@@ -16,10 +22,15 @@ public block_standard_sounds()
     return PLUGIN_HANDLED // Полностью блокируем стандартные звуки
 }
 
-public client_connect(id)
+public client_connect(playerId)
 {
-    client_cmd(id, "spk incom/greeting")
+    client_cmd(playerId, "spk incom/greeting")
     return 0;
+}
+
+public OnAgentChoose(playerId)
+{
+    client_cmd(playerId,"stopsound")
 }
 
 public round_end()

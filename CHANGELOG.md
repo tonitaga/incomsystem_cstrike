@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Добавил новые карты `de_mirage` `fy_tuscan` `fy_pool_day` `$3000$_b3`
 - Добавлен плагин `mode.amxx`, для автоматического уменьшения размера карты при маленьком онлайне
 - Добавлен современный модульный менеджер карт. `map_manager*.amxx`
+- Изменен `MOTD` файл, добавлен плагин на отображение доступных серверных команд `/commands` (`incom_commands.amxx`)
 
 ## [0.3.0]
 

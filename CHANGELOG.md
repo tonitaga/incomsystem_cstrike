@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0.draft]
 
 - Удален плагин `admin_explode.amxx`
+- Добавлен плагин `ReDeathmatch.amxx`, по умолчанию выключен
 
 ## [0.4.0]
 

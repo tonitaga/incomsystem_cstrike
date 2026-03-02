@@ -1,0 +1,7 @@
+[en]
+INCOM_RANDOM_HEALTH = ^3IncomRandomHealth^1
+RANDOM_HEALTH_ENABLED = New health: ^4%d^1, lasts for ^3%.1f^1 second or until the end of the round
+
+[ru]
+INCOM_RANDOM_HEALTH = ^3IncomRandomHealth^1
+RANDOM_HEALTH_ENABLED = Новое здоровье: ^4%d^1, продолжается ^3%.1f^1 секунд или до конца раунда

@@ -122,6 +122,7 @@ public ProcessRandomHealth()
 	if (rand < amx_incom_random_health_change_percent)
 	{
 		EnableRandomHealth();
+		UpdatePlayerHealth();
 	}
 }
 
@@ -148,6 +149,24 @@ stock EnableRandomHealth()
 	client_print_color(0, print_team_default, "[%L] %L", LANG_PLAYER, "INCOM_RANDOM_HEALTH", LANG_PLAYER, "RANDOM_HEALTH_ENABLED", health_value, amx_incom_random_health_max_duration);
 }
 
+stock UpdatePlayerHealth()
+{
+	new players[32], count;
+	get_players(players, count);
+
+	for (new i = 0; i < count; i++)
+	{
+		new playerId = players[i];
+		new health = get_user_health(playerId)
+
+		// Изменяем здоровье, только в меньшую сторону
+		if (health_value < health && is_user_alive(playerId))
+		{
+			set_user_health(playerId, health_value);
+		}
+	}
+}
+
 stock DisableRandomHealth()
 {
 	if (health_changed)
@@ -156,11 +175,11 @@ stock DisableRandomHealth()
 	}
 }
 
-public OnPlayerSpawn(id)
+public OnPlayerSpawn(playerId)
 {
-	if (health_changed && is_user_alive(id))
+	if (health_changed && is_user_alive(playerId))
 	{
-		set_user_health(id, health_value);
+		set_user_health(playerId, health_value);
 	}
 }
 

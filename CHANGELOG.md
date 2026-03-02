@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Изменено значение параметра `amx_random_models_enable` в `1`
 - Добавлен плагин события случайного здоровья `incom_random_health.amxx`
 - Убран запуск события изменения гравитации в плагине `incom_gravity.amxx`
+- Изменено количество патронов в магазине у некоторых оружий используя плагин `weapons_maxclip.amxx`
 
 ## [0.11.1]
 - Добавлены новые скины игроков: `anonimous` `mini`

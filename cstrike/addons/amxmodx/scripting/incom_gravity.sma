@@ -2,7 +2,7 @@
 #include <cstrike>
 
 new const PLUGIN[]  = "Incomsystem Gravity";
-new const VERSION[] = "1.1";
+new const VERSION[] = "1.2";
 new const AUTHOR[]  = "Tonitaga"
 
 new gravity_changed = false;
@@ -22,8 +22,6 @@ new const GRAVITY_TASKID = 14500;
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-
-	register_event("HLTV", "OnRoundStart", "a", "1=0", "2=0");
 
 	register_dictionary("incom_gravity.txt");
 
@@ -75,6 +73,9 @@ public plugin_cfg()
 	hook_cvar_change(pcvar_amx_incom_gravity_max_duration, "OnGravityVariableChange");
 
 	AutoExecConfig();
+
+	// Запускаем задачу на выполнение события
+	StartProcessGravityTaskOnce();
 }
 
 public OnGravityVariableChange(cvar, const old_value[], const new_value[])
@@ -110,12 +111,6 @@ public ProcessGravity()
 	{
 		ChangeGravityToCustom();
 	}
-}
-
-public OnRoundStart()
-{
-	ProcessGravity();
-	StartProcessGravityTaskOnce();
 }
 
 stock ChangeGravity(Float:value)

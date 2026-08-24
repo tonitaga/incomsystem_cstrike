@@ -2,11 +2,8 @@
 #include <reapi>
 
 #define PLUGIN  "Incomsystem music"
-#define VERSION "4.1"
+#define VERSION "5.0"
 #define AUTHOR  "Tonitaga"
-
-new const MUSIC_TYPE_DEFAULT = 1
-new const MUSIC_TYPE_XMAS    = 2
 
 new amx_incom_music_enable;
 new amx_incom_music_type;
@@ -24,104 +21,30 @@ new g_SongRequested = false;
 new g_SongRequestCounter = 0;
 new g_SongRequestMenuOnHud = false;
 
+new g_CurrentMusicPackId = -1;
+
 new const g_SondRequestTaskId = 20000;
 new const g_MenuDestroyTaskId = 20500;
 
-new const g_Sounds[][] =
-{
-    ///> Greeting sounds
-    "incom/greeting.mp3",
-    "incom/greeting_lunch_pizza.mp3",
-    "incom/greeting_code_and_cs.mp3",
-    "incom/greeting_icegergert_nasledstvo.mp3",
-    "incom/greeting_baobab.mp3",
-    "incom/greeting_lesnik.mp3",
-    "incom/greeting_end_of_beginning.mp3",
-
-    ///> Greeting sounds [XMas]
-    "incom/greeting_xmas_incomsystem_and_new_year.mp3",
-    "incom/greeting_xmas_incom.mp3",
-    "incom/greeting_xmas_incom_new_year_code.mp3",
-    "incom/greeting_xmas_let_it_snow.mp3",
-    "incom/greeting_xmas_rocking_around.mp3",
-    "incom/greeting_xmas_last_christmas.mp3",
-    "incom/greeting_xmas_avaria_new_year.mp3",
-    "incom/greeting_xmas_verka_new_year.mp3",
-    "incom/greeting_xmas_zima_holoda.mp3",
-
-    ///> Incomsystem [Default]
-    "incom/roundend1_v2.mp3",
-    "incom/roundend2_v2.mp3",
-    "incom/roundend3_v2.mp3",
-    "incom/roundend4_v2.mp3",
-    "incom/roundend5_v2.mp3",
-    "incom/roundend6_v2.mp3",
-    "incom/roundend7_v2.mp3",
-    "incom/roundend8_v2.mp3",
-    "incom/roundend9_v2.mp3",
-
-    ///> Incomsystem [XMas]
-    "incom/roundend1_xmas_v2.mp3",
-    "incom/roundend2_xmas.mp3",
-    "incom/roundend3_xmas.mp3",
-    "incom/roundend4_xmas.mp3",
-    "incom/roundend5_xmas.mp3",
-    "incom/roundend6_xmas.mp3",
-    "incom/roundend7_xmas.mp3",
-    "incom/roundend8_xmas.mp3"
+// Идентификаторы секций
+enum Sections {
+    MUSIC_NONE_SECTION,
+    MUSIC_PACK_SECTION,
+    MUSIC_ROUNDEND_SECTION,
+    MUSIC_SONG_REQUEST_SECTION
 };
 
-///> Для отображения имени в меню
-///> Если строка пустая, то отображаться будет название из массива g_Sounds
-new const g_SoundsNames[][] =
-{
-    ///> Greeting sounds
-    "Antonk - Incomsystem Anthem",
-    "Antonk - Пицца в обед",
-    "Antonk - Код и Counter-Strike",
-    "ICEGERGERT, SKY RAE - Гейследство",
-    "ivanzolo2004 - Баобаб",
-    "Король и Шут - Лесник",
-    "Djo (Stranger things) - End of Beginning",
+#define MAX_STR_LENGTH 256
 
-    ///> Greeting sounds [XMas]
-    "Tonitaga - Инкомсистем и Новый год",
-    "Tonitaga - Новогодняя",
-    "Tonitaga - Новогодний Код",
-    "Dean Martin - Let It Snow!",
-    "Brenda Lee - Rockin Around The Christmas Tree",
-    "Wham! - Last Christmas",
-    "Дискотека Авария - Новогодняя",
-    "Верка Сердючка - Новогодняя",
-    "Андрей Губин - Зима холода",
+// Текущая обрабатываемая секция
+new Sections:g_CurrentIniSection = MUSIC_NONE_SECTION;
+new g_CurrentSectionName[MAX_STR_LENGTH]
 
-    ///> Incomsystem [Default]
-    "Roundend #1",
-    "Roundend #2",
-    "Roundend #3",
-    "Roundend #4",
-    "Roundend #5",
-    "Roundend #6",
-    "Roundend #7",
-    "Roundend #8",
-    "Roundend #9",
-
-    ///> Incomsystem [XMas]
-    "Roundend XMas #1",
-    "Roundend XMas #2",
-    "Roundend XMas #3",
-    "Roundend XMas #4",
-    "Roundend XMas #5",
-    "Roundend XMas #6",
-    "Roundend XMas #7",
-    "Roundend XMas #8"
-};
-
-#define SOUND_OFFSET_GREETING      0  // g_Sounds[0]
-#define SOUND_OFFSET_GREETING_XMAS 7  // g_Sounds[7]
-#define SOUND_OFFSET_DEFAULT       16 // g_Sounds[16]
-#define SOUND_OFFSET_XMAS          25 // g_Sounds[25]
-#define SOUND_OFFSET_MAX           (sizeof g_SoundsNames)
+// Динамические массивы для звуков и их названий
+new Array:g_SongRequestSounds;
+new Array:g_SongRequestSoundNames;
+new Array:g_RoundendSounds;
+new Array:g_RoundendSoundNames;
 
 public plugin_init() 
 {
@@ -129,8 +52,8 @@ public plugin_init()
     
     register_logevent("round_end", 2, "1=Round_End")
 
-    register_clcmd(MUSIC_COMMAND_SAY, "ShowMusicMenu")
-    register_clcmd(MUSIC_COMMAND_SAY_TEAM, "ShowMusicMenu")
+    register_clcmd(MUSIC_COMMAND_SAY, "ShowAdminMusicMenu")
+    register_clcmd(MUSIC_COMMAND_SAY_TEAM, "ShowAdminMusicMenu")
     register_clcmd(MUSIC_STOP_COMMAND_SAY, "HandleStopSound")
     register_clcmd(MUSIC_STOP_COMMAND_SAY_TEAM, "HandleStopSound")
 
@@ -190,12 +113,161 @@ public plugin_cfg()
 
 public plugin_precache()
 {
-    for (new i; i < sizeof g_Sounds; ++i)
+    CreateArrays();
+    LoadMusicConfig();
+}
+
+public plugin_end()
+{
+	DestroyArrays();
+}
+
+stock CreateArrays()
+{
+    g_SongRequestSounds = ArrayCreate(MAX_STR_LENGTH);
+    g_SongRequestSoundNames = ArrayCreate(MAX_STR_LENGTH);
+    g_RoundendSounds = ArrayCreate(MAX_STR_LENGTH);
+    g_RoundendSoundNames = ArrayCreate(MAX_STR_LENGTH);
+}
+
+stock DestroyArrays()
+{
+	if (g_SongRequestSounds != Invalid_Array)
+		ArrayDestroy(g_SongRequestSounds);
+
+	if (g_SongRequestSoundNames != Invalid_Array)
+		ArrayDestroy(g_SongRequestSoundNames);
+
+	if (g_RoundendSounds != Invalid_Array)
+		ArrayDestroy(g_RoundendSounds);
+
+	if (g_RoundendSoundNames != Invalid_Array)
+		ArrayDestroy(g_RoundendSoundNames);
+}
+
+stock LoadMusicConfig()
+{
+    new INIParser:parser = INI_CreateParser();
+
+    INI_SetParseEnd(parser, "OnIniParseEnd");
+    INI_SetReaders(parser, "OnIniKeyValue", "OnIniNewSection");
+
+    new bool:result = INI_ParseFile(parser, "addons/amxmodx/configs/incom_music.ini");
+    if(!result)
     {
-        precache_sound(g_Sounds[i]);
+        server_print("[IncomMusic] Failed to read ini file")
     }
 
-    return PLUGIN_CONTINUE
+    INI_DestroyParser(parser);
+}
+
+public OnIniNewSection(INIParser:handle, const section[], bool:invalid_tokens, bool:close_bracket, bool:extra_tokens, curtok, any:data)
+{
+    if(equal(section, "music_pack")) 
+    {
+        g_CurrentIniSection = MUSIC_PACK_SECTION;
+        g_CurrentMusicPackId = -1;
+    }
+    else if(strfind(section, "request_songs_") != -1) 
+    {
+        g_CurrentIniSection = MUSIC_SONG_REQUEST_SECTION;
+    }
+    else if(strfind(section, "roundend_") != -1) 
+    {
+        g_CurrentIniSection = MUSIC_ROUNDEND_SECTION;
+    }
+    else 
+    {
+        g_CurrentIniSection = MUSIC_NONE_SECTION;
+    }
+
+    copy(g_CurrentSectionName, charsmax(g_CurrentSectionName), section);
+    return true;
+}
+
+public OnIniKeyValue(INIParser:handle, const key[], const value[], bool:invalid_tokens, bool:equal_token, bool:quotes, curtok, any:data)
+{
+    new quotelessKey[MAX_STR_LENGTH], quotelessValue[MAX_STR_LENGTH];
+
+    copy(quotelessKey, charsmax(quotelessKey), key);
+    copy(quotelessValue, charsmax(quotelessValue), value);
+
+    remove_quotes(quotelessKey);
+    remove_quotes(quotelessValue);
+
+    switch(g_CurrentIniSection)
+    {
+        case MUSIC_PACK_SECTION:
+        {
+            if(equal(quotelessKey, "music_pack"))
+            {
+                g_CurrentMusicPackId = str_to_num(quotelessValue);
+            }
+        }
+        case MUSIC_SONG_REQUEST_SECTION:
+        {
+            new musicId = -1;
+            if(strfind(g_CurrentSectionName, "request_songs_") != -1)
+            {
+                new idStr[8];
+                copy(idStr, charsmax(idStr), g_CurrentSectionName[strlen("request_songs_")]);
+                musicId = str_to_num(idStr);
+            }
+            
+            if(musicId == g_CurrentMusicPackId)
+            {
+                ArrayPushString(g_SongRequestSounds, quotelessValue);
+                ArrayPushString(g_SongRequestSoundNames, quotelessKey);
+            }
+        }
+        
+        case MUSIC_ROUNDEND_SECTION:
+        {
+            new musicId = -1;
+            if(strfind(g_CurrentSectionName, "roundend_") != -1)
+            {
+                new idStr[8];
+                copy(idStr, charsmax(idStr), g_CurrentSectionName[strlen("roundend_")]);
+                musicId = str_to_num(idStr);
+            }
+            
+            if(musicId == g_CurrentMusicPackId)
+            {
+                ArrayPushString(g_RoundendSounds, quotelessValue);
+                ArrayPushString(g_RoundendSoundNames, quotelessKey);
+            }
+        }
+    }
+    
+    return true;
+}
+
+public OnIniParseEnd(INIParser:handle, bool:halted, any:data)
+{
+    if(!halted && g_CurrentMusicPackId != -1)
+    {
+        new sound[MAX_STR_LENGTH];
+
+        new songRequestCount = ArraySize(g_SongRequestSounds);
+        for (new i = 0; i < songRequestCount; i++)
+        {
+            ArrayGetString(g_SongRequestSounds, i, sound, charsmax(sound));
+            precache_sound(sound);
+        }
+
+        new roundEndCount = ArraySize(g_RoundendSounds);
+        for (new i = 0; i < roundEndCount; i++)
+        {
+            ArrayGetString(g_RoundendSounds, i, sound, charsmax(sound));
+            precache_sound(sound);
+        }
+        
+        server_print("[IncomMusic] MusicPack: <%d>, SongRequests: <%d>, RoundEnds: <%d>"
+            , g_CurrentMusicPackId
+            , songRequestCount
+            , roundEndCount
+        );
+    }
 }
 
 public client_connect(playerId)
@@ -204,15 +276,13 @@ public client_connect(playerId)
     {
         StopSound(playerId);
 
-        new type = amx_incom_music_type;
-        if (type == MUSIC_TYPE_DEFAULT)
+        new size = ArraySize(g_SongRequestSounds);
+        if (size <= 0)
         {
-            PlaySound(playerId, SOUND_OFFSET_GREETING + 0);
+            return;
         }
-        else if (type == MUSIC_TYPE_XMAS)
-        {
-            PlaySound(playerId, SOUND_OFFSET_GREETING_XMAS + 0);
-        }
+
+        PlaySound(playerId, g_SongRequestSounds, 0)
     }
 }
 
@@ -236,42 +306,32 @@ public round_end()
             return;
         }
 
+        // Останавливаем музыку у всех
         StopSound(0);
 
-        new type = amx_incom_music_type;
-        if (type == MUSIC_TYPE_DEFAULT)
-        {
-            set_task(0.1, "PlayCommonSound")
-        }
-        else if (type == MUSIC_TYPE_XMAS)
-        {
-            set_task(0.1, "PlayXMasSound")
-        }
+        // Запускаем новую через 0.25с
+        set_task(0.25, "PlayRoundEndSound")
     }
 }
 
-public PlayCommonSound()
+public PlayRoundEndSound()
 {
-    static soundsCount = (SOUND_OFFSET_XMAS - SOUND_OFFSET_DEFAULT) - 1;
-
-    new rand = random_num(0,soundsCount)
-    PlaySound(0, SOUND_OFFSET_DEFAULT + rand);
+    new size = ArraySize(g_RoundendSounds);
+    if (size > 0)
+    {
+        PlaySound(0, g_RoundendSounds, random_num(0, size - 1))
+    }
 }
 
-public PlayXMasSound()
+public PlaySound(playerId, Array:arr, soundId)
 {
-    static soundsCount = (SOUND_OFFSET_MAX - SOUND_OFFSET_XMAS) - 1;
+    new sound[MAX_STR_LENGTH];
+    ArrayGetString(arr, soundId, sound, charsmax(sound));
 
-    new rand = random_num(0,soundsCount)
-    PlaySound(0, SOUND_OFFSET_XMAS + rand);
-}
+    new command[MAX_STR_LENGTH + 32];
+    formatex(command, charsmax(command), "mp3 play sound/%s", sound);
 
-public PlaySound(playerId, soundId)
-{
-    new sound[128];
-    formatex(sound, charsmax(sound), "mp3 play sound/%s", g_Sounds[soundId]);
-
-    client_cmd(playerId, sound);
+    client_cmd(playerId, command);
 }
 
 public HandleStopSound(playerId)
@@ -402,26 +462,27 @@ public InactiveMenuCanceler(taskId)
     client_print_color(0, print_team_default, "[%L] %L", LANG_PLAYER, "INCOM_MUSIC", LANG_PLAYER, "SOUND_AVAILABLE");
 }
 
-public ShowMenu(playerId, soundIndexLhs, soundIndexRhs, const callback[])
+public ShowMenu(playerId, const callback[])
 {
     SongRequestMenuOnHud(true);
 
     new menu = menu_create("\y>>>>> \rIncomsystem Music Menu \y<<<<<^n \dby >>\rTonitaga\d<<", callback)
 
-    new data[8], menuItem[64];
-    for (new i = soundIndexLhs; i < soundIndexRhs; ++i)
+    new data[8];
+    new menuItem[MAX_STR_LENGTH], soundName[MAX_STR_LENGTH];
+
+    new soundsCount = ArraySize(g_SongRequestSounds);
+    for (new i = 0; i < soundsCount; i++)
     {
         num_to_str(i, data, charsmax(data));
-    
-        if (equal(g_SoundsNames[i], ""))
+
+        ArrayGetString(g_SongRequestSoundNames, i, soundName, charsmax(soundName))
+        if (equal(soundName, ""))
         {
-            formatex(menuItem, charsmax(menuItem), "\y%s", g_Sounds[i]);
-        }
-        else
-        {
-            formatex(menuItem, charsmax(menuItem), "\y%s", g_SoundsNames[i]);
+            continue;
         }
 
+        formatex(menuItem, charsmax(menuItem), "\y%s", soundName);
         menu_additem(menu, menuItem, data, 0)
     }
     
@@ -431,44 +492,20 @@ public ShowMenu(playerId, soundIndexLhs, soundIndexRhs, const callback[])
     MakeInactiveMenuCanceler(playerId, 15.0);
 }
 
-public ShowMusicMenu(playerId)
+public ShowAdminMusicMenu(playerId)
 {
     if (get_user_flags(playerId) & ADMIN_FLAG)
     {
-        ShowMenu(playerId, 0, sizeof g_Sounds, "MenuCase");
+        ShowMusicRequestMenu(playerId);
     }
-}
-
-public MenuCase(playerId, menu, item)
-{
-    SongRequestMenuOnHud(false);
-    RemoveInvactiveMenuCanceler(playerId);
-
-    if(item == MENU_EXIT)
-    {
-        menu_destroy(menu);
-        return PLUGIN_HANDLED;
-    }
-
-    return CommonMenuCase(playerId, menu, item);
 }
 
 public ShowMusicRequestMenu(playerId)
 {
-    new lhsIndex = SOUND_OFFSET_GREETING;
-    new rhsIndex = SOUND_OFFSET_GREETING_XMAS;
-
-    new type = amx_incom_music_type;
-    if (type == MUSIC_TYPE_XMAS)
-    {
-        lhsIndex = SOUND_OFFSET_GREETING_XMAS;
-        rhsIndex = SOUND_OFFSET_DEFAULT;
-    }
-
-    ShowMenu(playerId, lhsIndex, rhsIndex, "RequestMenuCase");
+    ShowMenu(playerId, "MenuCase");
 }
 
-public RequestMenuCase(playerId, menu, item)
+public MenuCase(playerId, menu, item)
 {
     SongRequestMenuOnHud(false);
     RemoveInvactiveMenuCanceler(playerId);
@@ -493,11 +530,14 @@ public CommonMenuCase(playerId, menu, item)
     new soundId = str_to_num(data)
 
     StopSound(0);
-    PlaySound(0, soundId);
+    PlaySound(0, g_SongRequestSounds, soundId);
 
     get_user_name(playerId, name, charsmax(name));
 
-    client_print_color(0, print_team_default, "[%L] %L", LANG_PLAYER, "INCOM_MUSIC", LANG_PLAYER, "SOUND_REQUESTED", name, g_SoundsNames[soundId]);
+    new soundName[MAX_STR_LENGTH];
+    ArrayGetString(g_SongRequestSoundNames, soundId, soundName, charsmax(soundName))
+
+    client_print_color(0, print_team_default, "[%L] %L", LANG_PLAYER, "INCOM_MUSIC", LANG_PLAYER, "SOUND_REQUESTED", name, soundName);
     menu_destroy(menu)
     return PLUGIN_HANDLED
 }

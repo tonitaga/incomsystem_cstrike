@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0]
+- Переписан плагин `incom_music.amxx`  (`4.1` -> `5.0`)
+    - Добавлен `ini` файл для подгрузки звуков.
+    - Звуки добавляются через файл `incom_music.ini`
+- Добавлены новые песни на заказ в `incom_music`
+    - `Меня зовут Антоха` (by `Nikita`)
+    - `Иди код пиши` (by `RomanPlan9`)
+    - `Красные зайцы` (by `Antonk`)
+    - `Ты Гау` (by `IlnurT`)
+    - `Love Is A Long Road` (by `Tom Petty`)
+    - `Popular` (by `The Weeknd`)
+
+
 ## [0.12.0]
 - Изменено значение параметра `amx_random_models_enable` в `1`
 - Добавлен плагин события случайного здоровья `incom_random_health.amxx`

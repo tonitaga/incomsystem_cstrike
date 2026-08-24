@@ -309,8 +309,8 @@ public round_end()
         // Останавливаем музыку у всех
         StopSound(0);
 
-        // Запускаем новую через 0.25с
-        set_task(0.25, "PlayRoundEndSound")
+        // Запускаем новую через 0.1с
+        set_task(0.1, "PlayRoundEndSound")
     }
 }
 
